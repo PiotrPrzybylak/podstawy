@@ -1,4 +1,4 @@
-package paczka;
+package PierwszyProgram;
 
 
 public class Hello {
