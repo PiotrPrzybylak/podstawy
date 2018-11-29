@@ -49,5 +49,16 @@ public class Operatory {
         System.out.println("c ="+cc);
 
 
+        int aaa = 5;
+        int bbb = 3;
+        System.out.println("operatory logiczne boolean");
+        boolean prawda = aaa>bbb; // prawda= true
+        System.out.println(prawda);
+        boolean falsz = aaa<bbb; // falsz=folse
+        System.out.println(falsz);
+        boolean porownanie = aaa==bbb; // falsz=folse
+        System.out.println(porownanie);
+        boolean koniunkcja = (aaa>bbb)&&(aaa!=bbb); //prawda i prawda
+        System.out.println(koniunkcja);
     }
 }
