@@ -1,24 +1,22 @@
 package OOP;
 
-public class Statek extends Nacja {
+public class Statek extends ObiektLatajacy {
 
+    private String nacja;
     private String typ;
     private String nazwa;
     private int iloscHiSlotów;
     private int ilośćMedSlotów;
     private int ilośćLowSlotów;
-
     private int zasiegNamierzania;
     private int predkoscBazowa;
-
-
 
 
     public Statek() {
     }
 
     public Statek(String nacja, String typ, String nazwa, int iloscHiSlotów, int ilośćMedSlotów, int ilośćLowSlotów, int zasiegNamierzania, int predkoscBazowa) {
-        super(nacja);
+        this.nacja = nacja;
         this.typ = typ;
         this.nazwa = nazwa;
         this.iloscHiSlotów = iloscHiSlotów;
@@ -28,7 +26,9 @@ public class Statek extends Nacja {
         this.predkoscBazowa = predkoscBazowa;
     }
 
-    public Statek(String typ, String nazwa, int iloscHiSlotów, int ilośćMedSlotów, int ilośćLowSlotów, int zasiegNamierzania, int predkoscBazowa) {
+    public Statek(String typObiektu, String nacja, String typ, String nazwa, int iloscHiSlotów, int ilośćMedSlotów, int ilośćLowSlotów, int zasiegNamierzania, int predkoscBazowa) {
+        super(typObiektu);
+        this.nacja = nacja;
         this.typ = typ;
         this.nazwa = nazwa;
         this.iloscHiSlotów = iloscHiSlotów;
@@ -38,6 +38,9 @@ public class Statek extends Nacja {
         this.predkoscBazowa = predkoscBazowa;
     }
 
+    public String getNacja() {
+        return nacja;
+    }
 
     public String getTyp() {
         return typ;
