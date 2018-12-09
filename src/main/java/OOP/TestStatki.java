@@ -22,14 +22,14 @@ public class TestStatki {
        System.out.println("");
        phoenix.wyswietl();
        tristan.wyswietl();
-
+       System.out.println("");
        ufo.wyswietl();
        statek.wyswietl();
 
        // przypisac kazda zmienna do kazdej
 
-        //ufo.nacja = "szaraki";
-       // tristan.nacja= "szaraki";
+       //ufo.nacja = "szaraki";
+      //tristan.nacja= "szaraki";
 
     }
 

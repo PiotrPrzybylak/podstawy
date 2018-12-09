@@ -24,11 +24,11 @@ public class Fregata extends Statek {
     }
 
     public String toString () {
-        return "Maksymawlna wielkość montowanej broni: " + wielkoscBroni;
+        return "to jest test "+super.toString() +"Maksymawlna wielkość montowanej broni: " + wielkoscBroni;
     }
 
-    public void wyswietl(){
-       System.out.println(toString());
-    }
+   // public void wyswietl(){
+   //    System.out.println(toString());
+   // }
 
 }

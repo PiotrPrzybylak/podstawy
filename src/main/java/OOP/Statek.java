@@ -2,7 +2,8 @@ package OOP;
 
 public class Statek extends ObiektLatajacy {
 
-    private String nacja;
+    private  String nacja;
+
     private String typ;
     private String nazwa;
     private int iloscHiSlotów;
@@ -72,9 +73,10 @@ public class Statek extends ObiektLatajacy {
 
 
     public String toString (){
-      return "Nacja: "+ nacja + ", Typ Statku: "+ typ + ", nazwa: "+nazwa+", Ilość dostępnych slotów Hi: "+iloscHiSlotów+ ", Ilość dostępnych slotów MEd: "+ilośćMedSlotów+  ", Ilość dostępnych slotów Low: "+ilośćLowSlotów+", Zasieg namierzania: "+zasiegNamierzania+", Predkosc bazowa statku: "+predkoscBazowa;
+      return super.toString()+"Nacja: "+ nacja + ", Typ Statku: "+ typ + ", nazwa: "+nazwa+", Ilość dostępnych slotów Hi: "+iloscHiSlotów+ ", Ilość dostępnych slotów MEd: "+ilośćMedSlotów+  ", Ilość dostępnych slotów Low: "+ilośćLowSlotów+", Zasieg namierzania: "+zasiegNamierzania+", Predkosc bazowa statku: "+predkoscBazowa;
     }
-    public void wyswietl(){
-        System.out.println(toString());
-    }
+
+    //public void wyswietl(){
+    //    System.out.println(toString());
+    //}
 }
