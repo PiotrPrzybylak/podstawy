@@ -69,4 +69,12 @@ public class Statek extends ObiektLatajacy {
     public int getPredkoscBazowa() {
         return predkoscBazowa;
     }
+
+
+    public String toString (){
+        return "Nacja: "+ nacja + ", Typ Statku: "+ typ + ", nazwa: "+nazwa+", Ilość dostępnych slotów Hi: "+iloscHiSlotów+ ", Ilość dostępnych slotów MEd: "+ilośćMedSlotów+  ", Ilość dostępnych slotów Low: "+ilośćLowSlotów+", Zasieg namierzania: "+zasiegNamierzania+", Predkosc bazowa statku: "+predkoscBazowa;
+    }
+    public void wyswietl(){
+        System.out.println(toString());
+    }
 }

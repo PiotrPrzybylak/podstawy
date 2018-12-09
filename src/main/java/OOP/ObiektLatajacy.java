@@ -15,5 +15,9 @@ public class ObiektLatajacy {
         return typObiektu;
     }
 
+    public String toString () {
+        return "Typ obiektu latajacego: " + typObiektu;
+    }
 
 }
+
