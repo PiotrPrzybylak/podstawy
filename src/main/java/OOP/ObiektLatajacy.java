@@ -19,5 +19,9 @@ public class ObiektLatajacy {
         return "Typ obiektu latajacego: " + typObiektu;
     }
 
+    public void wyswietl(){
+        System.out.println(toString());
+    }
+
 }
 

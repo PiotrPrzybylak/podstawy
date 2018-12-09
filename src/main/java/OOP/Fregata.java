@@ -26,7 +26,9 @@ public class Fregata extends Statek {
     public String toString () {
         return "Maksymawlna wielkość montowanej broni: " + wielkoscBroni;
     }
+
     public void wyswietl(){
-        System.out.println(toString());
+       System.out.println(toString());
     }
+
 }

@@ -4,7 +4,9 @@ public class TestStatki {
 
     public static void main (String [] args){
 
+       ObiektLatajacy ufo = new ObiektLatajacy("statek obcych");
 
+        Statek statek = new Statek();
 
        Fregata tristan = new Fregata("Statek Kosmiczny", "Gallente" , "Fregata" , "Tristan", 3, 3, 3, 46, 738, "Mała");
 
@@ -21,9 +23,13 @@ public class TestStatki {
        phoenix.wyswietl();
        tristan.wyswietl();
 
+       ufo.wyswietl();
+       statek.wyswietl();
 
+       // przypisac kazda zmienna do kazdej
 
-
+        //ufo.nacja = "szaraki";
+       // tristan.nacja= "szaraki";
 
     }
 

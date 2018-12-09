@@ -23,6 +23,6 @@ public class Pancernik extends Statek {
     }
 
     public String toString () {
-        return "Obecność modułu oblężniczego: " + modułOblężniczy;
+       return "Obecność modułu oblężniczego: " + modułOblężniczy;
     }
 }
