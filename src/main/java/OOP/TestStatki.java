@@ -5,13 +5,18 @@ public class TestStatki {
     public static void main (String [] args){
 
        ObiektLatajacy ufo = new ObiektLatajacy("statek obcych");
+       ObiektLatajacy ufo2 = new ObiektLatajacy("statek obcych 2");
 
         Statek statek = new Statek();
+        Statek statek2 = new Statek();
 
        Fregata tristan = new Fregata("Statek Kosmiczny", new Nacja("Gallente") , "Fregata" , "Tristan", 3, 3, 3, 46, 738, "Mała");
 
+       // uwaga zamiast klasa fregata mozna dac ObiektLatajacy (ciekawe)
+       Fregata atron = new Fregata("Statek Kosmiczny", new Nacja("Gallente"), "Fregata", "Atron", 4, 3, 4,55,500,"Mała");
 
        Pancernik phoenix = new Pancernik ("Statek Kosmiczny", new Nacja("Caldari"), "Pancernik", "Phoenix", 5, 7, 5, 132, 48, true);
+       Pancernik pancernikKasia = new Pancernik(true);
 
       // System.out.println(tristan.getTyp());
       // System.out.println(phoenix.getTyp());
@@ -35,9 +40,21 @@ public class TestStatki {
 
        // pierwsza proba
        // do przypisanie do klacy odgornej jest mozliwe
-       // ufo = tristan;
-       // ufo = phoenix;
-       // ufo = statek;
+       ufo = tristan;
+       ufo.wyswietl();
+       ufo = phoenix;
+       ufo.wyswietl();
+       ufo = statek;
+       ufo.wyswietl();
+        System.out.println(" ");
+
+
+
+        System.out.println(" ");
+       statek2=atron;
+       statek2.wyswietl();
+       pancernikKasia.wyswietl();
+
 
        // przypisanie do klady dolnej nie jest mozliwe
        // tristan = ufo;
