@@ -2,7 +2,7 @@ package OOP;
 
 public class Statek extends ObiektLatajacy {
 
-    private  String nacja;
+    private  Nacja nacja;
 
     private String typ;
     private String nazwa;
@@ -16,7 +16,7 @@ public class Statek extends ObiektLatajacy {
     public Statek() {
     }
 
-    public Statek(String nacja, String typ, String nazwa, int iloscHiSlotów, int ilośćMedSlotów, int ilośćLowSlotów, int zasiegNamierzania, int predkoscBazowa) {
+    public Statek(Nacja nacja, String typ, String nazwa, int iloscHiSlotów, int ilośćMedSlotów, int ilośćLowSlotów, int zasiegNamierzania, int predkoscBazowa) {
         this.nacja = nacja;
         this.typ = typ;
         this.nazwa = nazwa;
@@ -27,7 +27,7 @@ public class Statek extends ObiektLatajacy {
         this.predkoscBazowa = predkoscBazowa;
     }
 
-    public Statek(String typObiektu, String nacja, String typ, String nazwa, int iloscHiSlotów, int ilośćMedSlotów, int ilośćLowSlotów, int zasiegNamierzania, int predkoscBazowa) {
+    public Statek(String typObiektu, Nacja nacja, String typ, String nazwa, int iloscHiSlotów, int ilośćMedSlotów, int ilośćLowSlotów, int zasiegNamierzania, int predkoscBazowa) {
         super(typObiektu);
         this.nacja = nacja;
         this.typ = typ;
@@ -39,9 +39,8 @@ public class Statek extends ObiektLatajacy {
         this.predkoscBazowa = predkoscBazowa;
     }
 
-    public String getNacja() {
-        return nacja;
-    }
+
+
 
     public String getTyp() {
         return typ;
@@ -73,10 +72,12 @@ public class Statek extends ObiektLatajacy {
 
 
     public String toString (){
-      return super.toString()+"Nacja: "+ nacja + ", Typ Statku: "+ typ + ", nazwa: "+nazwa+", Ilość dostępnych slotów Hi: "+iloscHiSlotów+ ", Ilość dostępnych slotów MEd: "+ilośćMedSlotów+  ", Ilość dostępnych slotów Low: "+ilośćLowSlotów+", Zasieg namierzania: "+zasiegNamierzania+", Predkosc bazowa statku: "+predkoscBazowa;
+      return super.toString()+ nacja + ", Typ Statku: "+ typ + ", Nazwa: "+nazwa+", Ilość dostępnych slotów Hi: "+iloscHiSlotów+ ", Ilość dostępnych slotów MEd: "+ilośćMedSlotów+  ", Ilość dostępnych slotów Low: "+ilośćLowSlotów+", Zasieg namierzania: "+zasiegNamierzania+", Predkosc bazowa statku: "+predkoscBazowa;
     }
 
-    //public void wyswietl(){
-    //    System.out.println(toString());
-    //}
+    public Nacja getNacja() {
+        return nacja;
+    }
+
+
 }
