@@ -13,27 +13,42 @@ public class TestStatki {
 
        Pancernik phoenix = new Pancernik ("Statek Kosmiczny", new Nacja("Caldari"), "Pancernik", "Phoenix", 5, 7, 5, 132, 48, true);
 
-       System.out.println(tristan.getTyp());
-       System.out.println(phoenix.getTyp());
+      // System.out.println(tristan.getTyp());
+      // System.out.println(phoenix.getTyp());
 
        System.out.println("");
 
-       System.out.println(phoenix);
-       System.out.println(tristan);
+      // System.out.println(phoenix);
+      // System.out.println(tristan);
 
        System.out.println("");
 
-       phoenix.wyswietl();
-       tristan.wyswietl();
+      // phoenix.wyswietl();
+      // tristan.wyswietl();
 
        System.out.println("");
 
-       ufo.wyswietl();
-       statek.wyswietl();
+      // ufo.wyswietl();
+      // statek.wyswietl();
 
        // przypisac kazda zmienna do kazdej
 
+       // pierwsza proba
+       // do przypisanie do klacy odgornej jest mozliwe
+       // ufo = tristan;
+       // ufo = phoenix;
+       // ufo = statek;
+
+       // przypisanie do klady dolnej nie jest mozliwe
+       // tristan = ufo;
+       // phoenix = ufo;
+       // statek = ufo;
+
+       // druga proba
+       // nie mogę pryzpisać klas rownolegle / na tym samym poziomie klass
+       //tristan =  phoenix;
+       //phoenix = tristan;
+
+
     }
-
-
 }
