@@ -67,6 +67,11 @@ public class TestStatki {
        // nie mogę pryzpisać klas rownolegle / na tym samym poziomie klass
        // tristan =  phoenix;
        // phoenix = tristan;
+       System.out.println(" ");
+       System.out.println("Bedzie walka krążowników");
+
+         Krazownik vexor = new Krazownik(300,53565);
+         Krazownik maller = new Krazownik(294,35545);
 
 
     }
