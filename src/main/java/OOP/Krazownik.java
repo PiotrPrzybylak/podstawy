@@ -11,6 +11,7 @@ public class Krazownik extends Statek {
     }
 
     public Krazownik(String nazwa, int dps, int ehp) {
+        this.nazwa = nazwa;
         this.dps = dps;
         this.ehp = ehp;
     }
