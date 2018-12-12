@@ -6,41 +6,33 @@ public class Statek extends ObiektLatajacy {
 
     private String typ;
     private String nazwa;
-    private int iloscHiSlotów;
-    private int ilośćMedSlotów;
-    private int ilośćLowSlotów;
-    private int zasiegNamierzania;
-    private int predkoscBazowa;
+    int dps;
+    int ehp;
 
 
     public Statek() {
     }
 
-    public Statek(Nacja nacja, String typ, String nazwa, int iloscHiSlotów, int ilośćMedSlotów, int ilośćLowSlotów, int zasiegNamierzania, int predkoscBazowa) {
+    public Statek(Nacja nacja, String typ, String nazwa, int dps, int ehp) {
         this.nacja = nacja;
         this.typ = typ;
         this.nazwa = nazwa;
-        this.iloscHiSlotów = iloscHiSlotów;
-        this.ilośćMedSlotów = ilośćMedSlotów;
-        this.ilośćLowSlotów = ilośćLowSlotów;
-        this.zasiegNamierzania = zasiegNamierzania;
-        this.predkoscBazowa = predkoscBazowa;
+        this.dps = dps;
+        this.ehp = ehp;
     }
 
-    public Statek(String typObiektu, Nacja nacja, String typ, String nazwa, int iloscHiSlotów, int ilośćMedSlotów, int ilośćLowSlotów, int zasiegNamierzania, int predkoscBazowa) {
+    public Statek(String typObiektu, Nacja nacja, String typ, String nazwa, int dps, int ehp) {
         super(typObiektu);
         this.nacja = nacja;
         this.typ = typ;
         this.nazwa = nazwa;
-        this.iloscHiSlotów = iloscHiSlotów;
-        this.ilośćMedSlotów = ilośćMedSlotów;
-        this.ilośćLowSlotów = ilośćLowSlotów;
-        this.zasiegNamierzania = zasiegNamierzania;
-        this.predkoscBazowa = predkoscBazowa;
+        this.dps = dps;
+        this.ehp = ehp;
     }
 
-
-
+    public Nacja getNacja() {
+        return nacja;
+    }
 
     public String getTyp() {
         return typ;
@@ -50,33 +42,17 @@ public class Statek extends ObiektLatajacy {
         return nazwa;
     }
 
-    public int getIloscHiSlotów() {
-        return iloscHiSlotów;
+    public int getDps() {
+        return dps;
     }
 
-    public int getIlośćMedSlotów() {
-        return ilośćMedSlotów;
-    }
-
-    public int getIlośćLowSlotów() {
-        return ilośćLowSlotów;
-    }
-
-    public int getZasiegNamierzania() {
-        return zasiegNamierzania;
-    }
-
-    public int getPredkoscBazowa() {
-        return predkoscBazowa;
+    public int getEhp() {
+        return ehp;
     }
 
 
     public String toString (){
-      return super.toString()+ nacja + ", Typ Statku: "+ typ + ", Nazwa: "+nazwa+", Ilość dostępnych slotów Hi: "+iloscHiSlotów+ ", Ilość dostępnych slotów MEd: "+ilośćMedSlotów+  ", Ilość dostępnych slotów Low: "+ilośćLowSlotów+", Zasieg namierzania: "+zasiegNamierzania+", Predkosc bazowa statku: "+predkoscBazowa;
-    }
-
-    public Nacja getNacja() {
-        return nacja;
+      return super.toString()+ nacja + ", Typ Statku: "+ typ + ", Nazwa: "+nazwa+ " DPS" + dps + " EHP " + ehp;
     }
 
 

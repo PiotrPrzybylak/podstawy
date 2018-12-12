@@ -15,7 +15,7 @@ public class TestStatki {
       } else return false;
    }
 
-   public static String walka (Krazownik pierwszy, Krazownik drugi){
+   public static String walka (Statek pierwszy, Statek drugi){
       String pierwszyNazwa = pierwszy.getNazwa();
       int atakPierszyStatek = pierwszy.getDps();
       int zyciePierwszyStatek = pierwszy.getEhp();
@@ -63,13 +63,14 @@ public class TestStatki {
         Statek statek = new Statek();
         Statek statek2 = new Statek();
 
-       Fregata tristan = new Fregata("Statek Kosmiczny", new Nacja("Gallente") , "Fregata" , "Tristan", 3, 3, 3, 46, 738, "Mała");
+       Fregata tristan = new Fregata(new Nacja("Gallente"), "Fregata", "Tristan", 100, 5600);
 
        // uwaga zamiast klasa fregata mozna dac ObiektLatajacy (ciekawe)
-       Fregata atron = new Fregata("Statek Kosmiczny", new Nacja("Gallente"), "Fregata", "Atron", 4, 3, 4,55,500,"Mała");
+       Fregata atron = new Fregata(new Nacja("Gallente"), "Fregata", "Atron", 4000,4000);
 
-       Pancernik phoenix = new Pancernik ("Statek Kosmiczny", new Nacja("Caldari"), "Pancernik", "Phoenix", 5, 7, 5, 132, 48, true);
-       Pancernik pancernikKasia = new Pancernik(true);
+       Pancernik phoenix = new Pancernik (new Nacja("Caldari"), "Pancernik", "Phoenix", 800, 111000);
+
+       Pancernik pancernikKasia = new Pancernik();
 
        System.out.println(tristan.getTyp());
        System.out.println(phoenix.getTyp());
@@ -123,8 +124,8 @@ public class TestStatki {
        System.out.println(" ");
        System.out.println("Bedzie walka krążowników");
 
-       Krazownik vexor = new Krazownik("Vexor", 300,53565);
-       Krazownik maller = new Krazownik("Maller", 294,35545);
+       Krazownik vexor = new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565);
+       Krazownik maller = new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545);
 
 
 
@@ -132,6 +133,7 @@ public class TestStatki {
 
 
        System.out.println(walka(vexor,maller));
+       System.out.println(walka(tristan,atron));
 
 
 
