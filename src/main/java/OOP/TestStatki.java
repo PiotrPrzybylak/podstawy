@@ -12,11 +12,10 @@ public class TestStatki {
 
       if (losowanie > 55){
          return true;
-      }
-      else return false;
+      } else return false;
    }
 
-   public static String walka (Krazownik pierwszy, Krazownik drugi){
+   public static void walka (Krazownik pierwszy, Krazownik drugi){
       String pierwszyNazwa = pierwszy.getNazwa();
       int atakPierszyStatek = pierwszy.getDps();
       int zyciePierwszyStatek = pierwszy.getEhp();
@@ -33,10 +32,23 @@ public class TestStatki {
             zycieDrugiStatek -= atakPierszyStatek;
          }
 
-      } return
-      " zycie " + pierwszyNazwa + " = " + zyciePierwszyStatek +
-      " zycie " + drugiNazwa + " = " + zycieDrugiStatek   ;
+      }
+
+
+      }
+     // " zycie " + pierwszyNazwa + " = " + zyciePierwszyStatek +
+     // " zycie " + drugiNazwa + " = " + zycieDrugiStatek   ;
+
+    public String zwiciezca(){
+
+        if (zyciePierwszyStatek>zycieDrugiStatek){
+            return "Bitwę wygrał statek " + pierwszyNazwa;}
+        else return "Bitwę wygrał statek " + drugiNazwa;
+
    }
+
+
+
 
 
 
@@ -117,6 +129,7 @@ public class TestStatki {
 
 
        System.out.println(walka(vexor,maller));
+       System.out.println(zwiciezca());
 
 
     }
