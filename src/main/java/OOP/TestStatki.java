@@ -35,12 +35,18 @@ public class TestStatki {
       }
 
       if (zyciePierwszyStatek>zycieDrugiStatek){
-         return "Bitwę wygrał statek " + pierwszyNazwa;
-      } else return "Bitwę wygrał statek " + drugiNazwa;
+         return "Bitwę wygrał statek " + pierwszyNazwa +
+                 "\nPunkty zycia " + pierwszyNazwa + " = " + zyciePierwszyStatek +
+                 "\nPunkty zycia " + drugiNazwa + " = " + zycieDrugiStatek   ;
+
+
+      } else return "Bitwę wygrał statek " + drugiNazwa +
+              "\nPunkty zycia " + pierwszyNazwa + " = " + zyciePierwszyStatek +
+              "\nPunkty zycia " + drugiNazwa + " = " + zycieDrugiStatek   ;
 
       }
-     // " zycie " + pierwszyNazwa + " = " + zyciePierwszyStatek +
-     // " zycie " + drugiNazwa + " = " + zycieDrugiStatek   ;
+
+
 
 
 
