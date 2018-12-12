@@ -2,6 +2,7 @@ package OOP;
 
 public class Krazownik extends Statek {
 
+    String nazwa;
     int dps;
     int ehp;
 
@@ -9,7 +10,7 @@ public class Krazownik extends Statek {
     public Krazownik() {
     }
 
-    public Krazownik(int dps, int ehp) {
+    public Krazownik(String nazwa, int dps, int ehp) {
         this.dps = dps;
         this.ehp = ehp;
     }
@@ -33,5 +34,10 @@ public class Krazownik extends Statek {
 
     public int getEhp() {
         return ehp;
+    }
+
+    @Override
+    public String getNazwa() {
+        return nazwa;
     }
 }

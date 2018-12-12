@@ -17,18 +17,25 @@ public class TestStatki {
    }
 
    public static String walka (Krazownik pierwszy, Krazownik drugi){
+      String pierwszyNazwa = pierwszy.getNazwa();
       int atakPierszyStatek = pierwszy.getDps();
       int zyciePierwszyStatek = pierwszy.getEhp();
 
+      String drugiNazwa = drugi.getNazwa();
       int atakDrugiStatek = drugi.getDps();
       int zycieDrugiStatek = drugi.getEhp();
 
+      while (zyciePierwszyStatek > 0 && zycieDrugiStatek > 0 ){
+         if(czyTrafil()){
+            zyciePierwszyStatek -= atakDrugiStatek;
+         }
+         if(czyTrafil()){
+            zycieDrugiStatek -= atakPierszyStatek;
+         }
 
-
-
-
-
-      return "dupa";
+      } return
+      " zycie " + pierwszyNazwa + " = " + zyciePierwszyStatek +
+      " zycie " + drugiNazwa + " = " + zycieDrugiStatek   ;
    }
 
 
@@ -101,8 +108,8 @@ public class TestStatki {
        System.out.println(" ");
        System.out.println("Bedzie walka krążowników");
 
-       Krazownik vexor = new Krazownik(300,53565);
-       Krazownik maller = new Krazownik(294,35545);
+       Krazownik vexor = new Krazownik("Vexor", 300,53565);
+       Krazownik maller = new Krazownik("Maller", 294,35545);
 
 
 
