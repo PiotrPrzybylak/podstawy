@@ -1,6 +1,30 @@
 package OOP;
 
+import java.util.Random;
+
 public class TestStatki {
+
+
+   public static boolean czyTrafil() {
+      Random r = new Random();
+      int losowanie;
+      losowanie = r.nextInt(101);
+
+      if (losowanie > 55){
+         return true;
+      }
+      else return false;
+   }
+
+   public static String walka(Statek pierwszy, Statek drugi){
+
+
+
+
+      return "dupa";
+   }
+
+
 
     public static void main (String [] args){
 
@@ -70,9 +94,21 @@ public class TestStatki {
        System.out.println(" ");
        System.out.println("Bedzie walka krążowników");
 
-         Krazownik vexor = new Krazownik(300,53565);
-         Krazownik maller = new Krazownik(294,35545);
+       Krazownik vexor = new Krazownik(300,53565);
+       Krazownik maller = new Krazownik(294,35545);
+
+
+
+       System.out.println(czyTrafil());
+
+
+       System.out.println(walka(vexor,maller));
 
 
     }
+
+
+
+
 }
+
