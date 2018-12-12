@@ -16,7 +16,14 @@ public class TestStatki {
       else return false;
    }
 
-   public static String walka(Statek pierwszy, Statek drugi){
+   public static String walka (Krazownik pierwszy, Krazownik drugi){
+      int atakPierszyStatek = pierwszy.getDps();
+      int zyciePierwszyStatek = pierwszy.getEhp();
+
+      int atakDrugiStatek = drugi.getDps();
+      int zycieDrugiStatek = drugi.getEhp();
+
+
 
 
 
