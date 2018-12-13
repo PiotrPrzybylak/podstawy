@@ -1,7 +1,10 @@
 package OOP;
 
 import java.util.Random;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class TestStatki {
 
 
@@ -56,6 +59,8 @@ public class TestStatki {
 
 
     public static void main (String [] args){
+
+       SpringApplication.run(TestStatki.class, args);
 
        ObiektLatajacy ufo = new ObiektLatajacy("statek obcych");
        ObiektLatajacy ufo2 = new ObiektLatajacy("statek obcych 2");
