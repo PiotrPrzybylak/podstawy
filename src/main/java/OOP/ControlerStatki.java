@@ -24,9 +24,9 @@ public class ControlerStatki {
         List<Statek> statkiGracza1 = new ArrayList<>();
         List<Statek> statkiGracza2 = new ArrayList<>();
 
-        if (nacja.equals(Nacja("Gallente"))) {
-            statkiGracza1.add(statek);
-        } else statkiGracza2.add(statek);
+        if (nacja.equals(statek.getNacja())) {
+            statkiGracza1.add(Statek);
+        } else statkiGracza2.add(Statek);
 
 
         model.addAttribute("nacja", statkiGracza1);
