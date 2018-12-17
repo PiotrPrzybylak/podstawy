@@ -21,15 +21,15 @@ public class ControlerStatki {
             Model model,
             @RequestParam(value = "nacja", required = false) Nacja nacja
     ){
-        List<Statek> statkiGracza1 = new ArrayList<>();
-        List<Statek> statkiGracza2 = new ArrayList<>();
+       // List<Statek> statkiGracza1 = new ArrayList<>();
+        //List<Statek> statkiGracza2 = new ArrayList<>();
 
-        if (nacja.equals(statek.getNacja())) {
-            statkiGracza1.add(Statek);
-        } else statkiGracza2.add(Statek);
+        //if (nacja.equals(statek.getNacja())) {
+        //    statkiGracza1.add(statek);
+       // } else statkiGracza2.add(statek);
 
 
-        model.addAttribute("nacja", statkiGracza1);
+       // model.addAttribute("nacja", statkiGracza1);
         return "nacja";
     }
 
