@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.ArrayList;
 import java.util.List;
 
-ArrayList <Statek> statkiGracza1 = new ArrayList<>();
-ArrayList <Statek> statkiGracza2 = new ArrayList<>();
+//ArrayList <Statek> statkiGracza1 = new ArrayList<>();
+//ArrayList <Statek> statkiGracza2 = new ArrayList<>();
 
 @SpringBootApplication
 public class TestStatki {
@@ -59,9 +59,9 @@ public class TestStatki {
 
 
 
-        if (nacja.equals(statek.getNacja())) {
-            statkiGracza1.add(statek);
-        } else statkiGracza2.add(statek);
+      //  if (nacja.equals(statek.getNacja())) {
+      //      statkiGracza1.add(statek);
+      //  } else statkiGracza2.add(statek);
 
     }
 
@@ -146,7 +146,7 @@ public class TestStatki {
        Krazownik maller = new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545);
 
        Krazownik vexor2 = new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565);
-       Krazownik maller = new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545);
+       Krazownik maller2 = new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545);
 
 
        System.out.println(czyTrafil());
