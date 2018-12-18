@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.ArrayList;
 import java.util.List;
 
-//ArrayList <Statek> statkiGracza1 = new ArrayList<>();
-//ArrayList <Statek> statkiGracza2 = new ArrayList<>();
+
 
 @SpringBootApplication
 public class TestStatki {
@@ -55,15 +54,7 @@ public class TestStatki {
       }
 
 
-    public static void listaStatkow (){
 
-
-
-      //  if (nacja.equals(statek.getNacja())) {
-      //      statkiGracza1.add(statek);
-      //  } else statkiGracza2.add(statek);
-
-    }
 
 
 
@@ -155,6 +146,9 @@ public class TestStatki {
        System.out.println(walka(vexor,maller));
        System.out.println(walka(tristan,atron));
 
+       //lista statkow gracza 1 i gracza 2
+       Statek[] statkiGracza1 = {vexor , vexor2 , tristan , atron};
+       Statek[] statkiGracza2 = {maller , maller2 , phoenix};
 
 
     }
