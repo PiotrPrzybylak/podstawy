@@ -10,16 +10,17 @@ import java.util.List;
 
 @Controller
 public class ControlerStatki {
-
+/*
     @RequestMapping("/")
     public String wyswierlanie (){
         return "walka";
     }
-
-    @RequestMapping("/all")
+*/
+    @RequestMapping("/")
     public String listatStatkow (
             Model model,
-            @RequestParam(value = "nacja", required = false) Nacja nacja
+            @RequestParam(value = "statkiGracza1", required = false) List statkiGracza1
+
     ){
        // List<Statek> statkiGracza1 = new ArrayList<>();
         //List<Statek> statkiGracza2 = new ArrayList<>();
@@ -28,9 +29,13 @@ public class ControlerStatki {
         //    statkiGracza1.add(statek);
        // } else statkiGracza2.add(statek);
 
+      //  model.addAttribute("statkiGracza1", statkiGracza1);
 
-       // model.addAttribute("nacja", statkiGracza1);
-        return "nacja";
+       List <Statek> listatStatkow = new ArrayList <>();
+       listatStatkow = statkiGracza1;
+
+        model.addAttribute("listatStatkow", listatStatkow);
+        return "walka";
     }
 
 

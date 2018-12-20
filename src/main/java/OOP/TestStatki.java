@@ -12,6 +12,7 @@ import java.util.List;
 public class TestStatki {
 
 
+
    public static boolean czyTrafil() {
       Random r = new Random();
       int losowanie;
@@ -147,8 +148,18 @@ public class TestStatki {
        System.out.println(walka(tristan,atron));
 
        //lista statkow gracza 1 i gracza 2
-       Statek[] statkiGracza1 = {vexor , vexor2 , tristan , atron};
-       Statek[] statkiGracza2 = {maller , maller2 , phoenix};
+       List <Statek> statkiGracza1 = new ArrayList <>();
+       statkiGracza1.add(vexor);
+       statkiGracza1.add(vexor2);
+       statkiGracza1.add(tristan);
+       statkiGracza1.add(atron);
+
+       List <Statek> statkiGracza2 = new ArrayList <>();
+       statkiGracza2.add(maller);
+       statkiGracza2.add(maller2);
+       statkiGracza2.add(phoenix);
+
+
 
 
     }
