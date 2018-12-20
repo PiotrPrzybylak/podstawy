@@ -5,10 +5,18 @@
     <title>Title</title>
 </head>
 <body>
+  <h1>Walka bedzie</h1>
 
-<h1>Walka bedzie</h1>
+  <div class="row">
+    <table>
+        <div class="actions__grid">
+        <div class="action-card" th:each="statek : ${listatStatkow}">
 
-
-
+            <div class="action-card__title" th:text="${statek.type}"></div>
+            <div class="action-card__title" th:text="${statek.name}"></div>
+        </div>
+        </div>
+    </table>
+  </div>
 </body>
 </html>
