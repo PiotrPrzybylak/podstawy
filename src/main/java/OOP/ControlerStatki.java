@@ -37,7 +37,7 @@ public class ControlerStatki {
         listatStatkow.add(new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545));
         listatStatkow.add(new Fregata(new Nacja("Gallente"), "Fregata", "Tristan", 100, 5600));
         listatStatkow.add(new Fregata(new Nacja("Gallente"), "Fregata", "Atron", 4000,4000));
-
+// chce zrobic commita bo na lapku nie dziala i sprawdzic tak cala sprawe
         model.addAttribute("listatStatkow", listatStatkow);
         return "walka";
     }
