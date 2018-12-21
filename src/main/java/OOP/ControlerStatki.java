@@ -18,8 +18,8 @@ public class ControlerStatki {
 */
     @RequestMapping("/")
     public String listatStatkow (
-            Model model,
-            @RequestParam(value = "statkiGracza1", required = false) List statkiGracza1
+            Model model
+           // @RequestParam(value = "statkiGracza1", required = false) List statkiGracza1
 
     ){
        // List<Statek> statkiGracza1 = new ArrayList<>();
@@ -32,7 +32,9 @@ public class ControlerStatki {
       //  model.addAttribute("statkiGracza1", statkiGracza1);
 
        List <Statek> listatStatkow = new ArrayList <>();
-       listatStatkow = statkiGracza1;
+       //listatStatkow = statkiGracza1;
+        listatStatkow.add(vexor);
+        listatStatkow.add(maller);
 
         model.addAttribute("listatStatkow", listatStatkow);
         return "walka";
