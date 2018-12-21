@@ -33,8 +33,10 @@ public class ControlerStatki {
 
        List <Statek> listatStatkow = new ArrayList <>();
        //listatStatkow = statkiGracza1;
-        listatStatkow.add(vexor);
-        listatStatkow.add(maller);
+        listatStatkow.add( new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
+        listatStatkow.add(new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545));
+        listatStatkow.add(new Fregata(new Nacja("Gallente"), "Fregata", "Tristan", 100, 5600));
+        listatStatkow.add(new Fregata(new Nacja("Gallente"), "Fregata", "Atron", 4000,4000));
 
         model.addAttribute("listatStatkow", listatStatkow);
         return "walka";
