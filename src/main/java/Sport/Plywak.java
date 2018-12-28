@@ -10,6 +10,7 @@ public class Plywak extends Sportowiec implements Plywanie {
     @Override
     public void plyn() {
         System.out.println("Płyń");
+        System.out.println(this);
     }
 
     @Override

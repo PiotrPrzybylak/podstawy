@@ -17,7 +17,8 @@ abstract public class Sportowiec {
 
    public void wyswietl (){
         System.out.println("Imie: "+ imie + " , Nazwisko: " + nazwisko);
-
+       System.out.println(this);
+       System.out.println(this.getClass());
     }
 
 

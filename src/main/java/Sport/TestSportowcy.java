@@ -20,6 +20,12 @@ public class TestSportowcy {
         }
 
 
+        System.out.println(plywak);
+        ((Plywak) plywak).plyn();
+
+
+        plywak.wyswietl();
+
 
 
     }
