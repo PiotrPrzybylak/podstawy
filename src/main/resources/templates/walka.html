@@ -16,7 +16,7 @@
      </select>
 
        <select class="row" id="statkiGracza2" name="statki" >
-           <option th:each="statek : ${statkiGracza1}"
+           <option th:each="statek : ${statkiGracza2}"
                    th:selected="${statek.typ == 'zosia'}"
 
                    th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp}"
