@@ -10,12 +10,13 @@ import java.util.List;
 
 @Controller
 public class ControlerStatki {
-/*
-    @RequestMapping("/")
-    public String wyswierlanie (){
-        return "walka";
+
+    @RequestMapping("/obliczenia")
+    public String metodaObliczenia (){
+
+        return "wynik";
     }
-*/
+
     @RequestMapping("/")
     public String listatStatkow (
             Model model

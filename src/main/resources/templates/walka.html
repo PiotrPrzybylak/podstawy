@@ -6,7 +6,7 @@
 </head>
 <body>
   <h1>Walka bedzie</h1>
-   <form>
+   <form action="/obliczenia">
     <select class="row" id="statkiGracza1" name="statki" >
       <option th:each="statek : ${statkiGracza1}"
               th:selected="${statek.typ == 'zosia'}"
@@ -22,6 +22,11 @@
                    th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp}"
            >Sraczka</option>
        </select>
+
+       <br/>
+       <br/>
+
+       <input type="submit" value="Walcz"/>
 
    </form>
 
