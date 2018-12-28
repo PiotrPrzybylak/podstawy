@@ -13,13 +13,14 @@ public class ControlerStatki {
 
     @RequestMapping("/obliczenia")
     public String metodaObliczenia (
-            @RequestParam(value = "statekGracza1", required = false) Statek statekGracza1,
-            @RequestParam(value = "statekGracza2", required = false) Statek statekGracza2,
+            @RequestParam(value = "statekGracza1", required = false) String statekGracza1,
+            @RequestParam(value = "statekGracza2", required = false) String statekGracza2,
             Model model
 
     ){
 
-
+        System.out.println(statekGracza1);
+        System.out.println(statekGracza2);
 
 
         return "wynik";
