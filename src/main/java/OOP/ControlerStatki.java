@@ -12,7 +12,15 @@ import java.util.List;
 public class ControlerStatki {
 
     @RequestMapping("/obliczenia")
-    public String metodaObliczenia (){
+    public String metodaObliczenia (
+            @RequestParam(value = "statekGracza1", required = false) Statek statekGracza1,
+            @RequestParam(value = "statekGracza2", required = false) Statek statekGracza2,
+            Model model
+
+    ){
+
+
+
 
         return "wynik";
     }
