@@ -145,6 +145,8 @@ public class TestStatki {
 
 
        System.out.println(walka(vexor,maller));
+       System.out.println(" ");
+
        System.out.println(walka(tristan,atron));
 
        //lista statkow gracza 1 i gracza 2
