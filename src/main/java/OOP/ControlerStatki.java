@@ -47,10 +47,12 @@ public class ControlerStatki {
         System.out.println(statekGracza2);
 
         // kurs z kolekcji java
+        Statek pierwszy = new Statek();
+        Statek drugi = new Statek();
 
 
-        TestStatki.walka();
-
+       TestStatki.walka(pierwszy,drugi);
+        System.out.println(TestStatki.walka(pierwszy,drugi));
 
         return "wynik";
     }
