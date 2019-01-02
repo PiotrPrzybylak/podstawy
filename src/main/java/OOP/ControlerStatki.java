@@ -56,7 +56,7 @@ public class ControlerStatki {
         for (int i = 0; i < statkiGracza2.size(); i++) {
             Statek statek = statkiGracza2.get(i);
 
-            if (statekGracza1.equals(statek.getNazwa())) {
+            if (statekGracza2.equals(statek.getNazwa())) {
                 drugi = statkiGracza2.get(i);
             }
         }
