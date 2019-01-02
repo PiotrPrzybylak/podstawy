@@ -134,6 +134,7 @@ public class TestStatki {
        System.out.println(" ");
        System.out.println("Bedzie walka krążowników");
 
+       /*
        Krazownik vexor = new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565);
        Krazownik maller = new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545);
 
@@ -161,7 +162,7 @@ public class TestStatki {
        statkiGracza2.add(maller2);
        statkiGracza2.add(phoenix);
 
-
+      */
 
 
     }

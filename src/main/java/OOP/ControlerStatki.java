@@ -45,39 +45,33 @@ public class ControlerStatki {
 
         // foreach po liscie statkiGracza1
         for (int i = 0; i < statkiGracza1.size(); i++) {
-           // System.out.println(i);
-           // PiggyBank piggyBank = piggyBanks.get(i);
             Statek statek = statkiGracza1.get(i);
 
             if (statekGracza1.equals(statek.getNazwa())) {
-               //filtered.add(piggyBank);
                 pierwszy = statkiGracza1.get(i);
             }
         }
 
         // foreach po liscie statkiGracza2
         for (int i = 0; i < statkiGracza2.size(); i++) {
-            // System.out.println(i);
-            // PiggyBank piggyBank = piggyBanks.get(i);
             Statek statek = statkiGracza2.get(i);
 
             if (statekGracza1.equals(statek.getNazwa())) {
-                //filtered.add(piggyBank);
                 drugi = statkiGracza2.get(i);
             }
         }
 
-        /*
-        if (statekGracza1.equals(statekGracza1(statek.getNazwa()))){
-            pierwszy = statkiGracza1.get(0);
-        }
-        if (statekGracza1 !=null){
-            drugi = statkiGracza2.get(1);
-        }
-        */
 
-       TestStatki.walka(pierwszy,drugi);
-        System.out.println(TestStatki.walka(pierwszy,drugi));
+
+       String wygranyStatek = TestStatki.walka(pierwszy,drugi);
+       System.out.println(wygranyStatek);
+
+
+
+       model.addAttribute("statek1" , "Wybrany statek gracza 1 to: " + statekGracza1);
+       model.addAttribute("statek2" , "Wybrany statek gracza 2 to: " + statekGracza2);
+       model.addAttribute("wygrany" ,wygranyStatek);
+
 
         return "wynik";
     }
