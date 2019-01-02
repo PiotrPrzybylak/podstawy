@@ -28,38 +28,53 @@ public class ControlerStatki {
     }
 
 
-
-
-
-
-
-
-
     @RequestMapping("/obliczenia")
     public String metodaObliczenia (
             @RequestParam(value = "statekGracza1", required = false) String statekGracza1,
             @RequestParam(value = "statekGracza2", required = false) String statekGracza2,
             Model model
-
     ){
 
         System.out.println(statekGracza1);
         System.out.println(statekGracza2);
 
-        // kurs z kolekcji java
 
         Statek pierwszy = new Statek();
         Statek drugi = new Statek();
 
-        // foreach po liscie
 
+        // foreach po liscie statkiGracza1
+        for (int i = 0; i < statkiGracza1.size(); i++) {
+           // System.out.println(i);
+           // PiggyBank piggyBank = piggyBanks.get(i);
+            Statek statek = statkiGracza1.get(i);
+
+            if (statekGracza1.equals(statek.getNazwa())) {
+               //filtered.add(piggyBank);
+                pierwszy = statkiGracza1.get(i);
+            }
+        }
+
+        // foreach po liscie statkiGracza2
+        for (int i = 0; i < statkiGracza2.size(); i++) {
+            // System.out.println(i);
+            // PiggyBank piggyBank = piggyBanks.get(i);
+            Statek statek = statkiGracza2.get(i);
+
+            if (statekGracza1.equals(statek.getNazwa())) {
+                //filtered.add(piggyBank);
+                drugi = statkiGracza2.get(i);
+            }
+        }
+
+        /*
         if (statekGracza1.equals(statekGracza1(statek.getNazwa()))){
             pierwszy = statkiGracza1.get(0);
         }
         if (statekGracza1 !=null){
             drugi = statkiGracza2.get(1);
         }
-
+        */
 
        TestStatki.walka(pierwszy,drugi);
         System.out.println(TestStatki.walka(pierwszy,drugi));
