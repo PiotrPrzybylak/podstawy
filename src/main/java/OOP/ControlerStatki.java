@@ -47,8 +47,18 @@ public class ControlerStatki {
         System.out.println(statekGracza2);
 
         // kurs z kolekcji java
+
         Statek pierwszy = new Statek();
         Statek drugi = new Statek();
+
+        // foreach po liscie
+
+        if (statekGracza1.equals(statekGracza1(statek.getNazwa()))){
+            pierwszy = statkiGracza1.get(0);
+        }
+        if (statekGracza1 !=null){
+            drugi = statkiGracza2.get(1);
+        }
 
 
        TestStatki.walka(pierwszy,drugi);
