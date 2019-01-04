@@ -11,7 +11,7 @@
           <option th:each="statek : ${statkiDoKulepinia}"
                   th:selected="${statek.typ == 'zosia'}"
 
-                  th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp}"
+                  th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp} + ' CENA: ' + ${statek.cena}"
                   th:value="${statek.nazwa}"
           >SraczkaSklepowa</option>
       </select>
