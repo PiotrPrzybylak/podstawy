@@ -14,6 +14,10 @@ public class ControlerStatki {
 
     private List <Statek> statkiGracza1 = new ArrayList <>();
     private List <Statek> statkiGracza2 = new ArrayList <>();
+    private List <Statek> statkiDoKulepinia = new ArrayList <>();
+    private int kasaGracza1 = 1000000;
+    private int kasaGracza2 = 1000000;
+
 
     public ControlerStatki (){
         statkiGracza1.add( new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
@@ -25,6 +29,22 @@ public class ControlerStatki {
         statkiGracza2.add(new Krazownik(new Nacja("Amarr2"),"Krążownik2","Maller2", 294,35545));
         statkiGracza2.add(new Fregata(new Nacja("Gallente2"), "zosia2", "Tristan2", 100, 5600));
         statkiGracza2.add(new Fregata(new Nacja("Gallente2"), "Fregata2", "Atron2", 4000,4000));
+
+        statkiDoKulepinia.add( new Krazownik(new Nacja("Gallente3"), "Krążownik3","Vexor3", 300,53565));
+        statkiDoKulepinia.add(new Krazownik(new Nacja("Amarr3"),"Krążownik3","Maller3", 294,35545));
+        statkiDoKulepinia.add(new Fregata(new Nacja("Gallente3"), "Fregata3", "Tristan3", 100, 5600));
+        statkiDoKulepinia.add(new Fregata(new Nacja("Gallente3"), "Fregata3", "Atron3", 4000,4000));
+    }
+
+    @RequestMapping("/")
+    public String zakupy (
+          //@RequestParam(value = "kasaGracza1", required = false) int kasaGracza1,
+          //@RequestParam(value = "kasaGracza2", required = false) int kasaGracza2,
+          Model model
+    ) {
+        model.addAttribute("statkiDoKulepinia", statkiDoKulepinia);
+
+        return "sklep";
     }
 
 
