@@ -36,6 +36,25 @@ public class ControlerStatki {
         statkiDoKulepinia.add(new StatekSklep(new Nacja("Gallente3"), "Fregata3", "Atron3", 4000,4000, 8000));
     }
 
+    @RequestMapping("/costam")
+    public String kupnoStatku (
+            @RequestParam(value = "statkiDoKulepinia", required = true) StatekSklep kupionyStatek,
+
+            Model model
+    ) {
+
+        int kosztStatku = kupionyStatek.getCena();
+        Statek statek = (Statek) kupionyStatek;
+        statkiGracza1.add(statek);
+        kasaGracza1 -=kosztStatku;
+
+        model.addAttribute("kasaGracza1", kasaGracza1);
+        model.addAttribute("kasaGracza2", kasaGracza2);
+
+        return "walka";
+    }
+
+
     @RequestMapping("/zakupy")
     public String zakupy (
           //@RequestParam(value = "kasaGracza1", required = false) int kasaGracza1,

@@ -12,7 +12,6 @@ import java.util.List;
 public class TestStatki {
 
 
-
    public static boolean czyTrafil() {
       Random r = new Random();
       int losowanie;
