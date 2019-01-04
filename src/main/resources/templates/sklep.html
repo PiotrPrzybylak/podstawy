@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sklep</title>
+</head>
+<body>
+  <h1>Witaj w sklepie</h1>
+    <form action="/">
+      <select class="row" id="statkiDoKulepinia" name="statkiDoKulepinia" >
+          <option th:each="statek : ${statkiDoKulepinia}"
+                  th:selected="${statek.typ == 'zosia'}"
+
+                  th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp}"
+                  th:value="${statek.nazwa}"
+          >SraczkaSklepowa</option>
+      </select>
+
+
+      <br/>
+      <br/>
+
+      <input type="submit" value="Kup"/>
+
+   </form>
+ </body>
+</html>
