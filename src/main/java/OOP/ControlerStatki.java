@@ -36,13 +36,15 @@ public class ControlerStatki {
         statkiDoKulepinia.add(new Fregata(new Nacja("Gallente3"), "Fregata3", "Atron3", 4000,4000));
     }
 
-    @RequestMapping("/test")
+    @RequestMapping("/zakupy")
     public String zakupy (
           //@RequestParam(value = "kasaGracza1", required = false) int kasaGracza1,
           //@RequestParam(value = "kasaGracza2", required = false) int kasaGracza2,
           Model model
     ) {
         model.addAttribute("statkiDoKulepinia", statkiDoKulepinia);
+        model.addAttribute("kasaGracza1", kasaGracza1);
+        model.addAttribute("kasaGracza2", kasaGracza2);
 
         return "sklep";
     }
