@@ -6,8 +6,8 @@
 </head>
   <body>
      <h1>Witaj w sklepie</h1>
-     <form action="/">
-      <select class="row" id="statkiDoKulepinia" name="statkiDoKulepinia" >
+     <form action="/kupno">
+      <select class="row" id="statkiDoKulepinia" name="kupionyStatek" >
           <option th:each="statek : ${statkiDoKulepinia}"
                   th:selected="${statek.typ == 'zosia'}"
 
