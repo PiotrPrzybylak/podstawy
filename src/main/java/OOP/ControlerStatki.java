@@ -14,9 +14,10 @@ public class ControlerStatki {
 
     private List <Statek> statkiGracza1 = new ArrayList <>();
     private List <Statek> statkiGracza2 = new ArrayList <>();
-    private List <Statek> statkiDoKulepinia = new ArrayList <>();
+    private List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
     private int kasaGracza1 = 1000000;
     private int kasaGracza2 = 1000000;
+    private int kosztStatku = 0;
 
 
     public ControlerStatki (){
@@ -39,40 +40,31 @@ public class ControlerStatki {
     @RequestMapping("/kupno")
     public String kupnoStatku (
             @RequestParam(value = "kupionyStatek", required = false) String kupionyStatek,
-
             Model model
     ) {
-
-        System.out.println(kupionyStatek);
-
-        Statek statek = new Statek();
+        System.out.println("Kupiony statek to"+kupionyStatek);
 
         // foreach po liscie statkiGracza1
         for (int i = 0; i < statkiDoKulepinia.size(); i++) {
-            Statek kupiony = statkiDoKulepinia.get(i);
+            StatekSklep kupiony = statkiDoKulepinia.get(i);
 
-            if (kupionyStatek.equals(kupiony.getNazwa())) {
-                statek = (Statek) statkiDoKulepinia.get(i);
-                statkiGracza1.add(statek);
+            if (kupionyStatek.equals(kupiony.getNazwa())&&kasaGracza1 > kupiony.getCena() ) {
+
+                StatekSklep statek = statkiDoKulepinia.get(i);
+                kosztStatku = statek.getCena();
+                kasaGracza1 -=(int)statek.getCena();
+                Statek tylkoStatek = (Statek) statek;
+                System.out.println(kosztStatku);
+                statkiGracza1.add(tylkoStatek);
             }
         }
 
-        //int kosztStatku = kupionyStatek.getCena();
-        //Statek statek = (Statek) kupionyStatek;
-        //statkiGracza1.add(statek);
-        //kasaGracza1 -=kosztStatku;
-
-        model.addAttribute("kasaGracza1", kasaGracza1);
-        model.addAttribute("kasaGracza2", kasaGracza2);
-
-        return "";
+        return "redirect:/zakupy";
     }
 
 
     @RequestMapping("/zakupy")
     public String zakupy (
-          //@RequestParam(value = "kasaGracza1", required = false) int kasaGracza1,
-          //@RequestParam(value = "kasaGracza2", required = false) int kasaGracza2,
           Model model
     ) {
         model.addAttribute("statkiDoKulepinia", statkiDoKulepinia);
@@ -134,27 +126,15 @@ public class ControlerStatki {
     @RequestMapping("/")
     public String listatStatkow (
             Model model
-           // @RequestParam(value = "statkiGracza1", required = false) List statkiGracza1
+
 
     ){
-       // List<Statek> statkiGracza1 = new ArrayList<>();
-        //List<Statek> statkiGracza2 = new ArrayList<>();
-
-        //if (nacja.equals(statek.getNacja())) {
-        //    statkiGracza1.add(statek);
-       // } else statkiGracza2.add(statek);
-
-      //  model.addAttribute("statkiGracza1", statkiGracza1);
-
-
-
 
 // chce zrobic commita bo na lapku nie dziala i sprawdzic tak cala sprawe
         model.addAttribute("statkiGracza1", this.statkiGracza1);
         model.addAttribute("statkiGracza2", statkiGracza2);
         return "walka";
     }
-
 
 
 }
