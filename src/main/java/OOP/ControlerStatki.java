@@ -37,12 +37,54 @@ public class ControlerStatki {
         statkiDoKulepinia.add(new StatekSklep(new Nacja("Gallente3"), "Fregata3", "Atron3", 4000,4000, 8000));
     }
 
+    //Wersja na potrzeby gracza 1 oraz 2
+    @RequestMapping("/kupno")
+    public String kupnoStatku (
+            @RequestParam(value = "kupionyStatek", required = false) String kupionyStatek,
+            @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje,
+            Model model
+    ) {
+        //
+        // System.out.println("Gracz 1 kupił statek "+kupionyStatek);
+
+        // foreach po liscie statkiGracza1
+        for (int i = 0; i < statkiDoKulepinia.size(); i++) {
+            StatekSklep kupiony = statkiDoKulepinia.get(i);
+
+            if (ktoKupuje.equals("Gracz 1")&&kupionyStatek.equals(kupiony.getNazwa())&&kasaGracza1 > kupiony.getCena()) {
+
+                StatekSklep statek = statkiDoKulepinia.get(i);
+                kosztStatku = statek.getCena();
+                kasaGracza1 -=(int)statek.getCena();
+                Statek tylkoStatek = (Statek) statek;
+                System.out.println(kosztStatku);
+                statkiGracza1.add(tylkoStatek);
+                kosztStatku = 0;
+            }
+
+            else if (ktoKupuje.equals("Gracz 2")&&kupionyStatek.equals(kupiony.getNazwa())&&kasaGracza2 > kupiony.getCena()) {
+
+                StatekSklep statek = statkiDoKulepinia.get(i);
+                kosztStatku = statek.getCena();
+                kasaGracza2 -=(int)statek.getCena();
+                Statek tylkoStatek = (Statek) statek;
+                System.out.println(kosztStatku);
+                statkiGracza2.add(tylkoStatek);
+                kosztStatku = 0;
+            }
+        }
+
+        return "redirect:/zakupy";
+    }
+
+
+    //Wersja na potrzeby gracza 1
     @RequestMapping("/kupnoGracza1")
     public String kupnoStatku1 (
             @RequestParam(value = "kupionyStatek", required = false) String kupionyStatek,
             Model model
     ) {
-        System.out.println("Kupiony statek to"+kupionyStatek);
+        System.out.println("Gracz 1 kupił statek "+kupionyStatek);
 
         // foreach po liscie statkiGracza1
         for (int i = 0; i < statkiDoKulepinia.size(); i++) {
@@ -63,13 +105,13 @@ public class ControlerStatki {
         return "redirect:/zakupyGracza1";
     }
 
-    //Kopia na potrzeby gracza 2
+    //Wersja na potrzeby gracza 2
     @RequestMapping("/kupnoGracza2")
     public String kupnoStatku2 (
             @RequestParam(value = "kupionyStatek", required = false) String kupionyStatek,
             Model model
     ) {
-        System.out.println("Kupiony statek to"+kupionyStatek);
+        System.out.println("Gracz 2 kupił statek"+kupionyStatek);
 
         // foreach po liscie statkiGracza1
         for (int i = 0; i < statkiDoKulepinia.size(); i++) {
@@ -90,19 +132,30 @@ public class ControlerStatki {
         return "redirect:/zakupyGracza2";
     }
 
+    //Wersja na potrzeby gracza 1 oraz 2
+    @RequestMapping("/zakupy")
+    public String zakupy (
+            Model model
+    ) {
+        model.addAttribute("statkiDoKulepinia", statkiDoKulepinia);
+        model.addAttribute("kasaGracza1", kasaGracza1);
+        model.addAttribute("kasaGracza2", kasaGracza2);
 
+        return "sklep";
+    }
+
+    //Kopia na potrzeby gracza 1
     @RequestMapping("/zakupyGracza1")
-    public String zakup1y (
+    public String zakupy1 (
           Model model
     ) {
         model.addAttribute("statkiDoKulepinia", statkiDoKulepinia);
         model.addAttribute("kasaGracza1", kasaGracza1);
-       // model.addAttribute("kasaGracza2", kasaGracza2);
 
         return "sklepGracza1";
     }
 
-    //Kopia na potrzeby gracza 2
+    //Wersja na potrzeby gracza 2
     @RequestMapping("/zakupyGracza2")
     public String zakupy2 (
             Model model
