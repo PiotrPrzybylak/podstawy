@@ -36,6 +36,47 @@ public class ControlerStatki {
         statkiDoKulepinia.add(new StatekSklep(new Nacja("Gallente3"), "Fregata3", "Tristan3", 100, 5600, 10000));
         statkiDoKulepinia.add(new StatekSklep(new Nacja("Gallente3"), "Fregata3", "Atron3", 4000,4000, 8000));
     }
+    //Wersja na potrzeby gracza 1 oraz 2 z uzyciem kodu URL
+    @RequestMapping("/kupnoZUrl")
+    public String kupnoStatkuUrl (
+            @RequestParam(value = "kupionyStatek", required = false) String kupionyStatek,
+            @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje,
+            Model model
+    ) {
+        //
+        // System.out.println("Gracz 1 kupił statek "+kupionyStatek);
+
+        // foreach po liscie statkiGracza1
+        for (int i = 0; i < statkiDoKulepinia.size(); i++) {
+            StatekSklep kupiony = statkiDoKulepinia.get(i);
+
+            if (ktoKupuje.equals("Gracz 1")&&kupionyStatek.equals(kupiony.getNazwa())&&kasaGracza1 > kupiony.getCena()) {
+
+                StatekSklep statek = statkiDoKulepinia.get(i);
+                kosztStatku = statek.getCena();
+                kasaGracza1 -=(int)statek.getCena();
+                Statek tylkoStatek = (Statek) statek;
+                System.out.println(kosztStatku);
+                statkiGracza1.add(tylkoStatek);
+                kosztStatku = 0;
+            }
+
+            else if (ktoKupuje.equals("Gracz 2")&&kupionyStatek.equals(kupiony.getNazwa())&&kasaGracza2 > kupiony.getCena()) {
+
+                StatekSklep statek = statkiDoKulepinia.get(i);
+                kosztStatku = statek.getCena();
+                kasaGracza2 -=(int)statek.getCena();
+                Statek tylkoStatek = (Statek) statek;
+                System.out.println(kosztStatku);
+                statkiGracza2.add(tylkoStatek);
+                kosztStatku = 0;
+            }
+        }
+
+        return "redirect:/zakupyURL";
+    }
+
+
 
     //Wersja na potrzeby gracza 1 oraz 2
     @RequestMapping("/kupno")
@@ -131,6 +172,19 @@ public class ControlerStatki {
 
         return "redirect:/zakupyGracza2";
     }
+
+    //Wersja na potrzeby gracza 1 oraz 2 z uzyciem kodu URL
+    @RequestMapping("/zakupyURL")
+    public String zakupyURL (
+            Model model
+    ) {
+        model.addAttribute("statkiDoKulepinia", statkiDoKulepinia);
+        model.addAttribute("kasaGracza1", kasaGracza1);
+        model.addAttribute("kasaGracza2", kasaGracza2);
+
+        return "sklepZUrl";
+    }
+
 
     //Wersja na potrzeby gracza 1 oraz 2
     @RequestMapping("/zakupy")
