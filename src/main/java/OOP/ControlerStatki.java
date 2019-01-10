@@ -176,11 +176,17 @@ public class ControlerStatki {
     //Wersja na potrzeby gracza 1 oraz 2 z uzyciem kodu URL
     @RequestMapping("/zakupyURL")
     public String zakupyURL (
+            @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje,
             Model model
     ) {
+        model.addAttribute("ktoKupuje", ktoKupuje);
         model.addAttribute("statkiDoKulepinia", statkiDoKulepinia);
-        model.addAttribute("kasaGracza1", kasaGracza1);
-        model.addAttribute("kasaGracza2", kasaGracza2);
+        //if (ktoKupuje.equals("Gracz 1")) {
+            model.addAttribute("kasaGracza1", kasaGracza1);
+        //}
+        //else if (ktoKupuje.equals("Gracz 2")) {
+            model.addAttribute("kasaGracza2", kasaGracza2);
+       //}
 
         return "sklepZUrl";
     }

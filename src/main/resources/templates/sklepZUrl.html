@@ -6,7 +6,10 @@
 </head>
   <body>
      <h1>Witaj w sklepie dla gracza 1 oraz gracza 2 po URL</h1>
+
      <form action="/kupnoZUrl">
+         <div th:switch="${ktoKupuje}">
+             <p th:case="'Gracz 1'">
       <select class="row" id="statkiDoKulepinia" name="kupionyStatek" >
           <option th:each="statek : ${statkiDoKulepinia}"
                   th:selected="${statek.typ == 'zosia'}"
@@ -22,29 +25,32 @@
 
       <br/>
       <input type="hidden" name="ktoKupuje" value="Gracz 1"/>
-      <input type="submit" value="Kupje Gracz 1"/>
+      <input type="submit" value="Kupuje Gracz 1"/>
       <br/>
+         </p>
+         <p th:case="'Gracz 2'">
 
+             <select class="row" id="statkiDoKulepinia" name="kupionyStatek" >
+                 <option th:each="statek : ${statkiDoKulepinia}"
+                         th:selected="${statek.typ == 'zosia'}"
+
+                         th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp} + ' CENA: ' + ${statek.cena}"
+                         th:value="${statek.nazwa}"
+                 >SraczkaSklepowa</option>
+             </select>
+
+
+             <div>Kasa drugiego gracza: </div>
+             <div class="kasaGracza2" th:text="${kasaGracza2}"></div>
+             <br/>
+
+             <br/>
+             <input type="hidden" name="ktoKupuje" value="Gracz 2"/>
+             <input type="submit" value="Kupuje Gracz 2"/>
+
+         </p>
+         </div>
     </form>
 
-     <form action="/kupnoZUrl">
-         <select class="row" id="statkiDoKulepinia" name="kupionyStatek" >
-             <option th:each="statek : ${statkiDoKulepinia}"
-                     th:selected="${statek.typ == 'zosia'}"
-
-                     th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp} + ' CENA: ' + ${statek.cena}"
-                     th:value="${statek.nazwa}"
-             >SraczkaSklepowa</option>
-         </select>
-
-
-         <div>Kasa drugiego gracza: </div>
-         <div class="kasaGracza2" th:text="${kasaGracza2}"></div>
-         <br/>
-
-         <br/>
-         <input type="hidden" name="ktoKupuje" value="Gracz 2"/>
-         <input type="submit" value="Kupje Gracz 2"/>
-     </form>
   </body>
 </html>
