@@ -15,6 +15,7 @@ public class ControlerStatki {
     private List <Statek> statkiGracza1 = new ArrayList <>();
     private List <Statek> statkiGracza2 = new ArrayList <>();
     private List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
+    private List <Statek> statkiZlomowisko = new ArrayList<>();
     private int kasaGracza1 = 1000000;
     private int kasaGracza2 = 1000000;
     private int kosztStatku = 0;
@@ -36,6 +37,14 @@ public class ControlerStatki {
         statkiDoKulepinia.add(new StatekSklep(new Nacja("Gallente3"), "Fregata3", "Tristan3", 100, 5600, 10000));
         statkiDoKulepinia.add(new StatekSklep(new Nacja("Gallente3"), "Fregata3", "Atron3", 4000,4000, 8000));
     }
+
+
+    // tu bedzie metoda sprzedaz
+
+
+
+
+
     //Wersja na potrzeby gracza 1 oraz 2 z uzyciem kodu URL ze strona startowa
     @RequestMapping("/kupnoZUrl")
     public String kupnoStatkuUrl (
@@ -190,6 +199,23 @@ public class ControlerStatki {
         return "ktoKupujeWybor";
     }
 
+
+
+
+    // tu bedzie sprzedaz
+    @RequestMapping ("/sprzedaz")
+    public String sprzedaz (
+            @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje,
+            Model model
+    ) {
+        model.addAttribute("ktoSprzedaje", ktoSprzedaje);
+        model.addAttribute("statkiGracza1", statkiGracza1);
+        model.addAttribute("statkiGracza2", statkiGracza2);
+        model.addAttribute("kasaGracza1", kasaGracza1);
+        model.addAttribute("kasaGracza2", kasaGracza2);
+
+        return "zlomowisko";
+    }
 
     //Wersja na potrzeby gracza 1 oraz 2 z uzyciem kodu URL
     @RequestMapping("/zakupyURL")
