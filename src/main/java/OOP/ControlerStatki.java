@@ -36,35 +36,33 @@ public class ControlerStatki {
         statkiDoKulepinia.add(new StatekSklep(new Nacja("Gallente3"), "Fregata3", "Tristan3", 100, 5600, 10000));
         statkiDoKulepinia.add(new StatekSklep(new Nacja("Gallente3"), "Fregata3", "Atron3", 4000,4000, 8000));
     }
-    //Wersja na potrzeby gracza 1 oraz 2 z uzyciem kodu URL
+    //Wersja na potrzeby gracza 1 oraz 2 z uzyciem kodu URL ze strona startowa
     @RequestMapping("/kupnoZUrl")
     public String kupnoStatkuUrl (
             @RequestParam(value = "kupionyStatek", required = false) String kupionyStatek,
             @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje,
             Model model
     ) {
-        System.out.println(ktoKupuje+" kupił statek "+kupionyStatek);
+        System.out.println(ktoKupuje + " kupił statek " + kupionyStatek);
 
         // foreach po liscie statkiGracza1
         for (int i = 0; i < statkiDoKulepinia.size(); i++) {
             StatekSklep kupiony = statkiDoKulepinia.get(i);
 
-            if (ktoKupuje.equals("Gracz 1")&&kupionyStatek.equals(kupiony.getNazwa())&&kasaGracza1 > kupiony.getCena()) {
+            if (ktoKupuje.equals("Gracz 1") && kupionyStatek.equals(kupiony.getNazwa()) && kasaGracza1 > kupiony.getCena()) {
 
                 StatekSklep statek = statkiDoKulepinia.get(i);
                 kosztStatku = statek.getCena();
-                kasaGracza1 -=(int)statek.getCena();
+                kasaGracza1 -= (int) statek.getCena();
                 Statek tylkoStatek = (Statek) statek;
                 System.out.println(kosztStatku);
                 statkiGracza1.add(tylkoStatek);
                 kosztStatku = 0;
-            }
-
-            else if (ktoKupuje.equals("Gracz 2")&&kupionyStatek.equals(kupiony.getNazwa())&&kasaGracza2 > kupiony.getCena()) {
+            } else if (ktoKupuje.equals("Gracz 2") && kupionyStatek.equals(kupiony.getNazwa()) && kasaGracza2 > kupiony.getCena()) {
 
                 StatekSklep statek = statkiDoKulepinia.get(i);
                 kosztStatku = statek.getCena();
-                kasaGracza2 -=(int)statek.getCena();
+                kasaGracza2 -= (int) statek.getCena();
                 Statek tylkoStatek = (Statek) statek;
                 System.out.println(kosztStatku);
                 statkiGracza2.add(tylkoStatek);
@@ -72,10 +70,15 @@ public class ControlerStatki {
             }
         }
 
-       // return "redirect:/zakupyURL";
-       return "redirect:/ktoKupuje";
+        // return "redirect:/zakupyURL";
+        if (ktoKupuje.equals("Gracz 1")) {
+            return "redirect:/zakupyURL?ktoKupuje=Gracz 1";
+        } else if (ktoKupuje.equals("Gracz 2")) {
+            return "redirect:/zakupyURL?ktoKupuje=Gracz 2";
+        } else {
+            return "redirect:/ktoKupuje";
+        }
     }
-
 
 
     //Wersja na potrzeby gracza 1 oraz 2
