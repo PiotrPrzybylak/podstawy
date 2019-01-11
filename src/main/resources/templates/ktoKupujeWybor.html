@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sklep</title>
+</head>
+  <body>
+  <h1>Witaj w sklepie dla gracza 1 oraz gracza 2 po URL</h1>
+  <h1>Wybierz który gracz kupuje</h1>
+
+    <form action="/zakupyURL">
+
+     <br/>
+     <div>Kasa pierwszego gracza:  </div>
+     <div class="kasaGracza1" th:text="${kasaGracza1}"></div>
+
+     <input type="hidden" name="ktoKupuje" value="Gracz 1"/>
+     <input type="submit" value="Kupuje Gracz 1"/>
+
+    </form>
+    <form action="/zakupyURL">
+        <br/>
+        <div>Kasa drugiego gracza: </div>
+        <div class="kasaGracza2" th:text="${kasaGracza2}"></div>
+        <input type="hidden" name="ktoKupuje" value="Gracz 2"/>
+        <input type="submit" value="Kupuje Gracz 2"/>
+        <br/>
+
+
+    </form>
+  </body>
+</html>

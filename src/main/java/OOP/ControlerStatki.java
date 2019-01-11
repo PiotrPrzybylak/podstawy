@@ -43,8 +43,7 @@ public class ControlerStatki {
             @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje,
             Model model
     ) {
-        //
-        // System.out.println("Gracz 1 kupił statek "+kupionyStatek);
+        System.out.println(ktoKupuje+" kupił statek "+kupionyStatek);
 
         // foreach po liscie statkiGracza1
         for (int i = 0; i < statkiDoKulepinia.size(); i++) {
@@ -73,7 +72,8 @@ public class ControlerStatki {
             }
         }
 
-        return "redirect:/zakupyURL";
+       // return "redirect:/zakupyURL";
+       return "redirect:/ktoKupuje";
     }
 
 
@@ -174,6 +174,21 @@ public class ControlerStatki {
     }
 
     //Wersja na potrzeby gracza 1 oraz 2 z uzyciem kodu URL
+    @RequestMapping("/ktoKupuje")
+    public String ktoKupuje (
+            //@RequestParam(value = "ktoKupuje", required = false) String ktoKupuje,
+            Model model
+    ) {
+        //model.addAttribute("ktoKupuje", ktoKupuje);
+        //model.addAttribute("statkiDoKulepinia", statkiDoKulepinia);
+        model.addAttribute("kasaGracza1", kasaGracza1);
+        model.addAttribute("kasaGracza2", kasaGracza2);
+
+        return "ktoKupujeWybor";
+    }
+
+
+    //Wersja na potrzeby gracza 1 oraz 2 z uzyciem kodu URL
     @RequestMapping("/zakupyURL")
     public String zakupyURL (
             @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje,
@@ -181,12 +196,8 @@ public class ControlerStatki {
     ) {
         model.addAttribute("ktoKupuje", ktoKupuje);
         model.addAttribute("statkiDoKulepinia", statkiDoKulepinia);
-        //if (ktoKupuje.equals("Gracz 1")) {
-            model.addAttribute("kasaGracza1", kasaGracza1);
-        //}
-        //else if (ktoKupuje.equals("Gracz 2")) {
-            model.addAttribute("kasaGracza2", kasaGracza2);
-       //}
+        model.addAttribute("kasaGracza1", kasaGracza1);
+        model.addAttribute("kasaGracza2", kasaGracza2);
 
         return "sklepZUrl";
     }
