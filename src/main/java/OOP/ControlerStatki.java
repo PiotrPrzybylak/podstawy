@@ -40,7 +40,66 @@ public class ControlerStatki {
 
 
     // tu bedzie metoda sprzedaz
+    @RequestMapping("/sprzedazZUrl")
+    public String sprzedaz (
+            @RequestParam(value = "sprzedanyStatek", required = false) int sprzedanyStatek,
+            @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje,
+            Model model
+    ){
 
+        if (ktoSprzedaje.equals("Gracz 1")) {
+
+            // foreach po liscie statkiGracza1
+            for (int i = 0; i < statkiGracza1.size(); i++) {
+                Statek sprzedany = statkiGracza1.get(i);
+
+                if (sprzedanyStatek ==sprzedany.getEhp()) {
+
+                    Statek statek = statkiGracza1.get(i);
+                    //kosztStatku = statek.getCena();
+                    //kasaGracza1 -= (int) statek.getCena();
+                    //Statek tylkoStatek = (Statek) statek;
+                    //System.out.println(kosztStatku);
+                    statkiZlomowisko.add(statek);
+                    statkiGracza1.remove(statek);
+                    //kosztStatku = 0;
+
+                }
+            }
+        }
+
+        else if (ktoSprzedaje.equals("Gracz 2")){
+            // foreach po liscie statkiGracza2
+            for (int i = 0; i < statkiGracza2.size(); i++) {
+                Statek sprzedany = statkiGracza2.get(i);
+
+                if (sprzedanyStatek ==sprzedany.getEhp()) {
+
+                    Statek statek = statkiGracza2.get(i);
+                    //kosztStatku = statek.getCena();
+                    //kasaGracza1 -= (int) statek.getCena();
+                    //Statek tylkoStatek = (Statek) statek;
+                    //System.out.println(kosztStatku);
+                    statkiZlomowisko.add(statek);
+                    statkiGracza2.remove(statek);
+                    //kosztStatku = 0;
+
+                }
+            }
+
+
+        }
+
+
+        if (ktoSprzedaje.equals("Gracz 1")) {
+            return "redirect:/sprzedaz?ktoSprzedaje=Gracz 1";
+        } else if (ktoSprzedaje.equals("Gracz 2")) {
+            return "redirect:/sprzedaz?ktoSprzedaje=Gracz 2";
+        } else {
+            return "redirect:/ktoKupuje";
+        }
+
+    }
 
 
 
@@ -213,6 +272,7 @@ public class ControlerStatki {
         model.addAttribute("statkiGracza2", statkiGracza2);
         model.addAttribute("kasaGracza1", kasaGracza1);
         model.addAttribute("kasaGracza2", kasaGracza2);
+        model.addAttribute("statkiZlomowisko", statkiZlomowisko);
 
         return "zlomowisko";
     }

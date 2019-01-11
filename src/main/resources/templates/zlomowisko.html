@@ -51,6 +51,18 @@
          </p>
          </div>
     </form>
+     <h1>Lista statkow na złomie:</h1>
+     <select class="row" id="statkiZlomowisko" name="statkiZlomowisko" >
+         <option th:each="statek : ${statkiZlomowisko}"
+
+
+                 th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp} + ' CENA: ' "
+
+         >SraczkaZłomowa</option>
+     </select>
+
+
+
 
   </body>
 </html>
