@@ -25,6 +25,13 @@
            >Sraczka</option>
        </select>
 
+       <select class="row" id="statkiGracza3" name="statekGracza3" >
+           <option th:each="statek : ${statkiGracza3}"
+                   th:selected="${statek.typ == 'zosia'}"
+
+                   th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp}"
+                   th:value="${statek.nazwa}"
+           >Sraczka</option>
        <br/>
        <br/>
 
