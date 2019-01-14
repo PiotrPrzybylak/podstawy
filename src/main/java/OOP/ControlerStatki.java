@@ -429,6 +429,7 @@ public class ControlerStatki {
             @RequestParam(value = "statekGracza1", required = false) String statekGracza1,
             @RequestParam(value = "statekGracza2", required = false) String statekGracza2,
             @RequestParam(value = "statekGracza3", required = false) String statekGracza3,
+            @RequestParam(value = "ktoWalczy", required = false) String ktoWalczy,
             Model model
     ){
 
@@ -440,22 +441,61 @@ public class ControlerStatki {
         Statek pierwszy = new Statek();
         Statek drugi = new Statek();
 
+        // teraz IFy dla walka dla wszystkich opcji
 
-        // foreach po liscie statkiGracza1
-        for (int i = 0; i < statkiGracza1.size(); i++) {
-            Statek statek = statkiGracza1.get(i);
+        if (ktoWalczy.equals("Gracz 1+2")) {
+            // foreach po liscie statkiGracza1
+            for (int i = 0; i < statkiGracza1.size(); i++) {
+                Statek statek = statkiGracza1.get(i);
 
-            if (statekGracza1.equals(statek.getNazwa())) {
-                pierwszy = statkiGracza1.get(i);
+                if (statekGracza1.equals(statek.getNazwa())) {
+                    pierwszy = statkiGracza1.get(i);
+                }
             }
-        }
 
-        // foreach po liscie statkiGracza2
-        for (int i = 0; i < statkiGracza2.size(); i++) {
-            Statek statek = statkiGracza2.get(i);
+            // foreach po liscie statkiGracza2
+            for (int i = 0; i < statkiGracza2.size(); i++) {
+                Statek statek = statkiGracza2.get(i);
 
-            if (statekGracza2.equals(statek.getNazwa())) {
-                drugi = statkiGracza2.get(i);
+                if (statekGracza2.equals(statek.getNazwa())) {
+                    drugi = statkiGracza2.get(i);
+                }
+            }
+        } else if (ktoWalczy.equals("Gracz 2+3")) {
+            // foreach po liscie statkiGracza2
+            for (int i = 0; i < statkiGracza2.size(); i++) {
+                Statek statek = statkiGracza2.get(i);
+
+                if (statekGracza2.equals(statek.getNazwa())) {
+                    pierwszy = statkiGracza2.get(i);
+                }
+            }
+
+            // foreach po liscie statkiGracza3
+            for (int i = 0; i < statkiGracza3.size(); i++) {
+                Statek statek = statkiGracza3.get(i);
+
+                if (statekGracza3.equals(statek.getNazwa())) {
+                    drugi = statkiGracza3.get(i);
+                }
+            }
+        } else if (ktoWalczy.equals("Gracz 3+1")) {
+            // foreach po liscie statkiGracza3
+            for (int i = 0; i < statkiGracza3.size(); i++) {
+                Statek statek = statkiGracza3.get(i);
+
+                if (statekGracza3.equals(statek.getNazwa())) {
+                    pierwszy = statkiGracza3.get(i);
+                }
+            }
+
+            // foreach po liscie statkiGracza1
+            for (int i = 0; i < statkiGracza1.size(); i++) {
+                Statek statek = statkiGracza1.get(i);
+
+                if (statekGracza1.equals(statek.getNazwa())) {
+                    drugi = statkiGracza1.get(i);
+                }
             }
         }
 
@@ -464,11 +504,10 @@ public class ControlerStatki {
        String wygranyStatek = TestStatki.walka(pierwszy,drugi);
        System.out.println(wygranyStatek);
 
-
-
-       model.addAttribute("statek1" , "Wybrany statek gracza 1 to: " + statekGracza1);
-       model.addAttribute("statek2" , "Wybrany statek gracza 2 to: " + statekGracza2);
-       model.addAttribute("wygrany" ,wygranyStatek);
+      model.addAttribute("ktoWalczy" , "Walczyli " + ktoWalczy);
+      model.addAttribute("pierwszy" , "Nazwa statku pierwszego gracza: " + pierwszy.getNazwa());
+      model.addAttribute("drugi" , "Nazwa statku pierwszego gracza: " + drugi.getNazwa());
+      model.addAttribute("wygrany" ,wygranyStatek);
 
 
         return "wynik";
