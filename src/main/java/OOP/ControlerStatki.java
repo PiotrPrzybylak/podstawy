@@ -89,7 +89,7 @@ public class ControlerStatki {
                 if (sprzedanyStatek == bazaStatkow.getEhp()) {
                     StatekSklep StatekZCena = statkiDoKulepinia.get(i);
                     int cenaSprzdanegoStatku = StatekZCena.getCena();
-                    kasaGracza1 += (cenaSprzdanegoStatku/2);
+                    kasaGracza2 += (cenaSprzdanegoStatku/2);
                 }
             }
         }
