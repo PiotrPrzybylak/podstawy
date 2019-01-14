@@ -190,11 +190,11 @@ public class ControlerStatki {
         } else if (ktoKupuje.equals("Gracz 2")) {
             return "redirect:/zakupyURL?ktoKupuje=Gracz 2";
         } else if (ktoKupuje.equals("Gracz 3")) {
-            return  "redirect:/zakupyURL?ktoKupuje=Gracz 3";
-        }else {
+            return "redirect:/zakupyURL?ktoKupuje=Gracz 3";
+        } else {
             return "redirect:/ktoKupuje";
+        }
     }
-
 
     //Wersja na potrzeby gracza 1 oraz 2 i 3
     @RequestMapping("/kupno")
@@ -228,7 +228,7 @@ public class ControlerStatki {
                 System.out.println(kosztStatku);
                 statkiGracza2.add(tylkoStatek);
                 kosztStatku = 0;
-            } else (ktoKupuje.equals("Gracz 3") && kupionyStatek.equals(kupiony.getNazwa()) && kasaGracza3 > kupiony.getCena()) {
+            } else if (ktoKupuje.equals("Gracz 3") && kupionyStatek.equals(kupiony.getNazwa()) && kasaGracza3 > kupiony.getCena()) {
 
                 StatekSklep statek = statkiDoKulepinia.get(i);
                 kosztStatku = statek.getCena();
@@ -428,7 +428,7 @@ public class ControlerStatki {
     public String metodaObliczenia (
             @RequestParam(value = "statekGracza1", required = false) String statekGracza1,
             @RequestParam(value = "statekGracza2", required = false) String statekGracza2,
-            @RequestParam(value = "statekGracza3", required = false) String statekGracza2,
+            @RequestParam(value = "statekGracza3", required = false) String statekGracza3,
             Model model
     ){
 
