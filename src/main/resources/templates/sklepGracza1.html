@@ -6,7 +6,9 @@
 </head>
   <body>
      <h1>Witaj w sklepie dla gracza 1</h1>
+
      <form action="/kupnoGracza1">
+
       <select class="row" id="statkiDoKulepinia" name="kupionyStatek" >
           <option th:each="statek : ${statkiDoKulepinia}"
                   th:selected="${statek.typ == 'zosia'}"
@@ -17,14 +19,9 @@
       </select>
       <br/>
       <br/>
-        <div>Kasa pierwszego gracza:  </div>
-        <div class="kasaGracza1" th:text="${kasaGracza1}"></div>
-        <br/>
-        <div>Kasa drugiego gracza: </div>
-        <div class="kasaGracza2" th:text="${kasaGracza2}"></div>
+      <div>Kasa pierwszego gracza:  </div>
+      <div class="kasaGracza1" th:text="${kasaGracza1}"></div>
       <br/>
-      <br/>
-
       <input type="submit" value="Kup"/>
 
     </form>

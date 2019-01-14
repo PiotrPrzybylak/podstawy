@@ -10,47 +10,36 @@
      <form action="/sprzedazZUrl">
          <div th:switch="${ktoSprzedaje}">
              <p th:case="'Gracz 1'">
-      <select class="row" id="statkiGracza1" name="sprzedanyStatek" >
-          <option th:each="statek : ${statkiGracza1}"
-
-
-                  th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp} + ' CENA: ' "
-                  th:value="${statek.ehp}"
-          >SraczkaSklepowa</option>
-      </select>
-
-      <br/>
-        <div>Kasa pierwszego gracza:  </div>
-        <div class="kasaGracza1" th:text="${kasaGracza1}"></div>
-
-      <br/>
-      <input type="hidden" name="ktoSprzedaje" value="Gracz 1"/>
-      <input type="submit" value="Sprzedaje Gracz 1"/>
-      <br/>
-         </p>
-         <p th:case="'Gracz 2'">
-
-             <select class="row" id="statkiGracza2" name="sprzedanyStatek" >
-                 <option th:each="statek : ${statkiGracza2}"
-
-
+                 <select class="row" id="statkiGracza1" name="sprzedanyStatek" >
+                     <option th:each="statek : ${statkiGracza1}"
+                        th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp} + ' CENA: ' "
+                        th:value="${statek.ehp}"
+                     >SraczkaSklepowa</option>
+                 </select>
+                    <br/>
+                    <div>Kasa pierwszego gracza:  </div>
+                    <div class="kasaGracza1" th:text="${kasaGracza1}"></div>
+                    <br/>
+                    <input type="hidden" name="ktoSprzedaje" value="Gracz 1"/>
+                    <input type="submit" value="Sprzedaje Gracz 1"/>
+                    <br/>
+             </p>
+             <p th:case="'Gracz 2'">
+                <select class="row" id="statkiGracza2" name="sprzedanyStatek" >
+                    <option th:each="statek : ${statkiGracza2}"
                          th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp} + ' CENA: ' "
                          th:value="${statek.ehp}"
-                 >SraczkaSklepowa</option>
-             </select>
+                    >SraczkaSklepowa</option>
+                </select>
+                    <div>Kasa drugiego gracza: </div>
+                    <div class="kasaGracza2" th:text="${kasaGracza2}"></div>
+                    <br/>
+                    <br/>
+                    <input type="hidden" name="ktoSprzedaje" value="Gracz 2"/>
+                    <input type="submit" value="Sprzedaje Gracz 2"/>
 
-
-             <div>Kasa drugiego gracza: </div>
-             <div class="kasaGracza2" th:text="${kasaGracza2}"></div>
-             <br/>
-
-             <br/>
-             <input type="hidden" name="ktoSprzedaje" value="Gracz 2"/>
-             <input type="submit" value="Sprzedaje Gracz 2"/>
-
-         </p>
-
-         <p th:case="'Gracz 3'">
+             </p>
+             <p th:case="'Gracz 3'">
 
                  <select class="row" id="statkiGracza3" name="sprzedanyStatek" >
                      <option th:each="statek : ${statkiGracza3}"
@@ -60,32 +49,21 @@
                              th:value="${statek.ehp}"
                      >SraczkaSklepowa</option>
                  </select>
-
-
-             <div>Kasa drugiego gracza: </div>
-             <div class="kasaGracza3" th:text="${kasaGracza3}"></div>
-             <br/>
-
-             <br/>
-             <input type="hidden" name="ktoSprzedaje" value="Gracz 3"/>
-             <input type="submit" value="Sprzedaje Gracz 3"/>
-
+                    <div>Kasa drugiego gracza: </div>
+                    <div class="kasaGracza3" th:text="${kasaGracza3}"></div>
+                    <br/>
+                    <br/>
+                    <input type="hidden" name="ktoSprzedaje" value="Gracz 3"/>
+                    <input type="submit" value="Sprzedaje Gracz 3"/>
              </p>
-
          </div>
     </form>
+
      <h1>Lista statkow na złomie:</h1>
-     <select class="row" id="statkiZlomowisko" name="statkiZlomowisko" >
+  <select class="row" id="statkiZlomowisko" name="statkiZlomowisko" >
          <option th:each="statek : ${statkiZlomowisko}"
-
-
                  th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp} + ' CENA: ' "
-
          >SraczkaZłomowa</option>
      </select>
-
-
-
-
   </body>
 </html>
