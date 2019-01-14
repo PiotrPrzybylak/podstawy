@@ -57,17 +57,16 @@ public class ControlerStatki {
                     Statek statek = statkiGracza1.get(i);
                     statkiZlomowisko.add(statek);
                     statkiGracza1.remove(statek);
+                }
+            }
+            // tu ma byc metoda odejmowania kasy
+            for (int i = 0; i < statkiDoKulepinia.size(); i++) {
+                StatekSklep bazaStatkow = statkiDoKulepinia.get(i);
 
-                    // tu ma byc metoda odejmowania kasy
-                    for (int j = 0; j < statkiDoKulepinia.size(); j++) {
-                        StatekSklep bazaStatkow = statkiDoKulepinia.get(j);
-
-                        if (sprzedanyStatek == bazaStatkow.getEhp()) {
-                        StatekSklep StatekZCena = statkiDoKulepinia.get(j);
-                        int cenaSprzdanegoStatku = StatekZCena.getCena();
-                            kasaGracza1 -= (cenaSprzdanegoStatku/2);
-                        }
-                    }
+                if (sprzedanyStatek == bazaStatkow.getEhp()) {
+                    StatekSklep StatekZCena = statkiDoKulepinia.get(i);
+                    int cenaSprzdanegoStatku = StatekZCena.getCena();
+                    kasaGracza1 += (cenaSprzdanegoStatku/2);
                 }
             }
         }
@@ -77,26 +76,22 @@ public class ControlerStatki {
             for (int i = 0; i < statkiGracza2.size(); i++) {
                 Statek sprzedany = statkiGracza2.get(i);
 
-                if (sprzedanyStatek ==sprzedany.getEhp()) {
+                if (sprzedanyStatek == sprzedany.getEhp()) {
                     Statek statek = statkiGracza2.get(i);
                     statkiZlomowisko.add(statek);
                     statkiGracza2.remove(statek);
-
-                    // tu ma byc metoda odejmowania kasy
-                    for (int j = 0; j < statkiDoKulepinia.size(); j++) {
-                        StatekSklep bazaStatkow = statkiDoKulepinia.get(j);
-
-                        if (sprzedanyStatek == bazaStatkow.getEhp()) {
-                            StatekSklep StatekZCena = statkiDoKulepinia.get(j);
-                            int cenaSprzdanegoStatku = StatekZCena.getCena();
-                            kasaGracza1 -= (cenaSprzdanegoStatku/2);
-                        }
-                    }
-
                 }
             }
+             // tu ma byc metoda odejmowania kasy
+            for (int i = 0; i < statkiDoKulepinia.size(); i++) {
+                StatekSklep bazaStatkow = statkiDoKulepinia.get(i);
 
-
+                if (sprzedanyStatek == bazaStatkow.getEhp()) {
+                    StatekSklep StatekZCena = statkiDoKulepinia.get(i);
+                    int cenaSprzdanegoStatku = StatekZCena.getCena();
+                    kasaGracza1 += (cenaSprzdanegoStatku/2);
+                }
+            }
         }
 
 
