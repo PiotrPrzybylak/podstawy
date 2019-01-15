@@ -67,7 +67,7 @@ public class ControlerStatki {
                     statkiGracza1.remove(statek);
                 }
             }
-            // tu ma byc metoda odejmowania kasy
+            // tu jest metoda dodawania kasy
             for (int i = 0; i < statkiDoKulepinia.size(); i++) {
                 StatekSklep bazaStatkow = statkiDoKulepinia.get(i);
 
@@ -90,7 +90,7 @@ public class ControlerStatki {
                     statkiGracza2.remove(statek);
                 }
             }
-             // tu ma byc metoda odejmowania kasy
+            // tu jest metoda dodawania kasy
             for (int i = 0; i < statkiDoKulepinia.size(); i++) {
                 StatekSklep bazaStatkow = statkiDoKulepinia.get(i);
 
@@ -113,7 +113,7 @@ public class ControlerStatki {
                     statkiGracza3.remove(statek);
                 }
             }
-            // tu ma byc metoda odejmowania kasy
+            // tu jest metoda dodawania kasy
             for (int i = 0; i < statkiDoKulepinia.size(); i++) {
                 StatekSklep bazaStatkow = statkiDoKulepinia.get(i);
 
