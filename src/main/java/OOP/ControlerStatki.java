@@ -15,7 +15,6 @@ public class ControlerStatki {
     private List <Statek> statkiGracza1 = new ArrayList <>();
     private List <Statek> statkiGracza2 = new ArrayList <>();
     private List <Statek> statkiGracza3 = new ArrayList <>();
-
     private List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
     private List <Statek> statkiZlomowisko = new ArrayList<>();
     private int kasaGracza1 = 1000000;
@@ -23,6 +22,12 @@ public class ControlerStatki {
     private int kasaGracza3 = 1000000;
     private int kosztStatku = 0;
 
+    Gracz gracz1= new Gracz(statkiGracza1,kasaGracza1);
+    Gracz gracz2= new Gracz(statkiGracza2,kasaGracza2 );
+    Gracz gracz3= new Gracz(statkiGracza3,kasaGracza3);
+
+    //gracz1.setKasa(kasaGracza1);
+    //gracz1.setStatki(List <Statek> statkiGracza1)
 
     public ControlerStatki (){
         statkiGracza1.add( new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
@@ -156,8 +161,8 @@ public class ControlerStatki {
             if (ktoKupuje.equals("Gracz 1") && kupionyStatek.equals(kupiony.getNazwa()) && kasaGracza1 > kupiony.getCena()) {
                 StatekSklep statek = statkiDoKulepinia.get(i);
                 kosztStatku = statek.getCena();
-                kasaGracza1 -= (int) statek.getCena();
-                Statek tylkoStatek = (Statek) statek;
+                kasaGracza1 -= statek.getCena();
+                Statek tylkoStatek = statek;
                 System.out.println(kosztStatku);
                 statkiGracza1.add(tylkoStatek);
                 kosztStatku = 0;
@@ -165,8 +170,8 @@ public class ControlerStatki {
             } else if (ktoKupuje.equals("Gracz 2") && kupionyStatek.equals(kupiony.getNazwa()) && kasaGracza2 > kupiony.getCena()) {
                 StatekSklep statek = statkiDoKulepinia.get(i);
                 kosztStatku = statek.getCena();
-                kasaGracza2 -= (int) statek.getCena();
-                Statek tylkoStatek = (Statek) statek;
+                kasaGracza2 -= statek.getCena();
+                Statek tylkoStatek = statek;
                 System.out.println(kosztStatku);
                 statkiGracza2.add(tylkoStatek);
                 kosztStatku = 0;
@@ -174,8 +179,8 @@ public class ControlerStatki {
             } else if (ktoKupuje.equals("Gracz 3") && kupionyStatek.equals(kupiony.getNazwa()) && kasaGracza3 > kupiony.getCena()) {
                 StatekSklep statek = statkiDoKulepinia.get(i);
                 kosztStatku = statek.getCena();
-                kasaGracza3 -= (int) statek.getCena();
-                Statek tylkoStatek = (Statek) statek;
+                kasaGracza3 -= statek.getCena();
+                Statek tylkoStatek = statek;
                 System.out.println(kosztStatku);
                 statkiGracza3.add(tylkoStatek);
                 kosztStatku = 0;
@@ -214,8 +219,8 @@ public class ControlerStatki {
 
                 StatekSklep statek = statkiDoKulepinia.get(i);
                 kosztStatku = statek.getCena();
-                kasaGracza1 -= (int) statek.getCena();
-                Statek tylkoStatek = (Statek) statek;
+                kasaGracza1 -= statek.getCena();
+                Statek tylkoStatek = statek;
                 System.out.println(kosztStatku);
                 statkiGracza1.add(tylkoStatek);
                 kosztStatku = 0;
@@ -223,8 +228,8 @@ public class ControlerStatki {
 
                 StatekSklep statek = statkiDoKulepinia.get(i);
                 kosztStatku = statek.getCena();
-                kasaGracza2 -= (int) statek.getCena();
-                Statek tylkoStatek = (Statek) statek;
+                kasaGracza2 -= statek.getCena();
+                Statek tylkoStatek = statek;
                 System.out.println(kosztStatku);
                 statkiGracza2.add(tylkoStatek);
                 kosztStatku = 0;
@@ -232,8 +237,8 @@ public class ControlerStatki {
 
                 StatekSklep statek = statkiDoKulepinia.get(i);
                 kosztStatku = statek.getCena();
-                kasaGracza3 -= (int) statek.getCena();
-                Statek tylkoStatek = (Statek) statek;
+                kasaGracza3 -= statek.getCena();
+                Statek tylkoStatek = statek;
                 System.out.println(kosztStatku);
                 statkiGracza3.add(tylkoStatek);
                 kosztStatku = 0;
@@ -261,8 +266,8 @@ public class ControlerStatki {
 
                 StatekSklep statek = statkiDoKulepinia.get(i);
                 kosztStatku = statek.getCena();
-                kasaGracza1 -=(int)statek.getCena();
-                Statek tylkoStatek = (Statek) statek;
+                kasaGracza1 -= statek.getCena();
+                Statek tylkoStatek = statek;
                 System.out.println(kosztStatku);
                 statkiGracza1.add(tylkoStatek);
                 kosztStatku = 0;
@@ -288,8 +293,8 @@ public class ControlerStatki {
 
                     StatekSklep statek = statkiDoKulepinia.get(i);
                     kosztStatku = statek.getCena();
-                    kasaGracza2 -=(int)statek.getCena();
-                    Statek tylkoStatek = (Statek) statek;
+                    kasaGracza2 -= statek.getCena();
+                    Statek tylkoStatek = statek;
                     System.out.println(kosztStatku);
                     statkiGracza2.add(tylkoStatek);
                     kosztStatku = 0;
@@ -315,8 +320,8 @@ public class ControlerStatki {
 
                     StatekSklep statek = statkiDoKulepinia.get(i);
                     kosztStatku = statek.getCena();
-                    kasaGracza3 -=(int)statek.getCena();
-                    Statek tylkoStatek = (Statek) statek;
+                    kasaGracza3 -= statek.getCena();
+                    Statek tylkoStatek = statek;
                     System.out.println(kosztStatku);
                     statkiGracza3.add(tylkoStatek);
                     kosztStatku = 0;
