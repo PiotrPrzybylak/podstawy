@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Gracz {
 
-
+    private String nazwa;
     private int kasa;
     private List <Statek> statki;
 
@@ -12,7 +12,8 @@ public class Gracz {
     public Gracz() {
     }
 
-    public Gracz(List<Statek> statki,int kasa) {
+    public Gracz(String nazwa,List<Statek> statki,int kasa) {
+    this.nazwa = nazwa;
     this.statki= statki;
     this.kasa = kasa;
     }
@@ -26,11 +27,5 @@ public class Gracz {
         return statki;
     }
 
-    public void setKasa(int kasa) {
-        this.kasa = kasa;
-    }
-
-    public void setStatki(List<Statek> statki) {
-        this.statki = statki;
-    }
+   public String getNazwa() { return nazwa;}
 }
