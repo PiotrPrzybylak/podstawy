@@ -12,8 +12,7 @@ public class Gracz {
     public Gracz() {
     }
 
-    public Gracz(String nazwa,List<Statek> statki,int kasa) {
-    this.nazwa = nazwa;
+    public Gracz(List<Statek> statki,int kasa) {
     this.statki= statki;
     this.kasa = kasa;
     }
@@ -27,5 +26,5 @@ public class Gracz {
         return statki;
     }
 
-   public String getNazwa() { return nazwa;}
+
 }

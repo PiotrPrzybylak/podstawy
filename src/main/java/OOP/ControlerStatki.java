@@ -22,12 +22,10 @@ public class ControlerStatki {
     private int kasaGracza3 = 1000000;
     private int kosztStatku = 0;
 
-    Gracz gracz1= new Gracz("Gracz 1", statkiGracza1,kasaGracza1);
-    Gracz gracz2= new Gracz("Gracz 2", statkiGracza2,kasaGracza2 );
-    Gracz gracz3= new Gracz("Gracz 3",statkiGracza3,kasaGracza3);
+    Gracz gracz1= new Gracz(statkiGracza1,kasaGracza1);
+    Gracz gracz2= new Gracz(statkiGracza2,kasaGracza2 );
+    Gracz gracz3= new Gracz(statkiGracza3,kasaGracza3);
 
-    //gracz1.setKasa(kasaGracza1);
-    //gracz1.setStatki(List <Statek> statkiGracza1)
 
     public ControlerStatki (){
         statkiGracza1.add( new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
@@ -59,8 +57,7 @@ public class ControlerStatki {
             @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje,
             Model model
     ){
-
-        if (ktoSprzedaje.equals(gracz1.getNazwa())) {
+        if (ktoSprzedaje.equals("Gracz 1")) {
 
             // foreach po liscie statkiGracza1
             for (int i = 0; i < statkiGracza1.size(); i++) {
@@ -84,7 +81,7 @@ public class ControlerStatki {
             }
         }
 
-        else if (ktoSprzedaje.equals(gracz2.getNazwa())){
+        else if (ktoSprzedaje.equals("Gracz 2")){
             // foreach po liscie statkiGracza2
             for (int i = 0; i < statkiGracza2.size(); i++) {
                 Statek sprzedany = statkiGracza2.get(i);
@@ -107,7 +104,7 @@ public class ControlerStatki {
             }
         }
 
-        else if (ktoSprzedaje.equals(gracz3.getNazwa())){
+        else if (ktoSprzedaje.equals("Gracz 3")){
             // foreach po liscie statkiGracza3
             for (int i = 0; i < statkiGracza3.size(); i++) {
                 Statek sprzedany = statkiGracza3.get(i);
@@ -130,16 +127,7 @@ public class ControlerStatki {
             }
         }
 
-        if (ktoSprzedaje.equals("Gracz 1")) {
-            return "redirect:/sprzedaz?ktoSprzedaje=Gracz 1";
-        } else if (ktoSprzedaje.equals("Gracz 2")) {
-            return "redirect:/sprzedaz?ktoSprzedaje=Gracz 2";
-        } else if (ktoSprzedaje.equals("Gracz 3")) {
-            return "redirect:/sprzedaz?ktoSprzedaje=Gracz 3";
-        } else {
-            return "redirect:/ktoKupuje";
-        }
-
+            return "redirect:/sprzedaz?ktoSprzedaje="+ktoSprzedaje;
     }
 
 
@@ -153,52 +141,41 @@ public class ControlerStatki {
             Model model
     ) {
         System.out.println(ktoKupuje + " kupił statek " + kupionyStatek);
-
         // foreach po liscie statkiGracza1
         for (int i = 0; i < statkiDoKulepinia.size(); i++) {
             StatekSklep kupiony = statkiDoKulepinia.get(i);
 
-            if (ktoKupuje.equals("Gracz 1") && kupionyStatek.equals(kupiony.getNazwa()) && kasaGracza1 > kupiony.getCena()) {
-                StatekSklep statek = statkiDoKulepinia.get(i);
-                kosztStatku = statek.getCena();
-                kasaGracza1 -= statek.getCena();
-                Statek tylkoStatek = statek;
-                System.out.println(kosztStatku);
-                statkiGracza1.add(tylkoStatek);
-                kosztStatku = 0;
-
-            } else if (ktoKupuje.equals("Gracz 2") && kupionyStatek.equals(kupiony.getNazwa()) && kasaGracza2 > kupiony.getCena()) {
-                StatekSklep statek = statkiDoKulepinia.get(i);
-                kosztStatku = statek.getCena();
-                kasaGracza2 -= statek.getCena();
-                Statek tylkoStatek = statek;
-                System.out.println(kosztStatku);
-                statkiGracza2.add(tylkoStatek);
-                kosztStatku = 0;
-
-            } else if (ktoKupuje.equals("Gracz 3") && kupionyStatek.equals(kupiony.getNazwa()) && kasaGracza3 > kupiony.getCena()) {
-                StatekSklep statek = statkiDoKulepinia.get(i);
-                kosztStatku = statek.getCena();
-                kasaGracza3 -= statek.getCena();
-                Statek tylkoStatek = statek;
-                System.out.println(kosztStatku);
-                statkiGracza3.add(tylkoStatek);
-                kosztStatku = 0;
+            int kasaGracza = 0;
+            if (ktoKupuje.equals("Gracz 1")) {
+                kasaGracza = kasaGracza1;
+            } else if (ktoKupuje.equals("Gracz 2")) {
+                kasaGracza = kasaGracza2;
+            } else if (ktoKupuje.equals("Gracz 3")) {
+                kasaGracza = kasaGracza3;
             }
 
+            if (kupionyStatek.equals(kupiony.getNazwa()) && kasaGracza > kupiony.getCena()) {
+                StatekSklep statek = statkiDoKulepinia.get(i);
+                kosztStatku = statek.getCena();
+                kasaGracza -= statek.getCena();
+                Statek tylkoStatek = statek;
 
-        }
+                if (ktoKupuje.equals("Gracz 1")) {
+                    kasaGracza1 = kasaGracza;
+                    statkiGracza1.add(tylkoStatek);
+                } else if (ktoKupuje.equals("Gracz 2")) {
+                    kasaGracza2 = kasaGracza;
+                    statkiGracza2.add(tylkoStatek);
+                } else if (ktoKupuje.equals("Gracz 3")) {
+                    kasaGracza3 = kasaGracza;
+                    statkiGracza3.add(tylkoStatek);
+                }
 
-        // return "redirect:/zakupyURL";
-        if (ktoKupuje.equals("Gracz 1")) {
-            return "redirect:/zakupyURL?ktoKupuje=Gracz 1";
-        } else if (ktoKupuje.equals("Gracz 2")) {
-            return "redirect:/zakupyURL?ktoKupuje=Gracz 2";
-        } else if (ktoKupuje.equals("Gracz 3")) {
-            return "redirect:/zakupyURL?ktoKupuje=Gracz 3";
-        } else {
-            return "redirect:/ktoKupuje";
+                System.out.println(kosztStatku);
+                kosztStatku = 0;
+            }
         }
+        return "redirect:/zakupyURL?ktoKupuje=" + ktoKupuje;
     }
 
     //Wersja na potrzeby gracza 1 oraz 2 i 3
@@ -357,11 +334,9 @@ public class ControlerStatki {
             Model model
     ) {
         model.addAttribute("ktoSprzedaje", ktoSprzedaje);
-       // model.addAttribute("statkiGracza", this.statki);
         model.addAttribute("statkiGracza1", statkiGracza1);
         model.addAttribute("statkiGracza2", statkiGracza2);
         model.addAttribute("statkiGracza3", statkiGracza3);
-       //model.addAttribute("kasaGracza", this.kasa);
         model.addAttribute("kasaGracza1", kasaGracza1);
         model.addAttribute("kasaGracza2", kasaGracza2);
         model.addAttribute("kasaGracza3", kasaGracza3);
@@ -376,12 +351,18 @@ public class ControlerStatki {
             @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje,
             Model model
     ) {
+        int kasaDanegoGracza=0;
+        if (ktoKupuje.equals("Gracz 1")){
+            kasaDanegoGracza = kasaGracza1;
+        } else if (ktoKupuje.equals("Gracz 2")){
+            kasaDanegoGracza = kasaGracza2;
+        } else if (ktoKupuje.equals("Gracz 3")){
+            kasaDanegoGracza = kasaGracza3;
+        }
+
         model.addAttribute("ktoKupuje", ktoKupuje);
         model.addAttribute("statkiDoKulepinia", statkiDoKulepinia);
-       // model.addAttribute("kasaGracza", this.kasa);
-        model.addAttribute("kasaGracza1", kasaGracza1);
-        model.addAttribute("kasaGracza2", kasaGracza2);
-        model.addAttribute("kasaGracza3", kasaGracza3);
+        model.addAttribute("kasaDanegoGracza", kasaDanegoGracza);
 
         return "sklepZUrl";
     }
