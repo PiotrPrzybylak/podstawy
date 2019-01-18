@@ -57,76 +57,52 @@ public class ControlerStatki {
             @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje,
             Model model
     ){
+
+        List <Statek> statkiNaSprzedaz = new ArrayList <>();
+        int kasaGracza = 0;
+
         if (ktoSprzedaje.equals("Gracz 1")) {
+            statkiNaSprzedaz = statkiGracza1;
+            kasaGracza = gracz1.getKasa();
+        } else if (ktoSprzedaje.equals("Gracz 2")) {
+            statkiNaSprzedaz = statkiGracza2;
+            kasaGracza = gracz2.getKasa();
+        } else if (ktoSprzedaje.equals("Gracz 3")) {
+            statkiNaSprzedaz = statkiGracza3;
+            kasaGracza = gracz3.getKasa();
+        }
 
-            // foreach po liscie statkiGracza1
-            for (int i = 0; i < statkiGracza1.size(); i++) {
-                Statek sprzedany = statkiGracza1.get(i);
 
-                if (sprzedanyStatek == sprzedany.getEhp()) {
-                    Statek statek = statkiGracza1.get(i);
-                    statkiZlomowisko.add(statek);
-                    statkiGracza1.remove(statek);
-                }
+        // foreach po liscie
+        for (int i = 0; i < statkiNaSprzedaz.size(); i++) {
+            Statek sprzedany = statkiNaSprzedaz.get(i);
+            if (sprzedanyStatek == sprzedany.getEhp()) {
+                Statek statek = statkiNaSprzedaz.get(i);
+                statkiZlomowisko.add(statek);
+                statkiNaSprzedaz.remove(statek);
             }
+        }
             // tu jest metoda dodawania kasy
             for (int i = 0; i < statkiDoKulepinia.size(); i++) {
                 StatekSklep bazaStatkow = statkiDoKulepinia.get(i);
 
                 if (sprzedanyStatek == bazaStatkow.getEhp()) {
                     StatekSklep StatekZCena = statkiDoKulepinia.get(i);
-                    int cenaSprzdanegoStatku = StatekZCena.getCena();
-                    kasaGracza1 += (cenaSprzdanegoStatku/2);
+                    kasaGracza += StatekZCena.getCena()/2;
                 }
             }
+
+
+        if (ktoSprzedaje.equals("Gracz 1")) {
+            statkiGracza1 = statkiNaSprzedaz;
+            gracz1.setKasa(kasaGracza);
+        } else if (ktoSprzedaje.equals("Gracz 2")) {
+            statkiGracza2 = statkiNaSprzedaz;
+            gracz2.setKasa(kasaGracza);
+        } else if (ktoSprzedaje.equals("Gracz 3")) {
+            statkiGracza3 = statkiNaSprzedaz;
+            gracz3.setKasa(kasaGracza);
         }
-
-        else if (ktoSprzedaje.equals("Gracz 2")){
-            // foreach po liscie statkiGracza2
-            for (int i = 0; i < statkiGracza2.size(); i++) {
-                Statek sprzedany = statkiGracza2.get(i);
-
-                if (sprzedanyStatek == sprzedany.getEhp()) {
-                    Statek statek = statkiGracza2.get(i);
-                    statkiZlomowisko.add(statek);
-                    statkiGracza2.remove(statek);
-                }
-            }
-            // tu jest metoda dodawania kasy
-            for (int i = 0; i < statkiDoKulepinia.size(); i++) {
-                StatekSklep bazaStatkow = statkiDoKulepinia.get(i);
-
-                if (sprzedanyStatek == bazaStatkow.getEhp()) {
-                    StatekSklep StatekZCena = statkiDoKulepinia.get(i);
-                    int cenaSprzdanegoStatku = StatekZCena.getCena();
-                    kasaGracza2 += (cenaSprzdanegoStatku/2);
-                }
-            }
-        }
-
-        else if (ktoSprzedaje.equals("Gracz 3")){
-            // foreach po liscie statkiGracza3
-            for (int i = 0; i < statkiGracza3.size(); i++) {
-                Statek sprzedany = statkiGracza3.get(i);
-
-                if (sprzedanyStatek == sprzedany.getEhp()) {
-                    Statek statek = statkiGracza3.get(i);
-                    statkiZlomowisko.add(statek);
-                    statkiGracza3.remove(statek);
-                }
-            }
-            // tu jest metoda dodawania kasy
-            for (int i = 0; i < statkiDoKulepinia.size(); i++) {
-                StatekSklep bazaStatkow = statkiDoKulepinia.get(i);
-
-                if (sprzedanyStatek == bazaStatkow.getEhp()) {
-                    StatekSklep StatekZCena = statkiDoKulepinia.get(i);
-                    int cenaSprzdanegoStatku = StatekZCena.getCena();
-                    kasaGracza3 += (cenaSprzdanegoStatku/2);
-                }
-            }
-        }
-
             return "redirect:/sprzedaz?ktoSprzedaje="+ktoSprzedaje;
     }
 
@@ -327,17 +303,26 @@ public class ControlerStatki {
     // tu bedzie sprzedaz
     @RequestMapping ("/sprzedaz")
     public String sprzedaz (
-          //  @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje,
             @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje,
             Model model
     ) {
+        List <Statek> statkiNaSprzedaz = new ArrayList <>();
+        int kasaGracza = 0;
+
+        if (ktoSprzedaje.equals("Gracz 1")) {
+            statkiNaSprzedaz = statkiGracza1;
+            kasaGracza = gracz1.getKasa();
+        } else if (ktoSprzedaje.equals("Gracz 2")) {
+            statkiNaSprzedaz = statkiGracza2;
+            kasaGracza = gracz2.getKasa();
+        } else if (ktoSprzedaje.equals("Gracz 3")) {
+            statkiNaSprzedaz = statkiGracza3;
+            kasaGracza = gracz3.getKasa();
+        }
+
         model.addAttribute("ktoSprzedaje", ktoSprzedaje);
-        model.addAttribute("statkiGracza1", statkiGracza1);
-        model.addAttribute("statkiGracza2", statkiGracza2);
-        model.addAttribute("statkiGracza3", statkiGracza3);
-        model.addAttribute("kasaGracza1", kasaGracza1);
-        model.addAttribute("kasaGracza2", kasaGracza2);
-        model.addAttribute("kasaGracza3", kasaGracza3);
+        model.addAttribute("statkiNaSprzedaz", statkiNaSprzedaz);
+        model.addAttribute("kasaGracza", kasaGracza);
         model.addAttribute("statkiZlomowisko", statkiZlomowisko);
 
         return "zlomowisko";
