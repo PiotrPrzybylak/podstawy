@@ -141,38 +141,36 @@ public class ControlerStatki {
             Model model
     ) {
         System.out.println(ktoKupuje + " kupił statek " + kupionyStatek);
-        // foreach po liscie statkiGracza1
+        // foreach po liscie
         for (int i = 0; i < statkiDoKulepinia.size(); i++) {
             StatekSklep kupiony = statkiDoKulepinia.get(i);
 
             int kasaGracza = 0;
             if (ktoKupuje.equals("Gracz 1")) {
-                kasaGracza = kasaGracza1;
+                kasaGracza = gracz1.getKasa();
             } else if (ktoKupuje.equals("Gracz 2")) {
-                kasaGracza = kasaGracza2;
+                kasaGracza = gracz2.getKasa();
             } else if (ktoKupuje.equals("Gracz 3")) {
-                kasaGracza = kasaGracza3;
+                kasaGracza = gracz3.getKasa();
             }
 
             if (kupionyStatek.equals(kupiony.getNazwa()) && kasaGracza > kupiony.getCena()) {
                 StatekSklep statek = statkiDoKulepinia.get(i);
-                kosztStatku = statek.getCena();
                 kasaGracza -= statek.getCena();
-                Statek tylkoStatek = statek;
+                Statek tylkoStatek = (Statek) statek;
+                System.out.println(kosztStatku);
+
 
                 if (ktoKupuje.equals("Gracz 1")) {
-                    kasaGracza1 = kasaGracza;
+                    gracz1.setKasa(kasaGracza);
                     statkiGracza1.add(tylkoStatek);
                 } else if (ktoKupuje.equals("Gracz 2")) {
-                    kasaGracza2 = kasaGracza;
+                    gracz2.setKasa(kasaGracza);
                     statkiGracza2.add(tylkoStatek);
                 } else if (ktoKupuje.equals("Gracz 3")) {
-                    kasaGracza3 = kasaGracza;
+                    gracz3.setKasa(kasaGracza);
                     statkiGracza3.add(tylkoStatek);
                 }
-
-                System.out.println(kosztStatku);
-                kosztStatku = 0;
             }
         }
         return "redirect:/zakupyURL?ktoKupuje=" + ktoKupuje;
@@ -353,11 +351,12 @@ public class ControlerStatki {
     ) {
         int kasaDanegoGracza=0;
         if (ktoKupuje.equals("Gracz 1")){
-            kasaDanegoGracza = kasaGracza1;
+            kasaDanegoGracza = gracz1.getKasa();
         } else if (ktoKupuje.equals("Gracz 2")){
-            kasaDanegoGracza = kasaGracza2;
+
+            kasaDanegoGracza = gracz2.getKasa();
         } else if (ktoKupuje.equals("Gracz 3")){
-            kasaDanegoGracza = kasaGracza3;
+            kasaDanegoGracza = gracz3.getKasa();
         }
 
         model.addAttribute("ktoKupuje", ktoKupuje);

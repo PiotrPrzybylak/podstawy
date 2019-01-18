@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Gracz {
 
-    private String nazwa;
     private int kasa;
     private List <Statek> statki;
 
@@ -27,4 +26,11 @@ public class Gracz {
     }
 
 
+    public void setKasa(int kasa) {
+        this.kasa = kasa;
+    }
+
+    public void setStatki(List<Statek> statki) {
+        this.statki = statki;
+    }
 }
