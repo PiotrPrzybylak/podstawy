@@ -17,14 +17,11 @@ public class ControlerStatki {
     private List <Statek> statkiGracza3 = new ArrayList <>();
     private List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
     private List <Statek> statkiZlomowisko = new ArrayList<>();
-    private int kasaGracza1 = 1000000;
-    private int kasaGracza2 = 1000000;
-    private int kasaGracza3 = 1000000;
     private int kosztStatku = 0;
 
-    Gracz gracz1= new Gracz(statkiGracza1,kasaGracza1);
-    Gracz gracz2= new Gracz(statkiGracza2,kasaGracza2 );
-    Gracz gracz3= new Gracz(statkiGracza3,kasaGracza3);
+    Gracz gracz1= new Gracz(statkiGracza1,1000000);
+    Gracz gracz2= new Gracz(statkiGracza2,1000000 );
+    Gracz gracz3= new Gracz(statkiGracza3,1000000);
 
 
     public ControlerStatki (){
@@ -153,9 +150,9 @@ public class ControlerStatki {
     ) {
         model.addAttribute("ktoKupuje", ktoKupuje);
         model.addAttribute("statkiDoKulepinia", statkiDoKulepinia);
-        model.addAttribute("kasaGracza1", kasaGracza1);
-        model.addAttribute("kasaGracza2", kasaGracza2);
-        model.addAttribute("kasaGracza3", kasaGracza3);
+        model.addAttribute("kasaGracza1", gracz1.getKasa());
+        model.addAttribute("kasaGracza2", gracz2.getKasa());
+        model.addAttribute("kasaGracza3", gracz3.getKasa());
 
         return "ktoKupujeWybor";
     }
