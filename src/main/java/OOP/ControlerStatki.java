@@ -23,17 +23,17 @@ public class ControlerStatki {
     public ControlerStatki (){
         gracz1.getStatki().add( new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
         gracz1.getStatki().add(new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545));
-        gracz1.getStatki().add(new Fregata(new Nacja("Gallente"), "zosia", "Tristan", 100, 5600));
+        gracz1.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Tristan", 100, 5600));
         gracz1.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Atron", 4000,4000));
 
         gracz2.getStatki().add( new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
         gracz2.getStatki().add(new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545));
-        gracz2.getStatki().add(new Fregata(new Nacja("Gallente"), "zosia2", "Tristan", 100, 5600));
+        gracz2.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Tristan", 100, 5600));
         gracz2.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Atron", 4000,4000));
 
         gracz3.getStatki().add( new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
         gracz3.getStatki().add(new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545));
-        gracz3.getStatki().add(new Fregata(new Nacja("Gallente"), "zosia", "Tristan", 100, 5600));
+        gracz3.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Tristan", 100, 5600));
         gracz3.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Atron", 4000,4000));
 
         statkiDoKulepinia.add( new StatekSklep(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565, 30000));
@@ -121,7 +121,7 @@ public class ControlerStatki {
                 StatekSklep statek = statkiDoKulepinia.get(i);
                 kasaGracza -= statek.getCena();
                 Statek tylkoStatek = (Statek) statek;
-                System.out.println(kosztStatku);
+
 
                 if (ktoKupuje.equals("Gracz 1")) {
                     gracz1.setKasa(kasaGracza);

@@ -10,7 +10,7 @@
      <form action="/kupnoZUrl">
         <select class="row" id="statkiDoKulepinia" name="kupionyStatek" >
           <option th:each="statek : ${statkiDoKulepinia}"
-                  th:selected="${statek.typ == 'zosia'}"
+
 
                   th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp} + ' CENA: ' + ${statek.cena}"
                   th:value="${statek.nazwa}"
