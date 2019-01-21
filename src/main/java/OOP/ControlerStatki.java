@@ -68,9 +68,8 @@ public class ControlerStatki {
         for (int i = 0; i < statkiNaSprzedaz.size(); i++) {
             Statek sprzedany = statkiNaSprzedaz.get(i);
             if (sprzedanyStatek == sprzedany.getEhp()) {
-                Statek statek = statkiNaSprzedaz.get(i);
-                statkiZlomowisko.add(statek);
-                statkiNaSprzedaz.remove(statek);
+                statkiZlomowisko.add(statkiNaSprzedaz.get(i));
+                statkiNaSprzedaz.remove(statkiNaSprzedaz.get(i));
                 break;
             }
         }
@@ -79,8 +78,7 @@ public class ControlerStatki {
                 StatekSklep bazaStatkow = statkiDoKulepinia.get(i);
 
                 if (sprzedanyStatek == bazaStatkow.getEhp()) {
-                    StatekSklep StatekZCena = statkiDoKulepinia.get(i);
-                    kasaGracza += StatekZCena.getCena()/2;
+                    kasaGracza += statkiDoKulepinia.get(i).getCena()/2;
                 }
             }
 
