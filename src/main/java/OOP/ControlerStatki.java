@@ -71,7 +71,7 @@ public class ControlerStatki {
                 Statek statek = statkiNaSprzedaz.get(i);
                 statkiZlomowisko.add(statek);
                 statkiNaSprzedaz.remove(statek);
-                //break;
+                break;
             }
         }
             // tu jest metoda dodawania kasy
