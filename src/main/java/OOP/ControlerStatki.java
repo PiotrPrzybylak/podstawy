@@ -52,17 +52,18 @@ public class ControlerStatki {
 
         List <Statek> statkiNaSprzedaz = new ArrayList <>();
         int kasaGracza = 0;
+        Gracz gracz = new Gracz();
 
         if (ktoSprzedaje.equals("Gracz 1")) {
-            statkiNaSprzedaz = gracz1.getStatki();
-            kasaGracza = gracz1.getKasa();
+            gracz = gracz1;
         } else if (ktoSprzedaje.equals("Gracz 2")) {
-            statkiNaSprzedaz = gracz2.getStatki();
-            kasaGracza = gracz2.getKasa();
+            gracz = gracz2;
         } else if (ktoSprzedaje.equals("Gracz 3")) {
-            statkiNaSprzedaz = gracz3.getStatki();
-            kasaGracza = gracz3.getKasa();
+            gracz = gracz3;
         }
+
+        statkiNaSprzedaz = gracz.getStatki();
+        kasaGracza = gracz.getKasa();
 
         // foreach po liscie
         for (int i = 0; i < statkiNaSprzedaz.size(); i++) {
@@ -82,15 +83,15 @@ public class ControlerStatki {
                 }
             }
 
+        gracz.setStatki(statkiNaSprzedaz);
+        gracz.setKasa(kasaGracza);
+
         if (ktoSprzedaje.equals("Gracz 1")) {
-            gracz1.setStatki(statkiNaSprzedaz);
-            gracz1.setKasa(kasaGracza);
+            gracz1 = gracz;
         } else if (ktoSprzedaje.equals("Gracz 2")) {
-            gracz2.setStatki(statkiNaSprzedaz);
-            gracz2.setKasa(kasaGracza);
+            gracz2=gracz;
         } else if (ktoSprzedaje.equals("Gracz 3")) {
-            gracz3.setStatki(statkiNaSprzedaz);
-            gracz3.setKasa(kasaGracza);
+            gracz3=gracz;
         }
             return "redirect:/sprzedaz?ktoSprzedaje="+ktoSprzedaje;
     }
@@ -108,29 +109,31 @@ public class ControlerStatki {
             StatekSklep kupiony = statkiDoKulepinia.get(i);
 
             int kasaGracza = 0;
+            Gracz gracz = new Gracz();
             if (ktoKupuje.equals("Gracz 1")) {
-                kasaGracza = gracz1.getKasa();
+                gracz = gracz1;
             } else if (ktoKupuje.equals("Gracz 2")) {
-                kasaGracza = gracz2.getKasa();
+                gracz = gracz2;
             } else if (ktoKupuje.equals("Gracz 3")) {
-                kasaGracza = gracz3.getKasa();
+                gracz = gracz3;
             }
+
+            kasaGracza = gracz.getKasa();
 
             if (kupionyStatek.equals(kupiony.getNazwa()) && kasaGracza > kupiony.getCena()) {
                 StatekSklep statek = statkiDoKulepinia.get(i);
                 kasaGracza -= statek.getCena();
                 Statek tylkoStatek = (Statek) statek;
 
+                gracz.setKasa(kasaGracza);
+                gracz.getStatki().add(tylkoStatek);
 
                 if (ktoKupuje.equals("Gracz 1")) {
-                    gracz1.setKasa(kasaGracza);
-                    gracz1.getStatki().add(tylkoStatek);
+                    gracz1=gracz;
                 } else if (ktoKupuje.equals("Gracz 2")) {
-                    gracz2.setKasa(kasaGracza);
-                    gracz2.getStatki().add(tylkoStatek);
+                    gracz2=gracz;
                 } else if (ktoKupuje.equals("Gracz 3")) {
-                    gracz3.setKasa(kasaGracza);
-                    gracz3.getStatki().add(tylkoStatek);
+                    gracz3=gracz;
                 }
             }
         }
@@ -160,17 +163,23 @@ public class ControlerStatki {
     ) {
         List <Statek> statkiNaSprzedaz = new ArrayList <>();
         int kasaGracza = 0;
-
+        Gracz gracz = new Gracz();
         if (ktoSprzedaje.equals("Gracz 1")) {
-            statkiNaSprzedaz = gracz1.getStatki();
-            kasaGracza = gracz1.getKasa();
+            gracz=gracz1;
+           // statkiNaSprzedaz = gracz1.getStatki();
+           // kasaGracza = gracz1.getKasa();
         } else if (ktoSprzedaje.equals("Gracz 2")) {
-            statkiNaSprzedaz = gracz2.getStatki();
-            kasaGracza = gracz2.getKasa();
+            gracz=gracz2;
+            //statkiNaSprzedaz = gracz2.getStatki();
+            //kasaGracza = gracz2.getKasa();
         } else if (ktoSprzedaje.equals("Gracz 3")) {
-            statkiNaSprzedaz = gracz3.getStatki();
-            kasaGracza = gracz3.getKasa();
+            gracz=gracz2;
+            //statkiNaSprzedaz = gracz3.getStatki();
+            //kasaGracza = gracz3.getKasa();
         }
+
+        statkiNaSprzedaz = gracz.getStatki();
+        kasaGracza = gracz.getKasa();
 
         model.addAttribute("ktoSprzedaje", ktoSprzedaje);
         model.addAttribute("statkiNaSprzedaz", statkiNaSprzedaz);
