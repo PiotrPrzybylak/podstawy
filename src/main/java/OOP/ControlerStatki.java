@@ -166,20 +166,22 @@ public class ControlerStatki {
         Gracz gracz = new Gracz();
         if (ktoSprzedaje.equals("Gracz 1")) {
             gracz=gracz1;
-           // statkiNaSprzedaz = gracz1.getStatki();
-           // kasaGracza = gracz1.getKasa();
         } else if (ktoSprzedaje.equals("Gracz 2")) {
             gracz=gracz2;
-            //statkiNaSprzedaz = gracz2.getStatki();
-            //kasaGracza = gracz2.getKasa();
         } else if (ktoSprzedaje.equals("Gracz 3")) {
-            gracz=gracz2;
-            //statkiNaSprzedaz = gracz3.getStatki();
-            //kasaGracza = gracz3.getKasa();
+            gracz=gracz3;
         }
 
         statkiNaSprzedaz = gracz.getStatki();
         kasaGracza = gracz.getKasa();
+
+        if (ktoSprzedaje.equals("Gracz 1")) {
+            gracz1=gracz;
+        } else if (ktoSprzedaje.equals("Gracz 2")) {
+            gracz2=gracz;
+        } else if (ktoSprzedaje.equals("Gracz 3")) {
+            gracz3=gracz;
+        }
 
         model.addAttribute("ktoSprzedaje", ktoSprzedaje);
         model.addAttribute("statkiNaSprzedaz", statkiNaSprzedaz);
@@ -196,18 +198,27 @@ public class ControlerStatki {
             Model model
     ) {
         int kasaDanegoGracza=0;
+        Gracz gracz = new Gracz();
         if (ktoKupuje.equals("Gracz 1")){
-            kasaDanegoGracza = gracz1.getKasa();
+            gracz=gracz1;
         } else if (ktoKupuje.equals("Gracz 2")){
-
-            kasaDanegoGracza = gracz2.getKasa();
+            gracz=gracz2;
         } else if (ktoKupuje.equals("Gracz 3")){
-            kasaDanegoGracza = gracz3.getKasa();
-        }
+            gracz=gracz3;
+                }
+        kasaDanegoGracza = gracz.getKasa();
 
         model.addAttribute("ktoKupuje", ktoKupuje);
         model.addAttribute("statkiDoKulepinia", statkiDoKulepinia);
         model.addAttribute("kasaDanegoGracza", kasaDanegoGracza);
+
+        if (ktoKupuje.equals("Gracz 1")){
+            gracz1=gracz;
+        } else if (ktoKupuje.equals("Gracz 2")){
+            gracz2=gracz;
+        } else if (ktoKupuje.equals("Gracz 3")){
+            gracz3=gracz;
+        }
 
         return "sklepZUrl";
     }
