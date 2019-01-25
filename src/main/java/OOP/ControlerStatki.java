@@ -86,13 +86,6 @@ public class ControlerStatki {
         gracz.setStatki(statkiNaSprzedaz);
         gracz.setKasa(kasaGracza);
 
-        if (ktoSprzedaje.equals("Gracz 1")) {
-            gracz1 = gracz;
-        } else if (ktoSprzedaje.equals("Gracz 2")) {
-            gracz2=gracz;
-        } else if (ktoSprzedaje.equals("Gracz 3")) {
-            gracz3=gracz;
-        }
             return "redirect:/sprzedaz?ktoSprzedaje="+ktoSprzedaje;
     }
 
@@ -127,14 +120,6 @@ public class ControlerStatki {
 
                 gracz.setKasa(kasaGracza);
                 gracz.getStatki().add(tylkoStatek);
-
-                if (ktoKupuje.equals("Gracz 1")) {
-                    gracz1=gracz;
-                } else if (ktoKupuje.equals("Gracz 2")) {
-                    gracz2=gracz;
-                } else if (ktoKupuje.equals("Gracz 3")) {
-                    gracz3=gracz;
-                }
             }
         }
         return "redirect:/zakupyURL?ktoKupuje=" + ktoKupuje;
@@ -175,14 +160,6 @@ public class ControlerStatki {
         statkiNaSprzedaz = gracz.getStatki();
         kasaGracza = gracz.getKasa();
 
-        if (ktoSprzedaje.equals("Gracz 1")) {
-            gracz1=gracz;
-        } else if (ktoSprzedaje.equals("Gracz 2")) {
-            gracz2=gracz;
-        } else if (ktoSprzedaje.equals("Gracz 3")) {
-            gracz3=gracz;
-        }
-
         model.addAttribute("ktoSprzedaje", ktoSprzedaje);
         model.addAttribute("statkiNaSprzedaz", statkiNaSprzedaz);
         model.addAttribute("kasaGracza", kasaGracza);
@@ -211,14 +188,6 @@ public class ControlerStatki {
         model.addAttribute("ktoKupuje", ktoKupuje);
         model.addAttribute("statkiDoKulepinia", statkiDoKulepinia);
         model.addAttribute("kasaDanegoGracza", kasaDanegoGracza);
-
-        if (ktoKupuje.equals("Gracz 1")){
-            gracz1=gracz;
-        } else if (ktoKupuje.equals("Gracz 2")){
-            gracz2=gracz;
-        } else if (ktoKupuje.equals("Gracz 3")){
-            gracz3=gracz;
-        }
 
         return "sklepZUrl";
     }
