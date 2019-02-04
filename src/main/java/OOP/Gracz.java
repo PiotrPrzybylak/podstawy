@@ -33,4 +33,24 @@ public class Gracz {
     public void setStatki(List<Statek> statki) {
         this.statki = statki;
     }
+
+    // metoda kupowania
+    public void kupStatek (String kupionyStatek, List <StatekSklep> statkiDoKulepinia) {
+        for (int i = 0; i < statkiDoKulepinia.size(); i++) {
+            StatekSklep kupiony = statkiDoKulepinia.get(i);
+
+            if (kupionyStatek.equals(kupiony.getNazwa()) && this.kasa > kupiony.getCena()) {
+                StatekSklep statek = statkiDoKulepinia.get(i);
+                this.kasa -= statek.getCena();
+                Statek tylkoStatek = (Statek) statek;
+                this.statki.add(tylkoStatek);
+            }
+
+        }
+    }
+
+
+
+
+
 }

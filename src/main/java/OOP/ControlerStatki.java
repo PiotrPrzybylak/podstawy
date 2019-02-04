@@ -11,7 +11,7 @@ import java.util.List;
 @Controller
 public class ControlerStatki {
 
-    private List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
+    public List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
     private List <Statek> statkiZlomowisko = new ArrayList<>();
     private int kosztStatku = 0;
 
@@ -97,11 +97,7 @@ public class ControlerStatki {
             Model model
     ) {
         System.out.println(ktoKupuje + " kupił statek " + kupionyStatek);
-        // foreach po liscie
-        for (int i = 0; i < statkiDoKulepinia.size(); i++) {
-            StatekSklep kupiony = statkiDoKulepinia.get(i);
 
-            int kasaGracza = 0;
             Gracz gracz = new Gracz();
             if (ktoKupuje.equals("Gracz 1")) {
                 gracz = gracz1;
@@ -111,17 +107,8 @@ public class ControlerStatki {
                 gracz = gracz3;
             }
 
-            kasaGracza = gracz.getKasa();
+        gracz.kupStatek(kupionyStatek, statkiDoKulepinia);
 
-            if (kupionyStatek.equals(kupiony.getNazwa()) && kasaGracza > kupiony.getCena()) {
-                StatekSklep statek = statkiDoKulepinia.get(i);
-                kasaGracza -= statek.getCena();
-                Statek tylkoStatek = (Statek) statek;
-
-                gracz.setKasa(kasaGracza);
-                gracz.getStatki().add(tylkoStatek);
-            }
-        }
         return "redirect:/zakupyURL?ktoKupuje=" + ktoKupuje;
     }
 
