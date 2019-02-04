@@ -208,66 +208,38 @@ public class ControlerStatki {
 
         Statek pierwszy = new Statek();
         Statek drugi = new Statek();
+        Gracz graczPierwszy = new Gracz();
+        Gracz graczDrugi = new Gracz();
 
         // teraz IFy dla walka dla wszystkich opcji
-
         if (ktoWalczy.equals("Gracz 1+2")) {
-            // foreach po liscie statki Gracza1
-            for (int i = 0; i < gracz1.getStatki().size(); i++) {
-                Statek statek = gracz1.getStatki().get(i);
+            graczPierwszy=gracz1;
+            graczDrugi = gracz2;
+        }
+        if (ktoWalczy.equals("Gracz 2+3")) {
+            graczPierwszy=gracz2;
+            graczDrugi = gracz3;
+        }
+        if (ktoWalczy.equals("Gracz 3+1")) {
+            graczPierwszy=gracz3;
+            graczDrugi = gracz1;
+        }
+        // foreach po liscie statki Gracza1
+        for (int i = 0; i < graczPierwszy.getStatki().size(); i++) {
+            Statek statek = graczPierwszy.getStatki().get(i);
 
-                if (statekGracza1.equals(statek.getNazwa())) {
-                    pierwszy = gracz1.getStatki().get(i);
-                }
-            }
-
-            // foreach po liscie statki Gracza2
-            for (int i = 0; i < gracz2.getStatki().size(); i++) {
-                Statek statek = gracz2.getStatki().get(i);
-
-                if (statekGracza2.equals(statek.getNazwa())) {
-                    drugi = gracz2.getStatki().get(i);
-                }
-            }
-        } else if (ktoWalczy.equals("Gracz 2+3")) {
-            // foreach po liscie statki Gracza2
-            for (int i = 0; i < gracz2.getStatki().size(); i++) {
-                Statek statek = gracz2.getStatki().get(i);
-
-                if (statekGracza2.equals(statek.getNazwa())) {
-                    pierwszy = gracz2.getStatki().get(i);
-                }
-            }
-
-            // foreach po liscie statki Gracza3
-            for (int i = 0; i < gracz3.getStatki().size(); i++) {
-                Statek statek = gracz3.getStatki().get(i);
-
-                if (statekGracza3.equals(statek.getNazwa())) {
-                    drugi = gracz3.getStatki().get(i);
-                }
-            }
-        } else if (ktoWalczy.equals("Gracz 3+1")) {
-            // foreach po liscie statki Gracza3
-            for (int i = 0; i < gracz3.getStatki().size(); i++) {
-                Statek statek = gracz3.getStatki().get(i);
-
-                if (statekGracza3.equals(statek.getNazwa())) {
-                    pierwszy = gracz3.getStatki().get(i);
-                }
-            }
-
-            // foreach po liscie statki Gracza1
-            for (int i = 0; i < gracz1.getStatki().size(); i++) {
-                Statek statek = gracz1.getStatki().get(i);
-
-                if (statekGracza1.equals(statek.getNazwa())) {
-                    drugi = gracz1.getStatki().get(i);
-                }
+            if (statekGracza1.equals(statek.getNazwa())) {
+                pierwszy = graczPierwszy.getStatki().get(i);
             }
         }
+        // foreach po liscie statki Gracza2
+        for (int i = 0; i < graczDrugi.getStatki().size(); i++) {
+            Statek statek = graczDrugi.getStatki().get(i);
 
-
+            if (statekGracza2.equals(statek.getNazwa())) {
+                drugi = graczDrugi.getStatki().get(i);
+            }
+        }
 
        String wygranyStatek = TestStatki.walka(pierwszy,drugi);
        System.out.println(wygranyStatek);
