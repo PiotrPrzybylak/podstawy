@@ -11,7 +11,7 @@ import java.util.List;
 @Controller
 public class ControlerStatki {
 
-    public List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
+    private List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
     private List <Statek> statkiZlomowisko = new ArrayList<>();
     private int kosztStatku = 0;
 
@@ -51,7 +51,7 @@ public class ControlerStatki {
     ){
 
         List <Statek> statkiNaSprzedaz = new ArrayList <>();
-        int kasaGracza = 0;
+        //int kasaGracza = 0;
         Gracz gracz = new Gracz();
 
         if (ktoSprzedaje.equals("Gracz 1")) {
@@ -63,28 +63,7 @@ public class ControlerStatki {
         }
 
         statkiNaSprzedaz = gracz.getStatki();
-        kasaGracza = gracz.getKasa();
-
-        // foreach po liscie
-        for (int i = 0; i < statkiNaSprzedaz.size(); i++) {
-            Statek sprzedany = statkiNaSprzedaz.get(i);
-            if (sprzedanyStatek == sprzedany.getEhp()) {
-                statkiZlomowisko.add(statkiNaSprzedaz.get(i));
-                statkiNaSprzedaz.remove(statkiNaSprzedaz.get(i));
-                break;
-            }
-        }
-            // tu jest metoda dodawania kasy
-            for (int i = 0; i < statkiDoKulepinia.size(); i++) {
-                StatekSklep bazaStatkow = statkiDoKulepinia.get(i);
-
-                if (sprzedanyStatek == bazaStatkow.getEhp()) {
-                    kasaGracza += statkiDoKulepinia.get(i).getCena()/2;
-                }
-            }
-
-        gracz.setStatki(statkiNaSprzedaz);
-        gracz.setKasa(kasaGracza);
+        gracz.sprzedajStatek(sprzedanyStatek,statkiNaSprzedaz, statkiDoKulepinia, statkiZlomowisko);
 
             return "redirect:/sprzedaz?ktoSprzedaje="+ktoSprzedaje;
     }

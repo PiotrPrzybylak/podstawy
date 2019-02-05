@@ -5,15 +5,15 @@ import java.util.List;
 public class Gracz {
 
     private int kasa;
-    private List <Statek> statki;
+    private List<Statek> statki;
 
 
     public Gracz() {
     }
 
-    public Gracz(List<Statek> statki,int kasa) {
-    this.statki= statki;
-    this.kasa = kasa;
+    public Gracz(List<Statek> statki, int kasa) {
+        this.statki = statki;
+        this.kasa = kasa;
     }
 
 
@@ -35,7 +35,7 @@ public class Gracz {
     }
 
     // metoda kupowania
-    public void kupStatek (String kupionyStatek, List <StatekSklep> statkiDoKulepinia) {
+    public void kupStatek(String kupionyStatek, List<StatekSklep> statkiDoKulepinia) {
         for (int i = 0; i < statkiDoKulepinia.size(); i++) {
             StatekSklep kupiony = statkiDoKulepinia.get(i);
 
@@ -49,8 +49,27 @@ public class Gracz {
         }
     }
 
+    // metoda sprzedawania
+    public void sprzedajStatek(int sprzedanyStatek, List<Statek> statkiNaSprzedaz, List<StatekSklep> statkiDoKulepinia,  List <Statek> statkiZlomowisko) {
+
+        // foreach po liscie
+        for (int i = 0; i < statkiNaSprzedaz.size(); i++) {
+            Statek sprzedany = statkiNaSprzedaz.get(i);
+            if (sprzedanyStatek == sprzedany.getEhp()) {
+                statkiZlomowisko.add(statkiNaSprzedaz.get(i));
+                statkiNaSprzedaz.remove(statkiNaSprzedaz.get(i));
+                break;
+            }
+        }
+        // tu jest metoda dodawania kasy
+        for (int i = 0; i < statkiDoKulepinia.size(); i++) {
+            StatekSklep bazaStatkow = statkiDoKulepinia.get(i);
+
+            if (sprzedanyStatek == bazaStatkow.getEhp()) {
+                this.kasa += statkiDoKulepinia.get(i).getCena()/2;
+            }
+        }
 
 
-
-
+    }
 }
