@@ -16,11 +16,11 @@
                  </select>
          <br/>
          <br/>
-         <div th:text="'Kasa '+${ktoSprzedaje}"></div>
+         <div th:text="'Kasa '+${kto}"></div>
          <div th:text="${kasaGracza}"></div>
          <br/>
-                    <input type="hidden" name="ktoSprzedaje" th:value="${ktoSprzedaje}"/>
-                    <input type="submit" th:value="'Sprzedaje '+${ktoSprzedaje}"/>
+                    <input type="hidden" name="kto" th:value="${kto}"/>
+                    <input type="submit" th:value="'Sprzedaje '+${kto}"/>
          <br/>
     </form>
 

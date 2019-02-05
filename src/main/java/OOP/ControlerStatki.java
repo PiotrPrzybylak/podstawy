@@ -11,13 +11,13 @@ import java.util.List;
 @Controller
 public class ControlerStatki {
 
-    private List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
-    private List <Statek> statkiZlomowisko = new ArrayList<>();
-    private int kosztStatku = 0;
+     List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
+     List <Statek> statkiZlomowisko = new ArrayList<>();
 
-    Gracz gracz1= new Gracz(new ArrayList <>(),1000000);
-    Gracz gracz2= new Gracz(new ArrayList <>(),1000000 );
-    Gracz gracz3= new Gracz(new ArrayList <>(),1000000);
+     Gracz gracz = new Gracz();
+     Gracz gracz1= new Gracz(new ArrayList <>(),1000000);
+     Gracz gracz2= new Gracz(new ArrayList <>(),1000000 );
+     Gracz gracz3= new Gracz(new ArrayList <>(),1000000);
 
 
     public ControlerStatki (){
@@ -42,53 +42,46 @@ public class ControlerStatki {
         statkiDoKulepinia.add(new StatekSklep(new Nacja("Gallente"), "Fregata", "Atron", 4000,4000, 8000));
     }
 
+
+    public Gracz ktoryGracz (String kto){
+
+        if (kto.equals("Gracz 1")) {
+            gracz = gracz1;
+        } else if (kto.equals("Gracz 2")) {
+            gracz = gracz2;
+        } else if (kto.equals("Gracz 3")) {
+            gracz = gracz3;
+        }
+
+        return gracz;
+    }
+
     // tu bedzie metoda sprzedaz
     @RequestMapping("/sprzedazZUrl")
     public String sprzedaz (
             @RequestParam(value = "sprzedanyStatek", required = false) int sprzedanyStatek,
-            @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje,
+            @RequestParam(value = "ktoSprzedaje", required = false) String kto,
             Model model
     ){
 
-        List <Statek> statkiNaSprzedaz = new ArrayList <>();
-        //int kasaGracza = 0;
-        Gracz gracz = new Gracz();
 
-        if (ktoSprzedaje.equals("Gracz 1")) {
-            gracz = gracz1;
-        } else if (ktoSprzedaje.equals("Gracz 2")) {
-            gracz = gracz2;
-        } else if (ktoSprzedaje.equals("Gracz 3")) {
-            gracz = gracz3;
-        }
+        gracz.sprzedajStatek(sprzedanyStatek,ktoryGracz(kto));
 
-        statkiNaSprzedaz = gracz.getStatki();
-        gracz.sprzedajStatek(sprzedanyStatek,statkiNaSprzedaz, statkiDoKulepinia, statkiZlomowisko);
-
-            return "redirect:/sprzedaz?ktoSprzedaje="+ktoSprzedaje;
+            return "redirect:/sprzedaz?ktoSprzedaje="+kto;
     }
 
     //Wersja na potrzeby gracza 1 oraz 2 i 3 z uzyciem kodu URL ze strona startowa
     @RequestMapping("/kupnoZUrl")
     public String kupnoStatkuUrl (
             @RequestParam(value = "kupionyStatek", required = false) String kupionyStatek,
-            @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje,
+            @RequestParam(value = "ktoKupuje", required = false) String kto,
             Model model
     ) {
-        System.out.println(ktoKupuje + " kupił statek " + kupionyStatek);
+        System.out.println(kto + " kupił statek " + kupionyStatek);
 
-            Gracz gracz = new Gracz();
-            if (ktoKupuje.equals("Gracz 1")) {
-                gracz = gracz1;
-            } else if (ktoKupuje.equals("Gracz 2")) {
-                gracz = gracz2;
-            } else if (ktoKupuje.equals("Gracz 3")) {
-                gracz = gracz3;
-            }
+        gracz.kupStatek(kupionyStatek, ktoryGracz(kto));
 
-        gracz.kupStatek(kupionyStatek, statkiDoKulepinia);
-
-        return "redirect:/zakupyURL?ktoKupuje=" + ktoKupuje;
+        return "redirect:/zakupyURL?ktoKupuje=" + kto;
     }
 
     //Wersja na potrzeby gracza 1 oraz 2 i 3 z uzyciem kodu URL
