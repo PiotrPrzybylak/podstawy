@@ -65,7 +65,7 @@ public class ControlerStatki {
     ){
 
 
-        gracz.sprzedajStatek(sprzedanyStatek,ktoryGracz(kto));
+        gracz.sprzedajStatek(sprzedanyStatek,ktoryGracz(kto),statkiZlomowisko, statkiDoKulepinia);
 
             return "redirect:/sprzedaz?ktoSprzedaje="+kto;
     }
@@ -79,7 +79,7 @@ public class ControlerStatki {
     ) {
         System.out.println(kto + " kupił statek " + kupionyStatek);
 
-        gracz.kupStatek(kupionyStatek, ktoryGracz(kto));
+        gracz.kupStatek(kupionyStatek, ktoryGracz(kto), statkiDoKulepinia);
 
         return "redirect:/zakupyURL?ktoKupuje=" + kto;
     }

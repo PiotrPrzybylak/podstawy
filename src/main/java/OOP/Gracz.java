@@ -34,7 +34,7 @@ public class Gracz {
     }
 
     // metoda kupowania
-    public void kupStatek(String kupionyStatek, Gracz ktoryGracz) {
+    public void kupStatek(String kupionyStatek, Gracz ktoryGracz, List<StatekSklep> statkiDoKulepinia) {
 
 
         for (int i = 0; i < statkiDoKulepinia.size(); i++) {
@@ -51,7 +51,7 @@ public class Gracz {
     }
 
     // metoda sprzedawania
-    public void sprzedajStatek(int sprzedanyStatek, Gracz ktoryGracz) {
+    public void sprzedajStatek(int sprzedanyStatek, Gracz ktoryGracz, List <Statek>statkiZlomowisko, List<StatekSklep> statkiDoKulepinia ) {
         List <Statek> statkiNaSprzedaz = new ArrayList<>();
 
 
