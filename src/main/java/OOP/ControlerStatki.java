@@ -21,6 +21,8 @@ public class ControlerStatki {
 
 
     public ControlerStatki (){
+
+        //gracz1.statki.add( new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
         gracz1.getStatki().add( new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
         gracz1.getStatki().add(new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545));
         gracz1.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Tristan", 100, 5600));
@@ -45,11 +47,11 @@ public class ControlerStatki {
 
     public Gracz ktoryGracz (String kto){
 
-        if (kto.equals("Gracz 1")) {
+        if (kto.equals("Gracz1")) {
             gracz = gracz1;
-        } else if (kto.equals("Gracz 2")) {
+        } else if (kto.equals("Gracz2")) {
             gracz = gracz2;
-        } else if (kto.equals("Gracz 3")) {
+        } else if (kto.equals("Gracz3")) {
             gracz = gracz3;
         }
 
@@ -153,10 +155,10 @@ public class ControlerStatki {
         System.out.println(statekGracza3);
 
 
-        Statek pierwszy = new Statek();
-        Statek drugi = new Statek();
-        Gracz graczPierwszy = new Gracz();
-        Gracz graczDrugi = new Gracz();
+        Statek pierwszy = null;
+        Statek drugi = null;
+        Gracz graczPierwszy = null;
+        Gracz graczDrugi = null;
 
         // teraz IFy dla walka dla wszystkich opcji
         if (ktoWalczy.equals("Gracz 1+2")) {
@@ -193,7 +195,7 @@ public class ControlerStatki {
 
       model.addAttribute("ktoWalczy" , "Walczyli " + ktoWalczy);
       model.addAttribute("pierwszy" , "Nazwa statku pierwszego gracza: " + pierwszy.getNazwa());
-      model.addAttribute("drugi" , "Nazwa statku pierwszego gracza: " + drugi.getNazwa());
+      model.addAttribute("drugi" , "Nazwa statku drugiego gracza: " + drugi.getNazwa());
       model.addAttribute("wygrany" ,wygranyStatek);
 
 

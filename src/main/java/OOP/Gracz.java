@@ -25,13 +25,6 @@ public class Gracz {
     }
 
 
-    public void setKasa(int kasa) {
-        this.kasa = kasa;
-    }
-
-    public void setStatki(List<Statek> statki) {
-        this.statki = statki;
-    }
 
     // metoda kupowania
     public void kupStatek(String kupionyStatek, Gracz ktoryGracz, List<StatekSklep> statkiDoKulepinia) {
