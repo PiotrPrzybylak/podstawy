@@ -16,18 +16,16 @@ public class Gracz {
         this.kasa = kasa;
     }
 
-    public int getKasa() {
+    int getKasa() {
         return kasa;
     }
 
-    public List<Statek> getStatki() {
+    List<Statek> getStatki() {
         return statki;
     }
 
-
-
     // metoda kupowania
-    public void kupStatek(String kupionyStatek, Gracz ktoryGracz, List<StatekSklep> statkiDoKulepinia) {
+    void kupStatek(String kupionyStatek, List<StatekSklep> statkiDoKulepinia) {
 
 
         for (int i = 0; i < statkiDoKulepinia.size(); i++) {
@@ -36,7 +34,7 @@ public class Gracz {
             if (kupionyStatek.equals(kupiony.getNazwa()) && this.kasa > kupiony.getCena()) {
                 StatekSklep statek = statkiDoKulepinia.get(i);
                 this.kasa -= statek.getCena();
-                Statek tylkoStatek = (Statek) statek;
+                Statek tylkoStatek = statek;
                 this.statki.add(tylkoStatek);
             }
 
@@ -44,8 +42,8 @@ public class Gracz {
     }
 
     // metoda sprzedawania
-    public void sprzedajStatek(int sprzedanyStatek, Gracz ktoryGracz, List <Statek>statkiZlomowisko, List<StatekSklep> statkiDoKulepinia ) {
-       List <Statek> statkiNaSprzedaz = new ArrayList<>();
+    void sprzedajStatek(int sprzedanyStatek, List <Statek>statkiZlomowisko, List<StatekSklep> statkiDoKulepinia ) {
+       List <Statek> statkiNaSprzedaz;
 
 
         statkiNaSprzedaz = this.getStatki();

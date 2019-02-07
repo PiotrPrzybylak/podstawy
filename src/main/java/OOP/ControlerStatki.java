@@ -11,18 +11,17 @@ import java.util.List;
 @Controller
 public class ControlerStatki {
 
-     List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
-     List <Statek> statkiZlomowisko = new ArrayList<>();
+   private  List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
+   private List <Statek> statkiZlomowisko = new ArrayList<>();
 
-     Gracz gracz = new Gracz();
-     Gracz gracz1= new Gracz(new ArrayList <>(),1000000);
-     Gracz gracz2= new Gracz(new ArrayList <>(),1000000 );
-     Gracz gracz3= new Gracz(new ArrayList <>(),1000000);
+   private Gracz gracz = new Gracz();
+   private Gracz gracz1= new Gracz(new ArrayList <>(),1000000);
+   private Gracz gracz2= new Gracz(new ArrayList <>(),1000000);
+   private Gracz gracz3= new Gracz(new ArrayList <>(),1000000);
 
 
     public ControlerStatki (){
 
-        //gracz1.statki.add( new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
         gracz1.getStatki().add( new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
         gracz1.getStatki().add(new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545));
         gracz1.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Tristan", 100, 5600));
@@ -45,7 +44,7 @@ public class ControlerStatki {
     }
 
 
-    public Gracz ktoryGracz (String kto){
+    private Gracz ktoryGracz (String kto){
 
         if (kto.equals("Gracz1")) {
             gracz = gracz1;
@@ -54,7 +53,6 @@ public class ControlerStatki {
         } else if (kto.equals("Gracz3")) {
             gracz = gracz3;
         }
-
         return gracz;
     }
 
@@ -62,30 +60,22 @@ public class ControlerStatki {
     @RequestMapping("/sprzedazZUrl")
     public String sprzedaz (
             @RequestParam(value = "sprzedanyStatek", required = false) int sprzedanyStatek,
-            @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje,
-            Model model
+            @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje
     ){
-
-
-        gracz.sprzedajStatek(sprzedanyStatek,ktoryGracz(ktoSprzedaje),statkiZlomowisko, statkiDoKulepinia);
-
-            return "redirect:/sprzedaz?ktoSprzedaje="+ktoSprzedaje;
+        gracz.sprzedajStatek(sprzedanyStatek,statkiZlomowisko, statkiDoKulepinia);
+        return "redirect:/sprzedaz?ktoSprzedaje="+ktoSprzedaje;
     }
 
     //Wersja na potrzeby gracza 1 oraz 2 i 3 z uzyciem kodu URL ze strona startowa
     @RequestMapping("/kupnoZUrl")
     public String kupnoStatkuUrl (
             @RequestParam(value = "kupionyStatek", required = false) String kupionyStatek,
-            @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje,
-            Model model
+            @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje
     ) {
         System.out.println(ktoKupuje + " kupił statek " + kupionyStatek);
-
-        gracz.kupStatek(kupionyStatek, ktoryGracz(ktoKupuje), statkiDoKulepinia);
-
+        gracz.kupStatek(kupionyStatek, statkiDoKulepinia);
         return "redirect:/zakupyURL?ktoKupuje=" + ktoKupuje;
     }
-
     //Wersja na potrzeby gracza 1 oraz 2 i 3 z uzyciem kodu URL
     @RequestMapping("/ktoKupuje")
     public String ktoKupuje (
@@ -97,7 +87,6 @@ public class ControlerStatki {
         model.addAttribute("kasaGracza1", gracz1.getKasa());
         model.addAttribute("kasaGracza2", gracz2.getKasa());
         model.addAttribute("kasaGracza3", gracz3.getKasa());
-
         return "ktoKupujeWybor";
     }
 
@@ -107,9 +96,9 @@ public class ControlerStatki {
             @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje,
             Model model
     ) {
-        List <Statek> statkiNaSprzedaz = new ArrayList <>();
+        List <Statek> statkiNaSprzedaz;
 
-        int kasaGracza = 0;
+        int kasaGracza;
         gracz = ktoryGracz(ktoSprzedaje);
 
         statkiNaSprzedaz = gracz.getStatki();
@@ -155,24 +144,25 @@ public class ControlerStatki {
         System.out.println(statekGracza3);
 
 
-        Statek pierwszy = null;
-        Statek drugi = null;
-        Gracz graczPierwszy = null;
-        Gracz graczDrugi = null;
+       Statek pierwszy = new Statek();
+       Statek drugi = new Statek();
+       Gracz graczPierwszy = new Gracz();
+       Gracz graczDrugi = new Gracz();
 
         // teraz IFy dla walka dla wszystkich opcji
-        if (ktoWalczy.equals("Gracz 1+2")) {
+        if (ktoWalczy.equals("Gracz1i2")) {
             graczPierwszy=gracz1;
             graczDrugi = gracz2;
         }
-        if (ktoWalczy.equals("Gracz 2+3")) {
+        else if (ktoWalczy.equals("Gracz2i3")) {
             graczPierwszy=gracz2;
             graczDrugi = gracz3;
         }
-        if (ktoWalczy.equals("Gracz 3+1")) {
+        else if (ktoWalczy.equals("Gracz3i1")) {
             graczPierwszy=gracz3;
             graczDrugi = gracz1;
-        }
+        } else System.out.println("dupa");
+
         // foreach po liscie statki Gracza1
         for (int i = 0; i < graczPierwszy.getStatki().size(); i++) {
             Statek statek = graczPierwszy.getStatki().get(i);
@@ -186,7 +176,7 @@ public class ControlerStatki {
             Statek statek = graczDrugi.getStatki().get(i);
 
             if (statekGracza2.equals(statek.getNazwa())) {
-                drugi = graczDrugi.getStatki().get(i);
+               drugi = graczDrugi.getStatki().get(i);
             }
         }
 
@@ -205,8 +195,6 @@ public class ControlerStatki {
     @RequestMapping("/")
     public String listatStatkow (
             Model model
-
-
     ){
 
 // chce zrobic commita bo na lapku nie dziala i sprawdzic tak cala sprawe
