@@ -52,7 +52,7 @@ public class Gracz {
 
     // metoda sprzedawania
     public void sprzedajStatek(int sprzedanyStatek, Gracz ktoryGracz, List <Statek>statkiZlomowisko, List<StatekSklep> statkiDoKulepinia ) {
-        List <Statek> statkiNaSprzedaz = new ArrayList<>();
+       List <Statek> statkiNaSprzedaz = new ArrayList<>();
 
 
         statkiNaSprzedaz = this.getStatki();

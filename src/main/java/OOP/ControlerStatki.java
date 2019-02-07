@@ -60,28 +60,28 @@ public class ControlerStatki {
     @RequestMapping("/sprzedazZUrl")
     public String sprzedaz (
             @RequestParam(value = "sprzedanyStatek", required = false) int sprzedanyStatek,
-            @RequestParam(value = "ktoSprzedaje", required = false) String kto,
+            @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje,
             Model model
     ){
 
 
-        gracz.sprzedajStatek(sprzedanyStatek,ktoryGracz(kto),statkiZlomowisko, statkiDoKulepinia);
+        gracz.sprzedajStatek(sprzedanyStatek,ktoryGracz(ktoSprzedaje),statkiZlomowisko, statkiDoKulepinia);
 
-            return "redirect:/sprzedaz?ktoSprzedaje="+kto;
+            return "redirect:/sprzedaz?ktoSprzedaje="+ktoSprzedaje;
     }
 
     //Wersja na potrzeby gracza 1 oraz 2 i 3 z uzyciem kodu URL ze strona startowa
     @RequestMapping("/kupnoZUrl")
     public String kupnoStatkuUrl (
             @RequestParam(value = "kupionyStatek", required = false) String kupionyStatek,
-            @RequestParam(value = "ktoKupuje", required = false) String kto,
+            @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje,
             Model model
     ) {
-        System.out.println(kto + " kupił statek " + kupionyStatek);
+        System.out.println(ktoKupuje + " kupił statek " + kupionyStatek);
 
-        gracz.kupStatek(kupionyStatek, ktoryGracz(kto), statkiDoKulepinia);
+        gracz.kupStatek(kupionyStatek, ktoryGracz(ktoKupuje), statkiDoKulepinia);
 
-        return "redirect:/zakupyURL?ktoKupuje=" + kto;
+        return "redirect:/zakupyURL?ktoKupuje=" + ktoKupuje;
     }
 
     //Wersja na potrzeby gracza 1 oraz 2 i 3 z uzyciem kodu URL
@@ -106,15 +106,9 @@ public class ControlerStatki {
             Model model
     ) {
         List <Statek> statkiNaSprzedaz = new ArrayList <>();
+
         int kasaGracza = 0;
-        Gracz gracz = new Gracz();
-        if (ktoSprzedaje.equals("Gracz 1")) {
-            gracz=gracz1;
-        } else if (ktoSprzedaje.equals("Gracz 2")) {
-            gracz=gracz2;
-        } else if (ktoSprzedaje.equals("Gracz 3")) {
-            gracz=gracz3;
-        }
+        gracz = ktoryGracz(ktoSprzedaje);
 
         statkiNaSprzedaz = gracz.getStatki();
         kasaGracza = gracz.getKasa();
@@ -134,14 +128,8 @@ public class ControlerStatki {
             Model model
     ) {
         int kasaDanegoGracza=0;
-        Gracz gracz = new Gracz();
-        if (ktoKupuje.equals("Gracz 1")){
-            gracz=gracz1;
-        } else if (ktoKupuje.equals("Gracz 2")){
-            gracz=gracz2;
-        } else if (ktoKupuje.equals("Gracz 3")){
-            gracz=gracz3;
-                }
+        gracz = ktoryGracz(ktoKupuje);
+
         kasaDanegoGracza = gracz.getKasa();
 
         model.addAttribute("ktoKupuje", ktoKupuje);

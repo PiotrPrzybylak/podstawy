@@ -18,13 +18,13 @@
          </select>
         <br/>
         <br/>
-         <div th:text="'Kasa '+${kto}"></div>
+         <div th:text="'Kasa '+${ktoKupuje}"></div>
          <br/>
          <div th:text="${kasaDanegoGracza}"></div>
         <br/>
       <br/>
-      <input type="hidden" name="kto" th:value="${kto}"/>
-      <input type="submit"  th:value="'Kupuje '+${kto}"/>
+      <input type="hidden" name="ktoKupuje" th:value="${ktoKupuje}"/>
+      <input type="submit"  th:value="'Kupuje '+${ktoKupuje}"/>
       <br/>
 
 
