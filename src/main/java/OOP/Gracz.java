@@ -37,7 +37,6 @@ public class Gracz {
                 Statek tylkoStatek = statek;
                 this.statki.add(tylkoStatek);
             }
-
         }
     }
 

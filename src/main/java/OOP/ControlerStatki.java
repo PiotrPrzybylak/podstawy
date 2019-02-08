@@ -118,10 +118,8 @@ public class ControlerStatki {
             @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje,
             Model model
     ) {
-        int kasaDanegoGracza=0;
         gracz = ktoryGracz(ktoKupuje);
-
-        kasaDanegoGracza = gracz.getKasa();
+        int kasaDanegoGracza = gracz.getKasa();
 
         model.addAttribute("ktoKupuje", ktoKupuje);
         model.addAttribute("statkiDoKulepinia", statkiDoKulepinia);
@@ -148,26 +146,37 @@ public class ControlerStatki {
        Statek drugi = new Statek();
        Gracz graczPierwszy = new Gracz();
        Gracz graczDrugi = new Gracz();
+       String wybranyStatekGraczPrierwszy ="";
+       String wybranyStatekGraczDrugi ="";
 
         // teraz IFy dla walka dla wszystkich opcji
         if (ktoWalczy.equals("Gracz1i2")) {
+            System.out.println("walczy gracz 1 oraz 2");
             graczPierwszy=gracz1;
+            wybranyStatekGraczPrierwszy = statekGracza1;
             graczDrugi = gracz2;
+            wybranyStatekGraczDrugi = statekGracza2;
         }
         else if (ktoWalczy.equals("Gracz2i3")) {
+            System.out.println("walczy gracz 2 oraz 3");
             graczPierwszy=gracz2;
+            wybranyStatekGraczPrierwszy = statekGracza2;
             graczDrugi = gracz3;
+            wybranyStatekGraczDrugi = statekGracza3;
         }
         else if (ktoWalczy.equals("Gracz3i1")) {
+            System.out.println("walczy gracz 3 oraz 1");
             graczPierwszy=gracz3;
+            wybranyStatekGraczPrierwszy = statekGracza3;
             graczDrugi = gracz1;
-        } else System.out.println("dupa");
+            wybranyStatekGraczDrugi = statekGracza1;
+        }
 
         // foreach po liscie statki Gracza1
         for (int i = 0; i < graczPierwszy.getStatki().size(); i++) {
             Statek statek = graczPierwszy.getStatki().get(i);
 
-            if (statekGracza1.equals(statek.getNazwa())) {
+            if (wybranyStatekGraczPrierwszy.equals(statek.getNazwa())) {
                 pierwszy = graczPierwszy.getStatki().get(i);
             }
         }
@@ -175,7 +184,7 @@ public class ControlerStatki {
         for (int i = 0; i < graczDrugi.getStatki().size(); i++) {
             Statek statek = graczDrugi.getStatki().get(i);
 
-            if (statekGracza2.equals(statek.getNazwa())) {
+            if (wybranyStatekGraczDrugi.equals(statek.getNazwa())) {
                drugi = graczDrugi.getStatki().get(i);
             }
         }
@@ -203,8 +212,6 @@ public class ControlerStatki {
         model.addAttribute("statkiGracza3", gracz3.getStatki());
         return "walka";
     }
-
-
 }
 
 
