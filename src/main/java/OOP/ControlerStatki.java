@@ -11,10 +11,10 @@ import java.util.List;
 @Controller
 public class ControlerStatki {
 
-   private  List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
+   private List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
    private List <Statek> statkiZlomowisko = new ArrayList<>();
 
-   private Gracz gracz = new Gracz();
+   private Gracz gracz;
    private Gracz gracz1= new Gracz(new ArrayList <>(),1000000);
    private Gracz gracz2= new Gracz(new ArrayList <>(),1000000);
    private Gracz gracz3= new Gracz(new ArrayList <>(),1000000);
@@ -62,6 +62,7 @@ public class ControlerStatki {
             @RequestParam(value = "sprzedanyStatek", required = false) int sprzedanyStatek,
             @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje
     ){
+
         gracz.sprzedajStatek(sprzedanyStatek,statkiZlomowisko, statkiDoKulepinia);
         return "redirect:/sprzedaz?ktoSprzedaje="+ktoSprzedaje;
     }
@@ -73,6 +74,7 @@ public class ControlerStatki {
             @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje
     ) {
         System.out.println(ktoKupuje + " kupił statek " + kupionyStatek);
+
         gracz.kupStatek(kupionyStatek, statkiDoKulepinia);
         return "redirect:/zakupyURL?ktoKupuje=" + ktoKupuje;
     }
