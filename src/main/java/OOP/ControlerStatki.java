@@ -14,7 +14,6 @@ public class ControlerStatki {
    private List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
    private List <Statek> statkiZlomowisko = new ArrayList<>();
 
-   private Gracz gracz;
    private Gracz gracz1= new Gracz(new ArrayList <>(),1000000);
    private Gracz gracz2= new Gracz(new ArrayList <>(),1000000);
    private Gracz gracz3= new Gracz(new ArrayList <>(),1000000);
@@ -45,7 +44,7 @@ public class ControlerStatki {
 
 
     private Gracz ktoryGracz (String kto){
-
+        Gracz gracz = new Gracz();
         if (kto.equals("Gracz1")) {
             gracz = gracz1;
         } else if (kto.equals("Gracz2")) {
@@ -63,7 +62,7 @@ public class ControlerStatki {
             @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje
     ){
 
-        gracz.sprzedajStatek(sprzedanyStatek,statkiZlomowisko, statkiDoKulepinia);
+        ktoryGracz(ktoSprzedaje).sprzedajStatek(sprzedanyStatek,statkiZlomowisko, statkiDoKulepinia);
         return "redirect:/sprzedaz?ktoSprzedaje="+ktoSprzedaje;
     }
 
@@ -74,8 +73,7 @@ public class ControlerStatki {
             @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje
     ) {
         System.out.println(ktoKupuje + " kupił statek " + kupionyStatek);
-
-        gracz.kupStatek(kupionyStatek, statkiDoKulepinia);
+        ktoryGracz(ktoKupuje).kupStatek(kupionyStatek, statkiDoKulepinia);
         return "redirect:/zakupyURL?ktoKupuje=" + ktoKupuje;
     }
     //Wersja na potrzeby gracza 1 oraz 2 i 3 z uzyciem kodu URL
@@ -101,10 +99,9 @@ public class ControlerStatki {
         List <Statek> statkiNaSprzedaz;
 
         int kasaGracza;
-        gracz = ktoryGracz(ktoSprzedaje);
 
-        statkiNaSprzedaz = gracz.getStatki();
-        kasaGracza = gracz.getKasa();
+        statkiNaSprzedaz = ktoryGracz(ktoSprzedaje).getStatki();
+        kasaGracza = ktoryGracz(ktoSprzedaje).getKasa();
 
         model.addAttribute("ktoSprzedaje", ktoSprzedaje);
         model.addAttribute("statkiNaSprzedaz", statkiNaSprzedaz);
@@ -120,8 +117,8 @@ public class ControlerStatki {
             @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje,
             Model model
     ) {
-        gracz = ktoryGracz(ktoKupuje);
-        int kasaDanegoGracza = gracz.getKasa();
+
+        int kasaDanegoGracza = ktoryGracz(ktoKupuje).getKasa();
 
         model.addAttribute("ktoKupuje", ktoKupuje);
         model.addAttribute("statkiDoKulepinia", statkiDoKulepinia);

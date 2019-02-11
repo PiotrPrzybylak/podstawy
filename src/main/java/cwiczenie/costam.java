@@ -50,26 +50,26 @@ public class costam {
 
     public static void swapString (String a, String b){
         String tempo = a;
-        a = b;
+        a= b;
         b = tempo;
     }
 
     public static void swapCharMaly (char pierwszy, char drugi) {
         char tempo = pierwszy;
-        pierwszy = drugi;
-        drugi = tempo;
+        char c = drugi;
+        char d = tempo;
     }
 
     public static void swapCharWielki (Character pierwszy, Character drugi) {
         Character tempo = pierwszy;
-        pierwszy = drugi;
-        drugi = tempo;
+        Character c = drugi;
+        Character d = tempo;
     }
 
     public static void swapInt (int pierwszy, int drugi) {
         int tempo = pierwszy;
-        pierwszy = drugi;
-        drugi = tempo;
+        int jeden = drugi;
+        int dwa = tempo;
     }
 
     public static void swapCzlowiek (Czlowiek pierwszy, Czlowiek drugi){

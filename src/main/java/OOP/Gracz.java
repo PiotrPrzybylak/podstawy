@@ -1,6 +1,6 @@
 package OOP;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class Gracz {
@@ -27,7 +27,6 @@ public class Gracz {
     // metoda kupowania
     void kupStatek(String kupionyStatek, List<StatekSklep> statkiDoKulepinia) {
 
-
         for (int i = 0; i < statkiDoKulepinia.size(); i++) {
             StatekSklep kupiony = statkiDoKulepinia.get(i);
 
@@ -42,8 +41,7 @@ public class Gracz {
 
     // metoda sprzedawania
     void sprzedajStatek(int sprzedanyStatek, List <Statek>statkiZlomowisko, List<StatekSklep> statkiDoKulepinia ) {
-       List <Statek> statkiNaSprzedaz;
-
+        List <Statek> statkiNaSprzedaz;
 
         statkiNaSprzedaz = this.getStatki();
         // foreach po liscie
