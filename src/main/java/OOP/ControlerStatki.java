@@ -44,14 +44,15 @@ public class ControlerStatki {
 
 
     private Gracz ktoryGracz (String kto){
-        Gracz gracz = new Gracz();
+        Gracz gracz;
+
         if (kto.equals("Gracz1")) {
-            gracz = gracz1;
+           gracz=gracz1;
         } else if (kto.equals("Gracz2")) {
             gracz = gracz2;
         } else if (kto.equals("Gracz3")) {
             gracz = gracz3;
-        }
+        } else throw new ArithmeticException("Nie ma takiego numeru gracza !!!!!");;
         return gracz;
     }
 
