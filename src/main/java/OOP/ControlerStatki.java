@@ -43,7 +43,7 @@ public class ControlerStatki {
     }
 
 
-    private Gracz ktoryGracz (String kto){
+    private Gracz ktoryGracz (String kto) throws Wyjatek {
         Gracz gracz;
 
         if (kto.equals("Gracz1")) {
@@ -52,7 +52,8 @@ public class ControlerStatki {
             gracz = gracz2;
         } else if (kto.equals("Gracz3")) {
             gracz = gracz3;
-        } else throw new ArithmeticException("Nie ma takiego numeru gracza !!!!!");;
+        //} else throw new ArithmeticException("Nie ma takiego numeru gracza !!!!!");
+        } else throw new Wyjatek(kto);
         return gracz;
     }
 
@@ -61,9 +62,12 @@ public class ControlerStatki {
     public String sprzedaz (
             @RequestParam(value = "sprzedanyStatek", required = false) int sprzedanyStatek,
             @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje
-    ){
-
-        ktoryGracz(ktoSprzedaje).sprzedajStatek(sprzedanyStatek,statkiZlomowisko, statkiDoKulepinia);
+    ) throws Wyjatek {
+        try {
+            ktoryGracz(ktoSprzedaje).sprzedajStatek(sprzedanyStatek, statkiZlomowisko, statkiDoKulepinia);
+        } catch (Wyjatek e){
+            System.out.println("Złapano " +e);
+        }
         return "redirect:/sprzedaz?ktoSprzedaje="+ktoSprzedaje;
     }
 
@@ -72,9 +76,13 @@ public class ControlerStatki {
     public String kupnoStatkuUrl (
             @RequestParam(value = "kupionyStatek", required = false) String kupionyStatek,
             @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje
-    ) {
+    ) throws Wyjatek {
         System.out.println(ktoKupuje + " kupił statek " + kupionyStatek);
+     try{
         ktoryGracz(ktoKupuje).kupStatek(kupionyStatek, statkiDoKulepinia);
+    } catch (Wyjatek e){
+        System.out.println("Złapano " +e);
+    }
         return "redirect:/zakupyURL?ktoKupuje=" + ktoKupuje;
     }
     //Wersja na potrzeby gracza 1 oraz 2 i 3 z uzyciem kodu URL
@@ -96,13 +104,16 @@ public class ControlerStatki {
     public String sprzedaz (
             @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje,
             Model model
-    ) {
+    ) throws Wyjatek {
         List <Statek> statkiNaSprzedaz;
 
         int kasaGracza;
-
+try {
         statkiNaSprzedaz = ktoryGracz(ktoSprzedaje).getStatki();
         kasaGracza = ktoryGracz(ktoSprzedaje).getKasa();
+    } catch (Wyjatek e){
+        System.out.println("Złapano " +e);
+    }
 
         model.addAttribute("ktoSprzedaje", ktoSprzedaje);
         model.addAttribute("statkiNaSprzedaz", statkiNaSprzedaz);
@@ -117,10 +128,12 @@ public class ControlerStatki {
     public String zakupyURL (
             @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje,
             Model model
-    ) {
-
-        int kasaDanegoGracza = ktoryGracz(ktoKupuje).getKasa();
-
+    ) throws Wyjatek {
+        try {
+            int kasaDanegoGracza = ktoryGracz(ktoKupuje).getKasa();
+        } catch (Wyjatek e){
+        System.out.println("Złapano " +e);
+    }
         model.addAttribute("ktoKupuje", ktoKupuje);
         model.addAttribute("statkiDoKulepinia", statkiDoKulepinia);
         model.addAttribute("kasaDanegoGracza", kasaDanegoGracza);
