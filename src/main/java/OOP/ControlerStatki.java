@@ -57,6 +57,17 @@ public class ControlerStatki {
         return gracz;
     }
 
+    @RequestMapping("/dodajGracza")
+    public String dodajGracza (
+            @RequestParam(value = "NazwaGracza", required = false) String NazwaGracza
+
+    ){
+        return "redirect:/";
+    }
+
+
+
+
     // tu bedzie metoda sprzedaz
     @RequestMapping("/sprzedazZUrl")
     public String sprzedaz (
@@ -108,6 +119,20 @@ public class ControlerStatki {
 
         return "zlomowisko";
     }
+
+    @RequestMapping ("/dodawanie")
+    public String dodawanie (
+            Model model
+    ) {
+        List<Gracz> graczeNaLiscie = null;
+
+        model.addAttribute("graczeNaLiscie",graczeNaLiscie);
+
+        return "gracze";
+    }
+
+
+
 
     //Wersja na potrzeby gracza 1 oraz 2 i 3 z uzyciem kodu URL
     @RequestMapping("/zakupyURL")
