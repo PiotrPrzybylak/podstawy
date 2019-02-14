@@ -63,11 +63,7 @@ public class ControlerStatki {
             @RequestParam(value = "sprzedanyStatek", required = false) int sprzedanyStatek,
             @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje
     ) throws Wyjatek {
-        try {
-            ktoryGracz(ktoSprzedaje).sprzedajStatek(sprzedanyStatek, statkiZlomowisko, statkiDoKulepinia);
-        } catch (Wyjatek e){
-            System.out.println("Złapano " +e);
-        }
+        ktoryGracz(ktoSprzedaje).sprzedajStatek(sprzedanyStatek, statkiZlomowisko, statkiDoKulepinia);
         return "redirect:/sprzedaz?ktoSprzedaje="+ktoSprzedaje;
     }
 
@@ -78,11 +74,7 @@ public class ControlerStatki {
             @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje
     ) throws Wyjatek {
         System.out.println(ktoKupuje + " kupił statek " + kupionyStatek);
-     try{
         ktoryGracz(ktoKupuje).kupStatek(kupionyStatek, statkiDoKulepinia);
-    } catch (Wyjatek e){
-        System.out.println("Złapano " +e);
-    }
         return "redirect:/zakupyURL?ktoKupuje=" + ktoKupuje;
     }
     //Wersja na potrzeby gracza 1 oraz 2 i 3 z uzyciem kodu URL
@@ -106,14 +98,8 @@ public class ControlerStatki {
             Model model
     ) throws Wyjatek {
         List <Statek> statkiNaSprzedaz;
-
-        int kasaGracza;
-try {
         statkiNaSprzedaz = ktoryGracz(ktoSprzedaje).getStatki();
-        kasaGracza = ktoryGracz(ktoSprzedaje).getKasa();
-    } catch (Wyjatek e){
-        System.out.println("Złapano " +e);
-    }
+        int kasaGracza = ktoryGracz(ktoSprzedaje).getKasa();
 
         model.addAttribute("ktoSprzedaje", ktoSprzedaje);
         model.addAttribute("statkiNaSprzedaz", statkiNaSprzedaz);
@@ -129,11 +115,8 @@ try {
             @RequestParam(value = "ktoKupuje", required = false) String ktoKupuje,
             Model model
     ) throws Wyjatek {
-        try {
-            int kasaDanegoGracza = ktoryGracz(ktoKupuje).getKasa();
-        } catch (Wyjatek e){
-        System.out.println("Złapano " +e);
-    }
+        int kasaDanegoGracza = ktoryGracz(ktoKupuje).getKasa();
+
         model.addAttribute("ktoKupuje", ktoKupuje);
         model.addAttribute("statkiDoKulepinia", statkiDoKulepinia);
         model.addAttribute("kasaDanegoGracza", kasaDanegoGracza);
