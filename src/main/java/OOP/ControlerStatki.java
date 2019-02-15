@@ -61,16 +61,11 @@ public class ControlerStatki {
         Gracz gracz;
 
         for (int i = 0; i < gracze.size(); i++) {
-            String klucz = gracze.get(i);
-
-            if (kto.equals(klucz)) {
-                gracz=gracze.get(i);
-
-            }
+            if (kto.equals(gracze.get())) {
+                gracz = gracze.values();
+            } else throw new Wyjatek(kto);
         }
-
-
-
+        /*
 
         if (kto.equals("Gracz1")) {
            gracz=gracz1;
@@ -78,8 +73,12 @@ public class ControlerStatki {
             gracz = gracz2;
         } else if (kto.equals("Gracz3")) {
             gracz = gracz3;
+
         //} else throw new ArithmeticException("Nie ma takiego numeru gracza !!!!!");
         } else throw new Wyjatek(kto);
+         */
+
+
         return gracz;
     }
 
