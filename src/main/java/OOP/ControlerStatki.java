@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import java.util.Map;
+import java.util.HashMap;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +14,10 @@ import java.util.List;
 @Controller
 public class ControlerStatki {
 
+   private Map <String,Gracz> gracze = new HashMap <>();
    private List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
    private List <Statek> statkiZlomowisko = new ArrayList<>();
+
 
    private Gracz gracz1= new Gracz(new ArrayList <>(),1000000);
    private Gracz gracz2= new Gracz(new ArrayList <>(),1000000);
@@ -42,6 +47,12 @@ public class ControlerStatki {
         statkiDoKulepinia.add(new StatekSklep(new Nacja("Gallente"), "Fregata", "Atron", 4000,4000, 8000));
     }
 
+    // stworzyc obiekt gracz
+    void tworzenieGraczaWMapie (String nazwa){
+        String zmienna = nazwa;
+        gracze.put(zmienna, new Gracz(new ArrayList <>(),1000000));
+
+    }
 
     private Gracz ktoryGracz (String kto) throws Wyjatek {
         Gracz gracz;
@@ -60,9 +71,9 @@ public class ControlerStatki {
     @RequestMapping("/dodajGracza")
     public String dodajGracza (
             @RequestParam(value = "NazwaGracza", required = false) String NazwaGracza
-
     ){
-        return "redirect:/";
+        tworzenieGraczaWMapie(NazwaGracza);
+        return "redirect:/dodawanie";
     }
 
 
@@ -122,11 +133,12 @@ public class ControlerStatki {
 
     @RequestMapping ("/dodawanie")
     public String dodawanie (
+            @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje,
             Model model
-    ) {
-        List<Gracz> graczeNaLiscie = null;
 
-        model.addAttribute("graczeNaLiscie",graczeNaLiscie);
+    ) {
+
+        model.addAttribute("graczeNaLiscie",gracze.keySet());
 
         return "gracze";
     }
