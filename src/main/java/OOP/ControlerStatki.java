@@ -132,7 +132,7 @@ public class ControlerStatki {
     public String dodawanie (
             Model model
     ) {
-        model.addAttribute("gracze",gracze);
+        model.addAttribute("ListaGraczy",gracze);
         return "gracze";
     }
 
