@@ -18,7 +18,6 @@ public class ControlerStatki {
    private List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
    private List <Statek> statkiZlomowisko = new ArrayList<>();
 
-
    private Gracz gracz1= new Gracz(new ArrayList <>(),1000000);
    private Gracz gracz2= new Gracz(new ArrayList <>(),1000000);
    private Gracz gracz3= new Gracz(new ArrayList <>(),1000000);
@@ -45,9 +44,13 @@ public class ControlerStatki {
         statkiDoKulepinia.add(new StatekSklep(new Nacja("Amarr"),"Krążownik","Maller", 294,35545, 33000));
         statkiDoKulepinia.add(new StatekSklep(new Nacja("Gallente"), "Fregata", "Tristan", 100, 5600, 10000));
         statkiDoKulepinia.add(new StatekSklep(new Nacja("Gallente"), "Fregata", "Atron", 4000,4000, 8000));
+
+        gracze.put("Gracz1", gracz1);
+        gracze.put("Gracz2", gracz2);
+        gracze.put("Gracz3", gracz3);
     }
 
-    // stworzyc obiekt gracz
+
     void tworzenieGraczaWMapie (String nazwa){
         String zmienna = nazwa;
         gracze.put(zmienna, new Gracz(new ArrayList <>(),1000000));
@@ -73,6 +76,9 @@ public class ControlerStatki {
             @RequestParam(value = "NazwaGracza", required = false) String NazwaGracza
     ){
         tworzenieGraczaWMapie(NazwaGracza);
+        //dupa debuging!
+        System.out.println(gracze.keySet());
+
         return "redirect:/dodawanie";
     }
 
@@ -133,13 +139,10 @@ public class ControlerStatki {
 
     @RequestMapping ("/dodawanie")
     public String dodawanie (
-            @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje,
+           // @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje,
             Model model
-
     ) {
-
         model.addAttribute("graczeNaLiscie",gracze.keySet());
-
         return "gracze";
     }
 
