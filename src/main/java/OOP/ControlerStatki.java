@@ -60,6 +60,18 @@ public class ControlerStatki {
     private Gracz ktoryGracz (String kto) throws Wyjatek {
         Gracz gracz;
 
+        for (int i = 0; i < gracze.size(); i++) {
+            String klucz = gracze.get(i);
+
+            if (kto.equals(klucz)) {
+                gracz=gracze.get(i);
+
+            }
+        }
+
+
+
+
         if (kto.equals("Gracz1")) {
            gracz=gracz1;
         } else if (kto.equals("Gracz2")) {
@@ -139,10 +151,9 @@ public class ControlerStatki {
 
     @RequestMapping ("/dodawanie")
     public String dodawanie (
-           // @RequestParam(value = "ktoSprzedaje", required = false) String ktoSprzedaje,
             Model model
     ) {
-        model.addAttribute("graczeNaLiscie",gracze.keySet());
+        model.addAttribute("gracze",gracze);
         return "gracze";
     }
 

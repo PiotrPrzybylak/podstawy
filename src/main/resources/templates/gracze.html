@@ -17,10 +17,25 @@
     </form>
 
      <h1>Lista graczy</h1>
-  <select class="row" id="listaGraczy" name="listaGraczy" >
-         <option th:each="gracz : ${listaGraczy}"
-                 th:text="'Nazwa: '+${gracz},"
-         >SraczkaZListyGraczy</option>
-     </select>
+     <br/>
+     <br/>
+     <table>
+         <c:forEach items="${map}" var="gracze">
+             <tr>
+                 <td>${gracze.key}</td>
+                 <c:forEach items="${gracze.value}" var="Gracze" >
+                     <td>${Gracze}</td>
+                 </c:forEach>
+             </tr>
+         </c:forEach>
+         </table>
+
+     <c:forEach items="${gracze}" var="gracze" >
+         <tr>
+             <td>${gracze.key}</td>
+             <td>${gracze.value}</td>
+         </tr>
+     </c:forEach>
+
   </body>
 </html>
