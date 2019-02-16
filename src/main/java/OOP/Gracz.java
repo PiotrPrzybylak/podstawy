@@ -1,6 +1,7 @@
 package OOP;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Gracz {
@@ -11,8 +12,10 @@ public class Gracz {
     public Gracz() {
     }
 
-    public Gracz(List<Statek> statki, int kasa) {
-        this.statki = statki;
+    public Gracz( List<Statek> statki, int kasa) {
+        ArrayList<Statek> statkiCopy = new ArrayList<>();
+        statkiCopy.addAll(statki);
+        this.statki = statkiCopy;
         this.kasa = kasa;
     }
 
@@ -20,8 +23,10 @@ public class Gracz {
         return kasa;
     }
 
-    List<Statek> getStatki() {
-        return statki;
+   public List<Statek> getStatki() {
+        ArrayList<Statek> statkiCopy = new ArrayList<>();
+        statkiCopy.addAll(statki);
+        return statkiCopy;
     }
 
     // metoda kupowania
