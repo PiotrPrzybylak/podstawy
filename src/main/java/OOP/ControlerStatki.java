@@ -17,15 +17,25 @@ public class ControlerStatki {
    private Map <String,Gracz> gracze = new HashMap <>();
    private List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
    private List <Statek> statkiZlomowisko = new ArrayList<>();
+   private List <Statek> listaPoczatkowychStatkow = new ArrayList<>();
 
-   private Gracz gracz1= new Gracz(new ArrayList <>(),1000000);
-   private Gracz gracz2= new Gracz(new ArrayList <>(),1000000);
-   private Gracz gracz3= new Gracz(new ArrayList <>(),1000000);
-
+    private Gracz gracz1;
+    private Gracz gracz2;
+    private Gracz gracz3;
 
     public ControlerStatki (){
 
-        gracz1.getStatki().add( new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
+        listaPoczatkowychStatkow.add(new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
+        listaPoczatkowychStatkow.add(new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545));
+        listaPoczatkowychStatkow.add(new Fregata(new Nacja("Gallente"), "Fregata", "Tristan", 100, 5600));
+        listaPoczatkowychStatkow.add(new Fregata(new Nacja("Gallente"), "Fregata", "Atron", 4000,4000));
+
+        gracz1= new Gracz(listaPoczatkowychStatkow,1000000);
+        gracz2= new Gracz(listaPoczatkowychStatkow,1000000);
+        gracz3= new Gracz(listaPoczatkowychStatkow,1000000);
+
+/*
+        gracz1.getStatki().add(new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
         gracz1.getStatki().add(new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545));
         gracz1.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Tristan", 100, 5600));
         gracz1.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Atron", 4000,4000));
@@ -39,6 +49,7 @@ public class ControlerStatki {
         gracz3.getStatki().add(new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545));
         gracz3.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Tristan", 100, 5600));
         gracz3.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Atron", 4000,4000));
+*/
 
         statkiDoKulepinia.add( new StatekSklep(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565, 30000));
         statkiDoKulepinia.add(new StatekSklep(new Nacja("Amarr"),"Krążownik","Maller", 294,35545, 33000));
