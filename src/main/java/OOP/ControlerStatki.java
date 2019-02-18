@@ -111,11 +111,9 @@ public class ControlerStatki {
     //Wersja na potrzeby gracza 1 oraz 2 i 3 z uzyciem kodu URL
     @RequestMapping("/ktoKupuje")
     public String ktoKupuje (
-            @RequestParam(value = "ListaGraczy", required = false) Map gracze,
             Model model
     ) {
-        model.addAttribute("ListaGraczy",gracze);
-
+        model.addAttribute("ListaGraczy",this.gracze);
         return "ktoKupujeWybor";
     }
 

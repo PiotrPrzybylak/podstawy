@@ -11,9 +11,9 @@
   <form action="/zakupyURL">
 
             <ul>
-                <li th:each="gracze : ${ListaGraczy}">
-                    <input type="radio" th:field="${gracze.key}" th:value="${gracze.key}" />
-                    <label th:for="${gracze.key}" th:text="${gracze.value}"></label>
+                <li th:each="mapEntry : ${ListaGraczy}">
+                    <input type="radio" th:value="${mapEntry.key}" />
+                    <label th:for="${mapEntry.key}" th:text="${mapEntry.key}"></label>
                 </li>
             </ul>
 
