@@ -12,8 +12,8 @@
 
             <ul>
                 <li th:each="mapEntry : ${ListaGraczy}">
-                    <input type="radio" th:value="${mapEntry.key}" />
-                    <label th:for="${mapEntry.key}" th:text="${mapEntry.key}"></label>
+                    <input type="radio" name="ktoKupuje" th:value="${mapEntry.key}" />
+                    <label  th:for="${mapEntry.key}" th:text="${mapEntry.key}"></label>
                 </li>
             </ul>
 
