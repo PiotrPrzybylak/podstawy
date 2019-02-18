@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sklep</title>
+</head>
+  <body>
+
+
+  <h1>Lista graczy gotowych do walki</h1>
+  <form action="/ktoWalczy">
+
+            <ul>
+                <h1>Wybierz pierwszego</h1>
+                <li th:each="mapEntry : ${ListaGraczy}">
+                    <input type="radio" name="pierwszy" th:value="${mapEntry.key}" />
+                    <label  th:for="${mapEntry.key}" th:text="${mapEntry.key}"></label>
+                </li>
+            </ul>
+
+      <ul>
+          <h1>Wybierz drugiego</h1>
+          <li th:each="mapEntry : ${ListaGraczy}">
+              <input type="radio" name="drugi" th:value="${mapEntry.key}" />
+              <label  th:for="${mapEntry.key}" th:text="${mapEntry.key}"></label>
+          </li>
+      </ul>
+        <p><input type="submit" value="Przejdz do wyboru statków"/></p>
+
+    </form>
+  </body>
+</html>

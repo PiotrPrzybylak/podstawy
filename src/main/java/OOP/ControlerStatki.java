@@ -70,7 +70,12 @@ public class ControlerStatki {
     }
 
     private Gracz ktoryGracz (String kto) throws Wyjatek {
-        Gracz gracz = gracze.get(kto);
+        Gracz gracz = null;
+        try {
+             gracz = gracze.get(kto);
+        } catch (Wyjatek w){
+            w.printStackTrace();
+        }
         return gracz;
     }
 
@@ -235,14 +240,24 @@ public class ControlerStatki {
     }
 
     @RequestMapping("/")
-    public String listatStatkow (
+    public String listatGraczy (
             Model model
     ){
+        model.addAttribute("ListaGraczy",this.gracze);
+        return "ktoWalczyWybor";
+    }
+
+    @RequestMapping("/ktoWalczy")
+    public String listatStatkow (
+            @RequestParam(value = "statekGracza1", required = false) String pierwszy,
+            @RequestParam(value = "statekGracza2", required = false) String drugi,
+            Model model
+    ){
+        model.addAttribute("StatkiPierwszegoGracz",ktoryGracz(pierwszy).getStatki());
+        model.addAttribute("StatkiDrugiegoGracz",ktoryGracz(drugi).getStatki());
+
 
 // chce zrobic commita bo na lapku nie dziala i sprawdzic tak cala sprawe
-        model.addAttribute("statkiGracza1", gracz1.getStatki());
-        model.addAttribute("statkiGracza2", gracz2.getStatki());
-        model.addAttribute("statkiGracza3", gracz3.getStatki());
         return "walka";
     }
 }

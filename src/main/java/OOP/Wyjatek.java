@@ -1,9 +1,9 @@
 package OOP;
 
 //Wyjatek typu un checked!!
-//public class Wyjatek extends RuntimeException {
+public class Wyjatek extends RuntimeException {
 //Wyjatek typu checked!!
-public class Wyjatek extends Exception {
+//public class Wyjatek extends Exception {
     private String informacja;
 
     public String getMessage() {
