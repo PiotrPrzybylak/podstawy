@@ -249,15 +249,12 @@ public class ControlerStatki {
 
     @RequestMapping("/ktoWalczy")
     public String listatStatkow (
-            @RequestParam(value = "statekGracza1", required = false) String pierwszy,
-            @RequestParam(value = "statekGracza2", required = false) String drugi,
+            @RequestParam(value = "pierwszy", required = false) String pierwszy,
+            @RequestParam(value = "drugi", required = false) String drugi,
             Model model
     ){
-        model.addAttribute("StatkiPierwszegoGracz",ktoryGracz(pierwszy).getStatki());
-        model.addAttribute("StatkiDrugiegoGracz",ktoryGracz(drugi).getStatki());
-
-
-// chce zrobic commita bo na lapku nie dziala i sprawdzic tak cala sprawe
+        model.addAttribute("statkiGracza1",ktoryGracz(pierwszy).getStatki());
+        model.addAttribute("statkiGracza2",ktoryGracz(drugi).getStatki());
         return "walka";
     }
 }

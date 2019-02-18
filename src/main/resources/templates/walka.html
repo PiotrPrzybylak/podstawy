@@ -7,38 +7,23 @@
 <body>
   <h1>Walka bedzie</h1>
    <form action="/obliczenia">
-    <select class="row" id="statkiGracza1" name="statekGracza1" >
+    <select class="row" id="statkiGracza1" name="statkiGracza1" >
       <option th:each="statek : ${statkiGracza1}"
-              th:selected="${statek.typ == 'Fregata'}"
 
               th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp}"
               th:value="${statek.nazwa}"
               >Sraczka</option>
      </select>
 
-       <select class="row" id="statkiGracza2" name="statekGracza2" >
+       <select class="row" id="statkiGracza2" name="statkiGracza2" >
            <option th:each="statek : ${statkiGracza2}"
-                   th:selected="${statek.typ == 'Fregata'}"
 
                    th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp}"
                    th:value="${statek.nazwa}"
            >Sraczka</option>
        </select>
 
-       <select class="row" id="statkiGracza3" name="statekGracza3" >
-           <option th:each="statek : ${statkiGracza3}"
-                   th:selected="${statek.typ == 'Fregata'}"
 
-                   th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp}"
-                   th:value="${statek.nazwa}"
-           >Sraczka</option>
-       </select>
-       <br/>
-           <h2>Wybierz graczy którzy walczą</h2>
-           <div><label><input type="radio" name="ktoWalczy" value="Gracz1i2"/>Gracza 1 + 2</label></div>
-           <div><label><input type="radio" name="ktoWalczy" value="Gracz2i3"/>Gracz 2 + 3</label></div>
-           <div><label><input type="radio" name="ktoWalczy" value="Gracz3i1"/>Gracz 3 + 1</label></div>
-       <br/>
 
        <input type="submit" value="Walcz"/>
 
