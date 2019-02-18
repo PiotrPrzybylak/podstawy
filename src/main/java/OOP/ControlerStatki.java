@@ -17,7 +17,7 @@ public class ControlerStatki {
    private Map <String,Gracz> gracze = new HashMap <>();
    private List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
    private List <Statek> statkiZlomowisko = new ArrayList<>();
-   private List <Statek> listaPoczatkowychStatkow = new ArrayList<>();
+   //private List <Statek> listaPoczatkowychStatkow = new ArrayList<>();
 
     private Gracz gracz1;
     private Gracz gracz2;
@@ -25,6 +25,7 @@ public class ControlerStatki {
 
     public ControlerStatki (){
 
+        List <Statek> listaPoczatkowychStatkow = new ArrayList<>();
         listaPoczatkowychStatkow.add(new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
         listaPoczatkowychStatkow.add(new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545));
         listaPoczatkowychStatkow.add(new Fregata(new Nacja("Gallente"), "Fregata", "Tristan", 100, 5600));

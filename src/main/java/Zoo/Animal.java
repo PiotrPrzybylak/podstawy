@@ -1,6 +1,6 @@
 package Zoo;
 
-public abstract class Animal {
+public abstract class Animal extends Object {
 
 
     public abstract void eat();
