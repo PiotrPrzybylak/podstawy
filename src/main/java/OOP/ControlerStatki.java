@@ -170,8 +170,8 @@ public class ControlerStatki {
     public String metodaObliczenia (
             @RequestParam(value = "statekGracza1", required = false) String statekGracza1,
             @RequestParam(value = "statekGracza2", required = false) String statekGracza2,
-            @RequestParam(value = "pierwszy", required = false) String pierwszy,
-            @RequestParam(value = "drugi", required = false) String drugi,
+            @RequestParam(value = "pierwszy", required = true) String pierwszy,
+            @RequestParam(value = "drugi", required = true) String drugi,
            // @RequestParam(value = "statekGracza3", required = false) String statekGracza3,
            // @RequestParam(value = "ktoWalczy", required = false) String ktoWalczy,
             Model model
