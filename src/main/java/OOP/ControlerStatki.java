@@ -228,8 +228,8 @@ public class ControlerStatki {
        System.out.println(wygranyStatek);
 
      // model.addAttribute("ktoWalczy" , "Walczyli " + ktoWalczy);
-      model.addAttribute("pierwszy" , "Nazwa statku pierwszego gracza: " + pierwszyStatek.getNazwa());
-      model.addAttribute("drugi" , "Nazwa statku drugiego gracza: " + drugiStatek.getNazwa());
+      model.addAttribute("pierwszy" , "Nazwa pierwszego gracza: "+pierwszy+" a jego statek to " + pierwszyStatek.getNazwa());
+      model.addAttribute("drugi" , "Nazwa drugiego gracza "+drugi+" a jego statkek to " + drugiStatek.getNazwa());
       model.addAttribute("wygrany" ,wygranyStatek);
 
 
