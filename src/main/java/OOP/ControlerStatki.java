@@ -17,7 +17,7 @@ public class ControlerStatki {
    private Map <String,Gracz> gracze = new HashMap <>();
    private List <StatekSklep> statkiDoKulepinia = new ArrayList <>();
    private List <Statek> statkiZlomowisko = new ArrayList<>();
-   //private List <Statek> listaPoczatkowychStatkow = new ArrayList<>();
+
 
     private Gracz gracz1;
     private Gracz gracz2;
@@ -34,23 +34,6 @@ public class ControlerStatki {
             gracz1= new Gracz(listaPoczatkowychStatkow,1000000);
             gracz2= new Gracz(listaPoczatkowychStatkow,1000000);
             gracz3= new Gracz(listaPoczatkowychStatkow,1000000);
-
-/*
-        gracz1.getStatki().add(new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
-        gracz1.getStatki().add(new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545));
-        gracz1.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Tristan", 100, 5600));
-        gracz1.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Atron", 4000,4000));
-
-        gracz2.getStatki().add( new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
-        gracz2.getStatki().add(new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545));
-        gracz2.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Tristan", 100, 5600));
-        gracz2.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Atron", 4000,4000));
-
-        gracz3.getStatki().add( new Krazownik(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565));
-        gracz3.getStatki().add(new Krazownik(new Nacja("Amarr"),"Krążownik","Maller", 294,35545));
-        gracz3.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Tristan", 100, 5600));
-        gracz3.getStatki().add(new Fregata(new Nacja("Gallente"), "Fregata", "Atron", 4000,4000));
-*/
 
         statkiDoKulepinia.add( new StatekSklep(new Nacja("Gallente"), "Krążownik","Vexor", 300,53565, 30000));
         statkiDoKulepinia.add(new StatekSklep(new Nacja("Amarr"),"Krążownik","Maller", 294,35545, 33000));
@@ -89,9 +72,6 @@ public class ControlerStatki {
 
         return "redirect:/dodawanie";
     }
-
-
-
 
     // tu bedzie metoda sprzedaz
     @RequestMapping("/sprzedazZUrl")
@@ -148,9 +128,6 @@ public class ControlerStatki {
         return "gracze";
     }
 
-
-
-
     //Wersja na potrzeby gracza 1 oraz 2 i 3 z uzyciem kodu URL
     @RequestMapping("/zakupyURL")
     public String zakupyURL (
@@ -170,68 +147,41 @@ public class ControlerStatki {
     public String metodaObliczenia (
             @RequestParam(value = "statekGracza1", required = false) String statekGracza1,
             @RequestParam(value = "statekGracza2", required = false) String statekGracza2,
-            @RequestParam(value = "pierwszy", required = true) String pierwszy,
-            @RequestParam(value = "drugi", required = true) String drugi,
-           // @RequestParam(value = "statekGracza3", required = false) String statekGracza3,
-           // @RequestParam(value = "ktoWalczy", required = false) String ktoWalczy,
+            @RequestParam(value = "pierwszy", required = false) String pierwszy,
+            @RequestParam(value = "drugi", required = false) String drugi,
             Model model
     ){
 
         System.out.println(statekGracza1);
         System.out.println(statekGracza2);
-        //System.out.println(statekGracza3);
 
+       Statek pierwszyStatek = null;
+       Statek drugiStatek = null;
 
-       Statek pierwszyStatek = new Statek();
-       Statek drugiStatek = new Statek();
+        // foreach po liscie statki
 
-       Gracz graczPierwszy = new Gracz();
-       Gracz graczDrugi = new Gracz();
-       String wybranyStatekGraczPrierwszy ="";
-       String wybranyStatekGraczDrugi ="";
-
-        // teraz IFy dla walka dla wszystkich opcji
-
-            graczPierwszy=gracz1;
-            wybranyStatekGraczPrierwszy = statekGracza1;
-            graczDrugi = gracz2;
-            wybranyStatekGraczDrugi = statekGracza2;
-
-
-
-        // foreach po liscie statki Gracza1
-       // for (int i = 0; i < graczPierwszy.getStatki().size(); i++) {
         for (int i = 0; i < ktoryGracz(pierwszy).getStatki().size(); i++) {
-            //Statek statek = graczPierwszy.getStatki().get(i);
             Statek statek = ktoryGracz(pierwszy).getStatki().get(i);
 
-           // if (wybranyStatekGraczPrierwszy.equals(statek.getNazwa())) {
             if (statekGracza1.equals(statek.getNazwa())) {
                 pierwszyStatek = ktoryGracz(pierwszy).getStatki().get(i);
             }
         }
-        // foreach po liscie statki Gracza2
-       // for (int i = 0; i < graczDrugi.getStatki().size(); i++) {
+        // foreach po liscie statki
         for (int i = 0; i < ktoryGracz(drugi).getStatki().size(); i++) {
-           //Statek statek = graczDrugi.getStatki().get(i);
             Statek statek = ktoryGracz(drugi).getStatki().get(i);
 
-           // if (wybranyStatekGraczDrugi.equals(statek.getNazwa())) {
-            if (wybranyStatekGraczDrugi.equals(statek.getNazwa())) {
+            if (statekGracza2.equals(statek.getNazwa())) {
                 drugiStatek = ktoryGracz(drugi).getStatki().get(i);
             }
         }
 
-
-
        String wygranyStatek = TestStatki.walka(pierwszyStatek,drugiStatek);
        System.out.println(wygranyStatek);
 
-     // model.addAttribute("ktoWalczy" , "Walczyli " + ktoWalczy);
       model.addAttribute("pierwszy" , "Nazwa pierwszego gracza: "+pierwszy+" a jego statek to " + pierwszyStatek.getNazwa());
       model.addAttribute("drugi" , "Nazwa drugiego gracza "+drugi+" a jego statkek to " + drugiStatek.getNazwa());
       model.addAttribute("wygrany" ,wygranyStatek);
-
 
         return "wynik";
     }
@@ -254,7 +204,6 @@ public class ControlerStatki {
         model.addAttribute("statkiGracza2",ktoryGracz(drugi).getStatki());
         model.addAttribute("pierwszy",pierwszy);
         model.addAttribute("drugi",drugi);
-
 
         return "walka";
     }
