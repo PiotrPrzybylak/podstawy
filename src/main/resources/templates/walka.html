@@ -7,15 +7,16 @@
 <body>
   <h1>Walka bedzie</h1>
    <form action="/obliczenia">
-    <select class="row" id="statkiGracza1" name="statkiGracza1" >
+    <select class="row" id="statkiGracza1" name="statekGracza1" >
       <option th:each="statek : ${statkiGracza1}"
 
               th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp}"
               th:value="${statek.nazwa}"
+
               >Sraczka</option>
      </select>
 
-       <select class="row" id="statkiGracza2" name="statkiGracza2" >
+       <select class="row" id="statkiGracza2" name="statekGracza2" >
            <option th:each="statek : ${statkiGracza2}"
 
                    th:text="'TYP: '+${statek.typ} + ' NAZWA: ' +${statek.nazwa} + ' EHP: ' + ${statek.ehp}"
@@ -23,9 +24,11 @@
            >Sraczka</option>
        </select>
 
-
-
        <input type="submit" value="Walcz"/>
+
+       <input type = "hidden" th:field="${pierwszy}" value="${pierwszy}" />
+       <input type = "hidden" th:field="${drugi}" value="${drugi}" />
+
 
    </form>
 
