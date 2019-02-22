@@ -84,4 +84,9 @@
         </plugins>
     </build>
 
+    <scm>
+        <developerConnection>scm:git:https://github.com/PiotrPrzybylak/podstawy.git</developerConnection>
+      <tag>podstawy-1.0</tag>
+  </scm>
+
 </project>
